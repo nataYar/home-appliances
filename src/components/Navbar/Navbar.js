@@ -1,51 +1,62 @@
-import React, { useState } from "react";
+import React, { useRef } from 'react';
+import { NavLink, useLocation, useMatch } from 'react-router-dom';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import './Navbar.css';
 
-export default function Navbar( tabletView  ) {
-  const [click, setClick] = useState(false);
+export default function Navbar( ) {
 
-  const handleClick = () => {
-    setClick(!click)
-  }
+  let pathname = useLocation();
+
+  React.useEffect(() => {
+    console.log(pathname)
+  }, [pathname]);
+
+
+  const navRef = useRef();
+
+  const showNavBar = () => {
+    navRef.current.classList.toggle('responsive-nav')
+    }
+
+  // const { match, location } = this.props;
+  //   let isActive = false;
+  //   if (location.pathname === `${match.url}/props-v-state`) {
+  //     isActive = true;
+  //   }
+  
 
   return (
-    <nav>
-      {/* <div className="navigation">
-        <div className="navigation-sub">
-          <Link to="/" className="item">Home</Link>
-          <Link to="/about" className="item">About</Link>
-          <Link to="/contact" className="item">Contact</Link>
-          <Link to="/projects" className="item">Projects</Link>
-          <Link to="/skills" className="item">Skills</Link>
-        </div>
-      </div> */}
+    <div className='nav-header'>
+      <h3>Logo</h3>
+      <nav ref={navRef} className='navbar'>
+      
+      <NavLink
+        to="/"
+        className={"nav-link"}
+        >home</NavLink>
 
-      <div className='sticky-nav'>
-        <a href='#'><div className={click && tabletView ? 'logo logo-beige' : 'logo logo-black'}></div></a>
-        <div className={ click && tabletView ? 'burger clicked' : 'burger' }
-        onClick={handleClick}>
-          <span className='first'></span>
-          <span className='second'></span>
-          <span className='third'></span>
-        </div>
-      </div>
+          <NavLink
+        to="/services"
+        className={"nav-link"}
+        >services</NavLink>
 
-      {/* <ul className={ click && tabletView  ? 'nav-wrapper active' : 'nav-wrapper' }>
-        <li onClick={handleClick}>
-          <a href="#section-about" className='nav-item nav-about'>
-            About/
-          </a>
-        </li>
-        <li onClick={handleClick}>
-          <a href="#section-projects" className='nav-item nav-projects'>
-            Projects/
-          </a>
-        </li>
-        <li onClick={handleClick}>
-          <a href="#section-footer" className='nav-item nav-footer'>
-            Contact/
-          </a>
-        </li>
-      </ul> */}
-    </nav>
-  )
-}
+          <NavLink
+        to="/blog"
+        className={"nav-link"}
+        >blog</NavLink>
+
+        <NavLink
+        to="/testimonials"
+        className={"nav-link"}
+        >testimonials</NavLink>
+
+        <button className='nav-btn nav-close-btn' onClick={() => showNavBar()}>
+          <FaTimes/>
+        </button>
+      </nav>
+      <button className='nav-btn' onClick={() => showNavBar()}>
+        <FaBars/>
+      </button>
+    </div>
+  );
+};
