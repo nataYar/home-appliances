@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { NavLink, useLocation, useMatch } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import './Navbar.css';
 
@@ -17,39 +17,34 @@ export default function Navbar( ) {
   const showNavBar = () => {
     navRef.current.classList.toggle('responsive-nav')
     }
-
-  // const { match, location } = this.props;
-  //   let isActive = false;
-  //   if (location.pathname === `${match.url}/props-v-state`) {
-  //     isActive = true;
-  //   }
   
-
   return (
     <div className='nav-header'>
       <h3>Logo</h3>
       <nav ref={navRef} className='navbar'>
-      
-      <NavLink
+        <NavLink
+        onClick={() => showNavBar()}
         to="/"
         className={"nav-link"}
         >home</NavLink>
 
-          <NavLink
+        <NavLink
+        onClick={() => showNavBar()}
         to="/services"
         className={"nav-link"}
         >services</NavLink>
 
-          <NavLink
+        <NavLink
+        onClick={() => showNavBar()}
         to="/blog"
         className={"nav-link"}
         >blog</NavLink>
 
-        <NavLink
+        <NavLink 
+        onClick={() => showNavBar()}
         to="/testimonials"
         className={"nav-link"}
         >testimonials</NavLink>
-
         <button className='nav-btn nav-close-btn' onClick={() => showNavBar()}>
           <FaTimes/>
         </button>
