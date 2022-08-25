@@ -1,0 +1,18 @@
+$darkBlue: #000082;
+$midBlue: #1642BF;
+$lightBlue: #116DD2;
+$darkYellow: #f0b400;
+$midYellow: #fcca0c;
+$lightYellow: #f9e07e;
+
+$font-small: .8rem;
+$font-regular: 1rem;
+$font-mid: 1.5rem;
+$font-big: 2.4rem;
+
+@mixin flex-column-center($direction: column, $justify: center, $align: center) {
+    display: flex;
+    flex-direction: column;
+    align-items: $align;
+    justify-content: $justify;
+  }

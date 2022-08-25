@@ -1,0 +1,86 @@
+@import "../../Styles/Variables.scss";
+
+.home-container {
+    @include flex-column-center($justify: space-evenly); 
+    padding-top: 15vh;
+    height: 85vh;
+    width: 100vw;
+    background-color: $midBlue;
+}
+
+.home-title {
+    @include flex-column-center($justify: space-evenly); 
+    width: 100vw;
+    height: 10rem;
+    font-weight: 500;
+    font-family: Saira;
+    color: $midYellow;
+    div {  
+        @include flex-column-center; 
+        h1 {
+            font-size: $font-big;
+            margin-top: 0%;
+            margin-bottom: 10%;
+            text-align: center;
+        }
+    }
+    button {
+        background-color: white;
+        font-size: $font-regular;
+        border-radius: 20px;
+        outline: none;
+        border: none;
+        padding: 2%;
+        text-transform: uppercase;
+    }
+}
+
+.badges-section {
+    // background-color: $midBlue;
+    height: fit-content;
+    h6 {
+        margin-top: 0%;
+        margin-bottom: 5%;
+        color: white;
+        width: 80%;
+        margin-right: auto;
+        margin-left: auto; 
+        text-align: center;
+    }
+}
+
+.badges {
+    padding: 5% 0%;
+    height: auto;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    div {
+        background-color: $midYellow;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 2.5rem;
+        width: 2.5rem;
+        padding: 2%;
+        border-radius: 50%;
+        img {
+            width: 80%;
+            height: 80%;
+            border: none;
+            outline: none;
+        }
+    }
+}
+.services-btn{
+ border: none;
+ outline: none;
+ background-color: transparent;
+ color: $lightYellow;   
+}
+
+
+
+
+
