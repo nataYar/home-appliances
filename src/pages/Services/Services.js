@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { Refrigerators } from '../../Components/importsComponents';
+import { Refrigerators } from '../../components/importsComponents';
 
 export default function Services() {
   const navigate = useNavigate()

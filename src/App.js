@@ -1,7 +1,7 @@
 import React, { useState, useEffect }from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Home, Services, Blog, Testimonials } from './Pages/importsPages'
-import { Navbar, Refrigerators } from './Components/importsComponents'
+import { Home, Services, Blog, Testimonials } from './pages/importsPages'
+import { Navbar, Refrigerators } from './components/importsComponents'
 
 function App() {
   return (
@@ -14,7 +14,6 @@ function App() {
         <Route path='/blog' element={<Blog />} />
         <Route path='/testimonials' element={<Testimonials />} />
         <Route path="refrigerators" element={<Refrigerators />} />
-    
       </Routes>
      </div>
     </>

@@ -7,11 +7,6 @@ export default function Navbar( ) {
 
   let pathname = useLocation();
 
-  React.useEffect(() => {
-    console.log(pathname)
-  }, [pathname]);
-
-
   const navRef = useRef();
 
   const showNavBar = () => {

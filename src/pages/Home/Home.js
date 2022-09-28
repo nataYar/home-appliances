@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.scss';
+import { ScheduleCallForm } from '../../components/importsComponents';
 import { default as mask } from './bagdes/mask.svg';
 import { default as gloves } from './bagdes/gloves.svg';
 
 export default function Home() {
-  const navigate = useNavigate()
+  const [scheduleFormVisible, setScheduleFormVisible] = useState(false);
+
+  const navigate = useNavigate();
+
+  const openScheduleCallForm = () => {
+    setScheduleFormVisible(!scheduleFormVisible)
+    console.log(scheduleFormVisible)
+  }
+
   return (
     <section className='home-container'>
       <div className='home-title'>
@@ -13,7 +22,10 @@ export default function Home() {
           <h1>CITY TECH</h1>
           <h1>HVAC & Appliance Repair</h1>
         </div>
-        <button id='schedule-call-btn'>Schedule a call</button>
+        <button id='schedule-call-btn'
+        onClick={e => openScheduleCallForm(e)} 
+        >Schedule a call</button>
+        <ScheduleCallForm scheduleFormVisible={scheduleFormVisible} callbackCloseScheduleForm={openScheduleCallForm } />
       </div>
       <div className='badges-section'>
         <div className='badges'>
