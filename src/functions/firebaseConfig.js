@@ -2,17 +2,14 @@
 import firebase from 'firebase/app' // doing import firebase from 'firebase' or import * as firebase from firebase is not good practice.
 import 'firebase/auth'
 import 'firebase/database'
-import 'firebase/firestore';
 import Axios from 'axios'
-
 import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
     // The value of `databaseURL` depends on the location of the database
-    // databaseURL: "https://DATABASE_NAME.firebaseio.com",
     databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
     projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
     storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
@@ -21,8 +18,7 @@ const firebaseConfig = {
     measurementId:process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
-firebase.initializeApp(firebaseConfig)
+const app = initializeApp(firebaseConfig);
+const db =  getFirestore(app);
 
-const db =  getDatabase(app);
-
-export { Axios, db }
+export { Axios, db };
