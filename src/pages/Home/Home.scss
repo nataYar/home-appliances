@@ -1,17 +1,19 @@
 @import "../../Styles/Variables.scss";
 
+* {
+    background-color: $white;
+}
 .home-container {
     @include flex-column-center($justify: space-evenly); 
-    padding-top: 15vh;
-    height: 85vh;
-    width: 100vw;
-    background-color: $midBlue;
+    padding: $page-padding;
+    // padding-top: 10vh;
+    height: auto;
+    
 }
 
-.home-title {
+.section-home-intro {
     @include flex-column-center($justify: space-evenly); 
     width: 100vw;
-    height: 10rem;
     font-weight: 500;
     font-family: Saira;
     color: $midYellow;
@@ -36,12 +38,11 @@
 }
 
 .badges-section {
-    // background-color: $midBlue;
     height: fit-content;
     h6 {
         margin-top: 0%;
         margin-bottom: 5%;
-        color: white;
+        // color: white;
         width: 80%;
         margin-right: auto;
         margin-left: auto; 
@@ -66,10 +67,42 @@
         padding: 2%;
         border-radius: 50%;
         img {
+            background-color: transparent;
             width: 80%;
             height: 80%;
             border: none;
             outline: none;
+        }
+    }
+}
+.section-benefits {
+    @include flex-column-center;
+    padding-left: 0%;
+    margin-left: 0%;
+    // background-color: brown;
+}
+.benefits-list {
+    @include flex-column-center($align: flex-start);
+
+    height: auto;
+    padding-left: 0%;
+    margin-left: 0%;
+    li {
+        @include flex-column-center($direction: row, $justify: flex-start);
+        width: 100%;
+        height: auto;
+        padding-left: 0%;
+        margin-left: 0%;
+        .benefits-list_img-wrapper{
+            padding: 0% 5%;
+        }
+        .benefits-list_text {
+            padding: 0% 1%;
+            margin-bottom: 2%;
+            width: 90%;
+            border: 2px white solid;
+            border-radius: 18px;
+            text-align: center;
         }
     }
 }
@@ -78,6 +111,13 @@
  outline: none;
  background-color: transparent;
  color: $lightYellow;   
+}
+
+.brands {
+    @include flex-column-center;
+    background-color: aqua;
+    height: auto;
+    width: 100%;
 }
 
 

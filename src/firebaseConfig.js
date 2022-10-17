@@ -1,10 +1,12 @@
 // Import the functions you need from the SDKs you need
-import firebase from 'firebase/app' // doing import firebase from 'firebase' or import * as firebase from firebase is not good practice.
-import 'firebase/auth'
+import firebase from 'firebase/app'; // doing import firebase from 'firebase' or import * as firebase from firebase is not good practice.
+import 'firebase/auth';
 import 'firebase/database'
-import Axios from 'axios'
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getApp } from "firebase/app";
+import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
+import Axios from 'axios'
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -21,4 +23,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db =  getFirestore(app);
 
-export { Axios, db };
+const functions = getFunctions(getApp());
+connectFunctionsEmulator(functions, "localhost", 3000);
+
+export { Axios, db , app};

@@ -1,3 +1,4 @@
+$white: #FFFFFF;
 $darkBlue: #000082;
 $midBlue: #1642BF;
 $lightBlue: #116DD2;
@@ -10,9 +11,12 @@ $font-regular: 1rem;
 $font-mid: 1.5rem;
 $font-big: 2.4rem;
 
+// PADDINGS AND MARGINS
+$page-padding: 10vh 5vw 5vh;
+
 @mixin flex-column-center($direction: column, $justify: center, $align: center) {
     display: flex;
-    flex-direction: column;
+    flex-direction: $direction;
     align-items: $align;
     justify-content: $justify;
   }

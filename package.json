@@ -1,5 +1,6 @@
 {
   "name": "home-appliances",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,13 +10,17 @@
     "axios": "^0.27.2",
     "cors": "^2.8.5",
     "firebase": "^9.10.0",
+    "firebase-admin": "^11.0.1",
+    "firebase-functions": "^3.24.1",
     "node-sass": "^7.0.3",
-    "nodemailer": "^6.7.8",
+    "nodemailer": "^6.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
+    "react-image-gallery": "^1.2.11",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
+    "uuid": "^9.0.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

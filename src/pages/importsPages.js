@@ -1,4 +1,10 @@
-export {  default as Home } from './Home/Home';
-export { default as Services } from './Services/Services';
+export { default as Home } from './Home/Home';
 export { default as Blog } from './Blog/Blog';
 export { default as Testimonials } from './Testimonials/Testimonials';
+
+export { default as Refrigerator } from './Services/All/Refrigerator/Refrigerator';
+export { default as Oven } from './Services/All/Oven/Oven';
+export { default as Washer } from './Services/All/Washer/Washer';
+export { default as Dryer } from './Services/All/Dryer/Dryer';
+export { default as Cooktop } from './Services/All/Cooktop/Cooktop';
+export { default as Freezer } from './Services/All/Freezer/Freezer';

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './ScheduleCallForm.scss';
 import { FaTimes } from 'react-icons/fa';
-import { Axios, db } from '../../functions/firebaseConfig'
+import { Axios, db } from '../../firebaseConfig';
 import {  doc, setDoc } from "firebase/firestore";
 
 export default function ScheduleCallForm({scheduleFormVisible, callbackCloseScheduleForm}) {
@@ -14,6 +14,7 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
             [e.target.name]: e.target.value,
             [e.target.email]: e.target.email,
             [e.target.message]: e.target.message,
+            time: new Date(),
       })
     }
 
@@ -35,6 +36,8 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
             time: new Date(),
         };
         setDoc(doc(db, "requests", formData.email ), docData);
+        const aaa = doc(db, 'requests', 'n.yarysheva@gmail.com');
+        console.log(aaa)
         // sendEmail()
     }
 
@@ -42,13 +45,13 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
         console.log(formData)
     }, [formData])
 
-    const sendEmail = () => {
-        Axios
-        .post( "https://home-appliances-b8f33-default-rtdb.firebaseio.com", formData)
-        .catch(error => {
-          console.log(error.response.data)
-        })
-    }
+    // const sendEmail = () => {   
+    //     Axios
+    //     .post("https://home-appliances-b8f33-default-rtdb.firebaseio.com", formData)
+    //     .catch(error => {
+    //       console.log(error.response.data)
+    //     })
+    // }
 
     return (
         <section className={scheduleFormVisible ? 'schedule-call-container' : 'schedule-call-container hidden' }>

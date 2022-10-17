@@ -1,0 +1,8 @@
+@import "../../Styles/Variables.scss";
+
+.services-container {
+    @include flex-column-center;
+    padding: $page-padding;
+    width: 100vw;
+    height: auto;
+}
