@@ -1,14 +1,10 @@
 @import "../../Styles/Variables.scss";
 
-* {
-    background-color: $white;
-}
 .home-container {
     @include flex-column-center($justify: space-evenly); 
-    padding: $page-padding;
-    // padding-top: 10vh;
+    // padding: $padding_1-05rem;
+    padding-top: 13vh;
     height: auto;
-    
 }
 
 .section-home-intro {
@@ -75,15 +71,20 @@
         }
     }
 }
+
 .section-benefits {
     @include flex-column-center;
-    padding-left: 0%;
-    margin-left: 0%;
-    // background-color: brown;
+    // padding-left: 0%;
+    // margin-left: 0%;
+    // padding: $padding_1-05rem;
+    background-color: $darkBlue;
+    height: 65vh;
+    width: 100%;
+    color: $fontMainColorLight;
 }
+
 .benefits-list {
     @include flex-column-center($align: flex-start);
-
     height: auto;
     padding-left: 0%;
     margin-left: 0%;
@@ -110,17 +111,12 @@
  border: none;
  outline: none;
  background-color: transparent;
- color: $lightYellow;   
+ color: $lightYellow;
 }
 
 .brands {
     @include flex-column-center;
-    background-color: aqua;
-    height: auto;
+    // background-color: aqua;
+    height: 50vh;
     width: 100%;
 }
-
-
-
-
-

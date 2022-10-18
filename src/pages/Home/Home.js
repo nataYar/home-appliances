@@ -109,7 +109,6 @@ export default function Home() {
         <div className="slider-container">
           <BrandsSlider />
         </div>
-        
       </section>
     </div>
   )

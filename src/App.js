@@ -41,7 +41,7 @@ function App() {
   return (
     <>
       <Navbar/>
-      <div className='container'>
+      <div className='app'>
         <Routes>
           {routeComponents} 
         </Routes>
