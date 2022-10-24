@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.scss';
-import { ScheduleCallForm, Services, BrandsSlider } from '../../components/importsComponents';
+import { ScheduleCallForm, Services, BrandsSlider, Testimonials } from '../../components/importsComponents';
 import { default as mask } from './bagdes/mask.svg';
 import { default as gloves } from './bagdes/gloves.svg';
 import { cookSm, refSm, drSm, freezSm, ovSm, washSm } from '../../Images/imgImports';
@@ -32,8 +32,8 @@ export default function Home() {
       </section>
 
       {/* BADGES_____________________________________ */}
-      <section className='section-badges'>
-        <div className='badges'>
+      <section className='badges'>
+        <div className='badges-container'>
           <div>
             <img className='badge-about-us' 
             src={require('./bagdes/vaccine.png')}
@@ -104,10 +104,17 @@ export default function Home() {
         </ul>
       </section>
 
+     {/* BRANDS___________________________________ */}
       <section className="brands">
         <h2>Brands</h2> 
-        <div className="slider-container">
-          <BrandsSlider />
+        <BrandsSlider />
+      </section>
+
+      {/* TESTIMONIALS___________________________________ */}
+      <section className='testimonials'>
+        <h2>Testimonials</h2> 
+        <div>
+          <Testimonials />
         </div>
       </section>
     </div>

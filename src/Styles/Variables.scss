@@ -12,7 +12,13 @@ $font-mid: 1.5rem;
 $font-big: 2.4rem;
 
 // PADDINGS AND MARGINS
-$padding_1-05rem: 1rem .5rem ;
+
+
+@mixin section($padding: 5% 5%, $height: auto, $width: 90%) {
+  padding: $padding;
+  height: $height;
+  width: $width;
+}
 
 @mixin flex-column-center($direction: column, $justify: center, $align: center) {
     display: flex;

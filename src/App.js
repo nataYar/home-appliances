@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Home, Blog, Testimonials, Refrigerator, Oven, Washer, Dryer, Cooktop, Freezer } from './pages/importsPages';
+import { Home, Blog, TestimonialsPage, Refrigerator, Oven, Washer, Dryer, Cooktop, Freezer } from './pages/importsPages';
 import { Navbar } from './components/importsComponents';
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
       element: <Blog/>,
     }, {
       path: '/testimonials',
-      element: <Testimonials/>,
+      element: <TestimonialsPage/>,
     }, {
       path: '/refrigerator',
       element:<Refrigerator/>,

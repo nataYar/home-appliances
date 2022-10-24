@@ -1,6 +1,6 @@
 export { default as Home } from './Home/Home';
 export { default as Blog } from './Blog/Blog';
-export { default as Testimonials } from './Testimonials/Testimonials';
+export { default as TestimonialsPage } from './TestimonialsPage/TestimonialsPage';
 
 export { default as Refrigerator } from './Services/All/Refrigerator/Refrigerator';
 export { default as Oven } from './Services/All/Oven/Oven';

@@ -2,7 +2,7 @@
 
 .services-container {
     @include flex-column-center;
-    padding: $padding_1-05rem;
+    @include section();
     width: 100vw;
     height: auto;
 }

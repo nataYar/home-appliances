@@ -1,94 +1,28 @@
 @import "../../Styles/Variables.scss";
-@import "~react-image-gallery/styles/scss/image-gallery.scss";
 
-.slider-container {
-    background-color: $darkYellow;
-}
-
-  .container {
+.brands-wrapper {
+   @include section();
+    max-height: 20vh;
     display: flex;
-    justify-content: center;
-    overflow: hidden;
+    overflow-x: auto;
   }
   
   .slider {
-    overflow: hidden;
-    --items-per-screen: 2;
-    --slider-index: 0;
-    display: flex;
-    flex-flow: row nowrap;
-    flex-grow: 1;
-    margin: 0 var(--img-gap);
-    transform: translateX(calc(var(--slider-index) * -100%));
-    transition: transform 250ms ease-in-out;
-  }
-  
-  .slider > div {
-
-    width: 25vw;
-    height: 20vh;
-    color: aqua;
-    // flex: 0 0 calc(100% / var(--items-per-screen));
-    // max-width: calc(100% / var(--items-per-screen));
-    // aspect-ratio: 16 / 9;
-    // padding: var(--img-gap);
-  }
-  
-  .handle {
-    // border: none;
-    // border-radius: 1rem;
-    // flex-grow: 0;
-    // flex-shrink: 0;
-    // background-color: rgba(255, 255, 255, .25);
-    // z-index: 10;
-    // margin: var(--img-gap) 0;
-    // width: var(--handle-size);
-    // cursor: pointer;
-    // font-size: 5rem;
+    width: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    // --items-per-screen: 2;
+    // --slider-index: 0;
     // display: flex;
-    // align-items: center;
-    // justify-content: center;
-    // color: white;
-    // line-height: 0;
-    // transition: background-color 150ms ease-in-out;
+    // flex-flow: row nowrap;
+    // flex-grow: 1;
+    // margin: 0 var(--img-gap);
+    // transform: translateX(calc(var(--slider-index) * -100%));
+    // transition: transform 250ms ease-in-out;
   }
   
-  .left-handle {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-  
-  .right-handle {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-  
-  .handle:hover,
-  .handle:focus {
-    background-color: rgba(255, 255, 255, .5);
-  }
-  
-  .text {
-    transition: transform 150ms ease-in-out;
-  }
-  
-  .handle:hover .text,
-  .handle:focus .text {
-    transform: scale(1.2);
-  }
-  
-  .progress-bar {
-    // display: flex;
-    // gap: .25rem;
-  }
-  
-  .progress-item {
-    flex: 0 0 1.5rem;
-    min-width: 1.5rem;
-    height: .5rem;
-    background-color: rgba(255, 255, 255, .5);
-  }
-  
-  .progress-item.active {
-    background-color: rgba(255, 255, 255, .9);
+  .brand-img-container {
+    margin-right: 3%;
+    // max-width: 2rem;
+    // height: 30vh;
   }

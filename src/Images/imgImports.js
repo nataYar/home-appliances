@@ -8,3 +8,6 @@ export { default as washSm} from './ServicesImagesSmall/wash.jpeg';
 
 // Brands
 export { default as samsung} from './SliderImages/samsung.png';
+export { default as bosch} from './SliderImages/bosch.png';
+export { default as indesit} from './SliderImages/indesit.png';
+export { default as lg} from './SliderImages/lg.png';

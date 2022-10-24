@@ -2,14 +2,14 @@
 
 .home-container {
     @include flex-column-center($justify: space-evenly); 
-    // padding: $padding_1-05rem;
     padding-top: 13vh;
     height: auto;
 }
 
 .section-home-intro {
     @include flex-column-center($justify: space-evenly); 
-    width: 100vw;
+
+    // width: 100vw;
     font-weight: 500;
     font-family: Saira;
     color: $midYellow;
@@ -33,12 +33,11 @@
     }
 }
 
-.badges-section {
-    height: fit-content;
+section.badges {
+    @include section();
     h6 {
         margin-top: 0%;
         margin-bottom: 5%;
-        // color: white;
         width: 80%;
         margin-right: auto;
         margin-left: auto; 
@@ -46,7 +45,7 @@
     }
 }
 
-.badges {
+.badges-container {
     padding: 5% 0%;
     height: auto;
     display: flex;
@@ -74,9 +73,6 @@
 
 .section-benefits {
     @include flex-column-center;
-    // padding-left: 0%;
-    // margin-left: 0%;
-    // padding: $padding_1-05rem;
     background-color: $darkBlue;
     height: 65vh;
     width: 100%;
@@ -114,9 +110,20 @@
  color: $lightYellow;
 }
 
-.brands {
-    @include flex-column-center;
-    // background-color: aqua;
-    height: 50vh;
-    width: 100%;
+section.brands {
+    @include section();
+    width: 90vw;
+    height: 20vh;
+}
+
+section.testimonials{
+    @include section();
+    background-color: $darkYellow;
+    div {
+        margin: 5%;
+    }
+    h2 {
+        color: #fff;
+        font-weight: 900;
+    }
 }
