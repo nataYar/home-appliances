@@ -36,7 +36,6 @@ function App() {
   ];
 
   const routeComponents = routes.map(({path, element}, key) => 
-    // <Route exact path={path} element={`<${element}/>`} key={key} />);
     <Route exact path={path} element={element} key={key} />);
   return (
     <>

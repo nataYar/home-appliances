@@ -8,8 +8,8 @@ export default function BrandsSlider() {
     return (
       <div className="brands-wrapper">
       {
-        brands.map(el => (
-          <div className='brand-img-container'>
+        brands.map((el , key)=> (
+          <div className='brand-img-container' key={key}>
             <img
               src={el}
               key={el}

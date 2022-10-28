@@ -50,7 +50,7 @@ export default function Services() {
                 src={`${el.img}`} alt="service picture" />
               </div>
               <h3>{el.name} </h3>
-              <button onClick={() => navigate(el.link)}>LEARN MORE</button>
+              <button className='button-standard' onClick={() => navigate(el.link)}>LEARN MORE</button>
             </div>
           )
         })

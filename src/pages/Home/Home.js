@@ -14,7 +14,6 @@ export default function Home() {
 
   const openScheduleCallForm = () => {
     setScheduleFormVisible(!scheduleFormVisible)
-    console.log(scheduleFormVisible)
   }
 
   return (
@@ -23,10 +22,11 @@ export default function Home() {
       <section className='section-home-intro'>
         <div>
           <h1>CITY TECH</h1>
-          <h1>HVAC & Appliance Repair</h1>
+          <h1>Appliance Repair</h1>
         </div>
-        <button id='schedule-call-btn'
-        onClick={e => openScheduleCallForm(e)} 
+        <button 
+         className="button-85" role="button"
+          onClick={e => openScheduleCallForm(e)} 
         >Schedule a call</button>
         <ScheduleCallForm scheduleFormVisible={scheduleFormVisible} callbackCloseScheduleForm={openScheduleCallForm } />
       </section>

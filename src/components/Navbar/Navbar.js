@@ -1,24 +1,21 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { FaPhoneAlt, FaBars, FaTimes } from 'react-icons/fa';
 import './Navbar.scss';
 
 export default function Navbar( ) {
+  const [navVisible, setNavVisible] = useState(false);
 
   let pathname = useLocation();
 
   const navRef = useRef();
 
-  const showNavBar = () => {
-    navRef.current.classList.toggle('responsive-nav')
-    }
-
-  const hideNavBar = () => {
-    navRef.current.classList.remove('responsive-nav')
+  const toggleNavBar = () => {
+    setNavVisible(!navVisible)
   }
   
   return (
-    <div className='nav-header'>
+    <div className='nav'>
       <h3>LOGO</h3>
       
       <div className='phone-container'>
@@ -33,36 +30,36 @@ export default function Navbar( ) {
       </div>
       
 
-      <nav ref={navRef} className='navbar'>
+      <nav ref={navRef} className={navVisible ? 'navbar' : 'navbar hidden' }>
         <NavLink
-        onClick={() => hideNavBar()}
+        onClick={() => toggleNavBar()}
         to="/"
         className={"nav-link"}
         >home</NavLink>
 
         <NavLink
-         onClick={() => hideNavBar()}
+         onClick={() => toggleNavBar()}
         to="/services"
         className={"nav-link"}
         >services</NavLink>
 
         <NavLink
-         onClick={() => hideNavBar()}
+         onClick={() => toggleNavBar()}
         to="/blog"
         className={"nav-link"}
         >blog</NavLink>
 
         <NavLink 
-         onClick={() => hideNavBar()}
+         onClick={() => toggleNavBar()}
         to="/testimonials"
         className={"nav-link"}
         >testimonials</NavLink>
 
-        <button id='nav-close-btn' className='nav-btn' onClick={() => showNavBar()}>
+        <button id='nav-close-btn' className='nav-btn' onClick={() => toggleNavBar()}>
           <FaTimes/>
         </button>
       </nav>
-      <button className='nav-btn' onClick={() => showNavBar()}>
+      <button className='nav-btn' onClick={() => toggleNavBar()}>
         <FaBars/>
       </button>
     </div>

@@ -55,58 +55,41 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
 
     return (
         <section className={scheduleFormVisible ? 'schedule-call-container' : 'schedule-call-container hidden' }>
-            <div id=''></div>
-            <h1 className="section-header">Contact us</h1>
-            
-            <button id='nav-close-btn' className='nav-btn' 
-            onClick={e => closeScheduleCallForm(e)} 
-            >
-            <FaTimes/>
-            </button>
-
+            <div id="section-header">
+                <h2>Contact us</h2>
+                <FaTimes className="nav-btn" onClick={e => closeScheduleCallForm(e)}  />
+            </div>
             <div className="schedule-call-wrapper">
-
-                <form className="schedule-call-form" role="form"
-                onSubmit={handleSubmit} >
-                    <div className="form-group">
-                        <div className="col-sm-12">
+                <form className="schedule-call-form"
+                onSubmit={handleSubmit}>
+                    <div>
                         <input className="form-control" id="name" type="text" placeholder="NAME" 
                         name="name" 
                         onChange={updateInput}
                         value={formData.name || ''} 
                         required />
-                        </div>
-                    </div>
 
-                    <div className="form-group">
-                        <div className="col-sm-12">
-                        <input type="email" className="form-control" id="email" placeholder="email" 
+                        <input type="email" className="form-control" id="email" placeholder="PHONE NUMBER" 
                         name="email" 
                         onChange={updateInput}
                         value={formData.email || ''}
-                        required />
-                        </div>
-                    </div>
+                        />
 
-                    <textarea className="form-control" rows="10" placeholder="WANT TO ADD A MESSAGE?" 
-                    name="message" 
-                    type="text"
-                    onChange={updateInput}
-                    value={formData.message || ''}
-                    ></textarea>
-                    
-                    <button className="btn btn-primary send-button" id="submit" type="submit" value="SEND">
-                        <div className="alt-send-button">
-                        <i className="fa fa-paper-plane"></i><span className="send-text">SEND</span>
-                        </div>
-                    </button>
+                        <textarea className="form-control" rows="10" placeholder="WANT TO ADD A MESSAGE?" 
+                        name="message" 
+                        type="text"
+                        onChange={updateInput}
+                        value={formData.message || ''}
+                        />
+                    </div>
+                    <button className="button-standard" id="submit" type="submit" value="SEND">SEND </button>
                 </form>
                 
                 <div className="schedule-call-info-container">
                     <ul className="contact-list">
-                        <li className="list-item"><i className="fa fa-map-marker fa-2x"><span className="contact-text place">City, State</span></i></li>
-                        <li className="list-item"><i className="fa fa-phone fa-2x"><span className="contact-text phone"><a href="tel:1-212-555-5555" title="Give me a call">(212) 555-2368</a></span></i></li>
-                        <li className="list-item"><i className="fa fa-envelope fa-2x"><span className="contact-text gmail"><a href="mailto:#" title="Send me an email">hitmeup@gmail.com</a></span></i></li>
+                        <li className="list-item"><i className=""><span className="contact-text place">City, State</span></i></li>
+                        <li className="list-item"><i className=""><span className="contact-text phone"><a href="tel:1-212-555-5555" title="Give me a call">(212) 555-2368</a></span></i></li>
+                        <li className="list-item"><i className=""><span className="contact-text gmail"><a href="mailto:#" title="Send me an email">hitmeup@gmail.com</a></span></i></li>
                     </ul>
 
                     <ul className="social-media-list">
