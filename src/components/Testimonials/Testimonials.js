@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { CommentForm } from '../importsComponents';
 import { db } from '../../firebaseConfig';
 import { collection, getDocs } from "firebase/firestore";
-import { FaTimes, FaRegPaperPlane } from 'react-icons/fa';
+// import { FaTimes, FaRegPaperPlane } from 'react-icons/fa';
 
 import './Testimonials.scss';
 
@@ -24,12 +24,8 @@ export default function Testimonials() {
     };
     getTestimonials()
     }, []);
-
-    // useEffect(() => {
-    //     console.log(testimonials)
-    // }, [testimonials])
-
     
+  const toggleCommentForm = () => {setCommentForm(!commentForm) }
 
   return (
     <>
@@ -50,15 +46,13 @@ export default function Testimonials() {
       <button 
         className="button-standard" role="button"
         onClick={
-        () => setCommentForm(!commentForm) }
+        () => toggleCommentForm() }
         >
         add comment
       </button>
-
-      {
-        commentForm ? <CommentForm /> : null
-      }
-       
+      
+      <CommentForm commentForm={commentForm} callbackToggleCommentForm={toggleCommentForm}/> 
+      
     </>
   )
 }

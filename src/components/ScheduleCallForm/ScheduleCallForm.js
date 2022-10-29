@@ -57,7 +57,7 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
         <section className={scheduleFormVisible ? 'schedule-call-container' : 'schedule-call-container hidden' }>
             <div id="section-header">
                 <h2>Contact us</h2>
-                <FaTimes className="nav-btn" onClick={e => closeScheduleCallForm(e)}  />
+                <FaTimes className="nav-btn" onClick={() => closeScheduleCallForm()}  />
             </div>
             <div className="schedule-call-wrapper">
                 <form className="schedule-call-form"

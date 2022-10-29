@@ -10,9 +10,7 @@ export default function Navbar( ) {
 
   const navRef = useRef();
 
-  const toggleNavBar = () => {
-    setNavVisible(!navVisible)
-  }
+  const toggleNavBar = () => { setNavVisible(!navVisible) }
   
   return (
     <div className='nav'>
