@@ -12,7 +12,7 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
-            [e.target.email]: e.target.email,
+            [e.target.phoneNumber]: formData.phoneNumber,
             [e.target.message]: e.target.message,
             time: new Date(),
       })
@@ -23,7 +23,7 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
         writeRequest();
         setFormData({
             name: '',
-            email: '',
+            phoneNumber: '',
             message: '',
         })
     }
@@ -31,19 +31,13 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
     const writeRequest = () => {
         const docData = {
             name: formData.name,
-            email: formData.email,
+            phoneNumber: formData.phoneNumber,
             message: formData.message,
             time: new Date(),
         };
-        setDoc(doc(db, "requests", formData.email ), docData);
-        const aaa = doc(db, 'requests', 'n.yarysheva@gmail.com');
-        console.log(aaa)
-        // sendEmail()
+        setDoc(doc(db, "requests", formData.phoneNumber ), docData);
     }
 
-    useEffect(() => {
-        console.log(formData)
-    }, [formData])
 
     // const sendEmail = () => {   
     //     Axios
@@ -52,6 +46,30 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
     //       console.log(error.response.data)
     //     })
     // }
+
+    function getFormattedPhoneNum(e) {
+        let output = "(";
+        e.target.value.replace( /^\D*(\d{0,3})\D*(\d{0,3})\D*(\d{0,4})/, function( match, g1, g2, g3 )
+            {
+              if ( g1.length ) {
+                output += g1;
+                if ( g1.length == 3 ) {
+                    output += ")";
+                    if ( g2.length ) {
+                        output += " " + g2; 
+                        if ( g2.length == 3 ) {
+                            output += "-";
+                            if ( g3.length ) {
+                                output += g3;
+                            }
+                        }
+                    }
+                 }
+              }
+            }
+          );
+        setFormData({...formData, phoneNumber: output})
+    } 
 
     return (
         <section className={scheduleFormVisible ? 'schedule-call-container' : 'schedule-call-container hidden' }>
@@ -63,22 +81,22 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
                 <form className="schedule-call-form"
                 onSubmit={handleSubmit}>
                     <div>
-                        <input className="form-control" id="name" type="text" placeholder="NAME" 
+                        <input className="form-control" type="text" placeholder="NAME" 
                         name="name" 
-                        onChange={updateInput}
+                        onChange={(e) => updateInput(e)}
                         value={formData.name || ''} 
                         required />
 
-                        <input type="email" className="form-control" id="email" placeholder="PHONE NUMBER" 
-                        name="email" 
-                        onChange={updateInput}
-                        value={formData.email || ''}
-                        />
+                        <input className="form-control" type="text" placeholder="PHONE NUMBER" 
+                        name="phoneNumber" 
+                        onChange={(e) => getFormattedPhoneNum(e)}
+                        value={formData.phoneNumber || ''}
+                        required />
 
                         <textarea className="form-control" rows="10" placeholder="WANT TO ADD A MESSAGE?" 
                         name="message" 
                         type="text"
-                        onChange={updateInput}
+                        onChange={(e) => updateInput(e)}
                         value={formData.message || ''}
                         />
                     </div>

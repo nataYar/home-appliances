@@ -32,7 +32,10 @@ function App() {
     }, {
       path: '/cooktop',
       element:<Cooktop/>,
-    }, 
+    }, {
+      path: '/admin',
+      element: <Login/>,
+    }
   ];
 
   const routeComponents = routes.map(({path, element}, key) => 

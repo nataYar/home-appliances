@@ -4,7 +4,6 @@
     @include flex-column-center($align: space-between, $justify: space-evenly); 
     @include hide-animation();
     @include section($height: 100%);
-    left: 50%;
     position: fixed;
     background-color: #fff;
   }

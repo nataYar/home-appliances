@@ -2,36 +2,75 @@ import React from 'react';
 import { useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import './CommentForm.scss';
+import { db } from '../../firebaseConfig';
+import {  doc, setDoc } from "firebase/firestore";
 
-export default function CommentForm({ commentForm, callbackToggleCommentForm }) {
+export default function CommentForm({ commentForm, callbackToggleCommentForm, callbackCommentAdded }) {
     const [comment, setComment] = useState({})
-
-    const updateCommentInput = (e) => {
+    // const closeCommentForm = () => { callbackToggleCommentForm(); }
+    
+    const updateCommentInput = e => {
         setComment({
             ...comment,
             [e.target.name]: e.target.value,
-            [e.target.email]: e.target.email,
+            [e.target.phoneNumber]: comment.phoneNumber,
             [e.target.message]: e.target.message,
             time: new Date(),
-        })
+      })
     }
+    const thankForCommentFn = () => {callbackCommentAdded()}
 
     const handleCommentSubmit = (e) => {
         e.preventDefault();
-        // writeRequest();
+        writeRequest();
         setComment({
             name: '',
-            email: '',
+            phoneNumber: '',
             message: '',
         })
+        callbackToggleCommentForm()
+        callbackCommentAdded()
     }
-    const closeCommentForm = () => { callbackToggleCommentForm(); }
+
+    const writeRequest = () => {
+        const docData = {
+            name: comment.name,
+            phoneNumber: comment.phoneNumber,
+            message: comment.message,
+            time: new Date(),
+        };
+        setDoc(doc(db, "unapprovedTestimonials", comment.phoneNumber ), docData);
+    }
+
+    function getPhoneNum (e) {
+        let output = "(";
+        e.target.value.replace( /^\D*(\d{0,3})\D*(\d{0,3})\D*(\d{0,4})/, function( match, g1, g2, g3 )
+            {
+              if ( g1.length ) {
+                output += g1;
+                if ( g1.length == 3 ) {
+                    output += ")";
+                    if ( g2.length ) {
+                        output += " " + g2; 
+                        if ( g2.length == 3 ) {
+                            output += "-";
+                            if ( g3.length ) {
+                                output += g3;
+                            }
+                        }
+                    }
+                 }
+              }
+            }
+          );
+        setComment({...comment, phoneNumber: output})
+    } 
 
     return (
     <section className={commentForm ? 'comment-form-container' : 'comment-form-container hidden' }>
         <div id="section-header">
             <h2>We appreciate your comments</h2>
-            <FaTimes className="" onClick={() => closeCommentForm()}  />
+            <FaTimes className="" onClick={() => callbackToggleCommentForm()}  />
         </div>
         <div className="schedule-call-wrapper">
             <form className="schedule-call-form"
@@ -43,11 +82,11 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm }) 
                     value={comment.name || ''} 
                     required />
 
-                    <input type="email" className="form-control" id="email" placeholder="PHONE NUMBER" 
-                    name="email" 
-                    onChange={(e) => updateCommentInput(e)}
-                    value={comment.phoneNumber || ''}
-                    />
+                    <input className="form-control" type="text" placeholder="PHONE NUMBER" 
+                    name="phoneNumber" 
+                    onChange={(e) => getPhoneNum(e)}
+                    value={comment.phoneNumber || ''} 
+                    required />
 
                     <textarea className="form-control" rows="10" placeholder="WANT TO ADD A MESSAGE?" 
                     name="message" 

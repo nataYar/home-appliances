@@ -9,6 +9,7 @@ import './Testimonials.scss';
 export default function Testimonials() {
     const [testimonials, setTestimonials] = useState([]);
     const [commentForm, setCommentForm] = useState(false);
+    const [commentAdded, setCommentAdded] = useState(false)
 
     const testimonialsCollection = collection(db, "testimonials");
     
@@ -26,6 +27,8 @@ export default function Testimonials() {
     }, []);
     
   const toggleCommentForm = () => {setCommentForm(!commentForm) }
+
+  const commentAddedFn = () => { setCommentAdded(true) }
 
   return (
     <>
@@ -51,7 +54,14 @@ export default function Testimonials() {
         add comment
       </button>
       
-      <CommentForm commentForm={commentForm} callbackToggleCommentForm={toggleCommentForm}/> 
+      <CommentForm commentForm={commentForm} callbackToggleCommentForm={toggleCommentForm} callbackCommentAdded={commentAddedFn}/> 
+      {
+        commentAdded ? 
+        <div>
+          <p>Thanks for your comment! It will shortly be added to the website</p>
+        </div>
+      : null
+      }
       
     </>
   )
