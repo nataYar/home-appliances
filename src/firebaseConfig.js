@@ -6,8 +6,9 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getApp } from "firebase/app";
 import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
-import Axios from 'axios'
+import { getAuth } from "firebase/auth";
 
+import Axios from 'axios'
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -25,5 +26,6 @@ const db =  getFirestore(app);
 
 const functions = getFunctions(getApp());
 connectFunctionsEmulator(functions, "localhost", 3000);
+const auth = getAuth();
 
-export { Axios, db , app};
+export { Axios, db , app, auth};

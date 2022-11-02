@@ -7,7 +7,6 @@ import {  doc, setDoc } from "firebase/firestore";
 
 export default function CommentForm({ commentForm, callbackToggleCommentForm, callbackCommentAdded }) {
     const [comment, setComment] = useState({})
-    // const closeCommentForm = () => { callbackToggleCommentForm(); }
     
     const updateCommentInput = e => {
         setComment({
@@ -18,7 +17,6 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
             time: new Date(),
       })
     }
-    const thankForCommentFn = () => {callbackCommentAdded()}
 
     const handleCommentSubmit = (e) => {
         e.preventDefault();
