@@ -19,9 +19,8 @@ export default function Testimonials() {
         const data = await getDocs(testimonialsCollection)
         
         setTestimonials(data.docs.map((doc) => 
-        ({ ...doc.data(), id: doc.id})
+        ({ ...doc.data(), id: doc.phoneNumber})
         ))
-        console.log(testimonials)
     };
     getTestimonials()
     }, []);

@@ -1,0 +1,11 @@
+@import "../../Styles/Variables.scss";
+
+section.unapproved {
+    padding: 10vh 5vw 5vh;
+    div{
+        background-color: $darkYellow;
+        border-radius: 1.5rem;
+        padding: 2%;
+        margin-bottom: 2%;
+    }
+}

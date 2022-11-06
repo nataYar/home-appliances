@@ -13,8 +13,8 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
             ...comment,
             [e.target.name]: e.target.value,
             [e.target.phoneNumber]: comment.phoneNumber,
-            [e.target.message]: e.target.message,
-            time: new Date(),
+            [e.target.text]: e.target.text,
+            [e.target.city]: e.target.value,
       })
     }
 
@@ -24,7 +24,8 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
         setComment({
             name: '',
             phoneNumber: '',
-            message: '',
+            text: '',
+            city: '',
         })
         callbackToggleCommentForm()
         callbackCommentAdded()
@@ -34,10 +35,10 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
         const docData = {
             name: comment.name,
             phoneNumber: comment.phoneNumber,
-            message: comment.message,
-            time: new Date(),
+            city: comment.city,
+            text: comment.text,
         };
-        setDoc(doc(db, "unapprovedTestimonials", comment.phoneNumber ), docData);
+        setDoc(doc(db, "unapproved", comment.phoneNumber ), docData);
     }
 
     function getPhoneNum (e) {
@@ -86,11 +87,17 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
                     value={comment.phoneNumber || ''} 
                     required />
 
-                    <textarea className="form-control" rows="10" placeholder="WANT TO ADD A MESSAGE?" 
-                    name="message" 
+                    <input className="form-control" type="text" placeholder="CITY" 
+                    name="city" 
+                    onChange={(e) => updateCommentInput(e)}
+                    value={comment.city || ''} 
+                    required />
+
+                    <textarea className="form-control" rows="10" placeholder="WANT TO ADD A text?" 
+                    name="text" 
                     type="text"
                     onChange={(e) => updateCommentInput(e)}
-                    value={comment.message || ''}
+                    value={comment.text || ''}
                     />
                 </div>
                 <button className="button-standard" id="submit" type="submit" value="SEND">SEND</button>
