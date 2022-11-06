@@ -4,7 +4,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 // const auth = getAuth();
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebaseConfig';
-import { UnapprovedTestimonials } from '../../components/importsComponents';
+import { ManageTestimonials } from '../../components/importsComponents';
 
 export default function Login() {
     const navigate = useNavigate()
@@ -47,7 +47,7 @@ export default function Login() {
                 </div>
                 : null
             }
-            { testimonialsShown ?  <UnapprovedTestimonials /> : null } 
+            { testimonialsShown ?  <ManageTestimonials /> : null } 
         </div>
         
     )

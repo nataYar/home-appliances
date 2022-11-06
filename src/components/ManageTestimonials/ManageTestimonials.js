@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../../firebaseConfig';
-import { collection, doc, onSnapshot, deleteDoc, setDoc } from "firebase/firestore";
-import './UnapprovedTestimonials.scss';
+import { collection, doc, onSnapshot, setDoc } from "firebase/firestore";
+import './ManageTestimonials.scss';
 
 export default function UnapprovedTestimonials() {
-  const [unapprovedArr, setUnapprovedArr] = useState([]);
-  const unapprovedCollection = collection(db, "unapproved");
-  
+  const [testimonialsArr, setTestimonialsArr] = useState([]);
+
   useEffect(() => {
-    const displayUnapproved = onSnapshot(
-      collection(db, "unapproved"), 
+    const displaytestimonials = onSnapshot(
+      collection(db, "testimonials"), 
       (snapshot) => {
-        setUnapprovedArr(snapshot.docs.map(doc => ({...doc.data(), id: doc.id, })))
-        console.log(unapprovedArr)
+        setTestimonialsArr(snapshot.docs.map(doc => ({...doc.data(), id: doc.id, })))
+        console.log(testimonialsArr)
       },
       (error) => {
         console.log(error)
@@ -25,9 +24,10 @@ export default function UnapprovedTestimonials() {
     phoneNumber: el.phoneNumber,
     city: el.city,
     text: el.text,
+    date: el.date,
+    status: 'approved',
   };
     setDoc(doc(db, "testimonials", el.phoneNumber ), data);
-    deleteDoc(doc(db, "unapproved", el.phoneNumber));
   }
 
   const deleteFn = (el) => {
@@ -36,17 +36,20 @@ export default function UnapprovedTestimonials() {
       phoneNumber: el.phoneNumber,
       city: el.city,
       text: el.text,
+      date: el.date,
+      status: 'deleted',
     };
-    deleteDoc(doc(db, "unapproved", el.phoneNumber));
-    setDoc(doc(db, "deleted", el.phoneNumber), data);
+    setDoc(doc(db, "testimonials", el.phoneNumber), data);
   }
 
   return (
-    <section className='unapproved'>
-      { unapprovedArr ?
-        unapprovedArr.map((el, key) => {
+    <section className='manage-testimonials'>
+      {
+        testimonialsArr ? 
+        testimonialsArr.map((el, key) => {
           return (
-            <div key={key}> 
+            <div key={key} className={el.status == 'approved' ? 'approved' :
+            el.status == 'deleted' ? 'deleted' : 'pending' }> 
               <p>text: {el.text} </p>
               <p>NAME: {el.name}</p>
               <p>CITY: {el.city} </p>
@@ -67,8 +70,8 @@ export default function UnapprovedTestimonials() {
               </div>
             </div>
           )
-        })
-      : null 
+        }) :
+        null
       }
     </section>
   )

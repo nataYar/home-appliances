@@ -37,9 +37,19 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
             phoneNumber: comment.phoneNumber,
             city: comment.city,
             text: comment.text,
+            date: getCurrentDate(),
+            status: 'upapproved'
         };
-        setDoc(doc(db, "unapproved", comment.phoneNumber ), docData);
+        setDoc(doc(db, "testimonials", comment.phoneNumber ), docData);
     }
+
+    function getCurrentDate(separator=''){
+        let newDate = new Date()
+        let date = newDate.getDate();
+        let month = newDate.getMonth() + 1;
+        let year = newDate.getFullYear();
+        return `${year}${separator}${month<10?`0${month}`:`${month}`}${separator}${date}`
+        }
 
     function getPhoneNum (e) {
         let output = "(";

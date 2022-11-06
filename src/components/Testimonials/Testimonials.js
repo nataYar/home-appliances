@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CommentForm } from '../importsComponents';
 import { db } from '../../firebaseConfig';
-import { collection, getDocs } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 // import { FaTimes, FaRegPaperPlane } from 'react-icons/fa';
 
 import './Testimonials.scss';
@@ -13,17 +13,18 @@ export default function Testimonials() {
 
     const testimonialsCollection = collection(db, "testimonials");
     
-    
+
     useEffect(() => {
-        const getTestimonials = async () => {
-        const data = await getDocs(testimonialsCollection)
-        
-        setTestimonials(data.docs.map((doc) => 
-        ({ ...doc.data(), id: doc.phoneNumber})
-        ))
-    };
-    getTestimonials()
-    }, []);
+      const displaytestimonials = onSnapshot(
+        collection(db, "testimonials"), 
+        (snapshot) => {
+          setTestimonials(snapshot.docs.map(doc => ({...doc.data(), id: doc.phoneNumber })))
+          console.log(testimonials);
+        },
+        (error) => {
+          console.log(error)
+        });
+    }, [])
     
   const toggleCommentForm = () => {setCommentForm(!commentForm) }
 
@@ -33,18 +34,23 @@ export default function Testimonials() {
     <>
       { testimonials ?
         testimonials.map((el, key) => {
-          return (
-            <div className="reference-container" key={key}> 
+          if (el.status == 'approved'){
+            return (
+              <div className="reference-container" key={key}> 
               <div>{el.text} </div>
               <div className='reference-btm-text'>
                 <p className='reference-name'>{el.name} </p>
                 <p>{el.city} </p>
               </div>
             </div>
-          )
+            )
+          } else {
+            return 
+          }
         })
-      : null }
-     
+      : null
+      }
+
       <button 
         className="button-standard" role="button"
         onClick={

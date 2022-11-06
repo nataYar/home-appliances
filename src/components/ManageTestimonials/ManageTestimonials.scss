@@ -1,11 +1,14 @@
 @import "../../Styles/Variables.scss";
 
-section.unapproved {
+section.manage-testimonials {
     padding: 10vh 5vw 5vh;
-    div{
+    .comment {
         background-color: $darkYellow;
         border-radius: 1.5rem;
         padding: 2%;
         margin-bottom: 2%;
     }
+    .approved { background-color: green}
+    .deleted { background-color: red}
+    .pending { background-color: yellow; }
 }
