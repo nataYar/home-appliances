@@ -3,7 +3,7 @@ import { db } from '../../firebaseConfig';
 import { collection, doc, onSnapshot, setDoc } from "firebase/firestore";
 import './ManageTestimonials.scss';
 
-export default function UnapprovedTestimonials() {
+export default function ManageTestimonials() {
   const [testimonialsArr, setTestimonialsArr] = useState([]);
 
   useEffect(() => {
@@ -27,6 +27,7 @@ export default function UnapprovedTestimonials() {
     date: el.date,
     status: 'approved',
   };
+  
     setDoc(doc(db, "testimonials", el.phoneNumber ), data);
   }
 
@@ -48,24 +49,25 @@ export default function UnapprovedTestimonials() {
         testimonialsArr ? 
         testimonialsArr.map((el, key) => {
           return (
-            <div key={key} className={el.status == 'approved' ? 'approved' :
+            <div key={key} id='comment' className={el.status == 'approved' ? 'approved' :
             el.status == 'deleted' ? 'deleted' : 'pending' }> 
               <p>text: {el.text} </p>
               <p>NAME: {el.name}</p>
               <p>CITY: {el.city} </p>
+              <p>DATE: {el.date} </p>
               {/* <p>{el.time} </p> */}
-              <div>
-                <button 
-                className="button-standard" role="button"
-                onClick={() => approveFn(el) }
-                >
-                APPROVE
-                </button>
+              <div className='buttons'>
                 <button 
                 className="button-standard" role="button"
                 onClick={ () => deleteFn(el)}
                 >
-                DELETE
+                delete
+                </button>
+                <button 
+                className="button-standard" role="button"
+                onClick={() => approveFn(el) }
+                >
+                approve
                 </button>
               </div>
             </div>

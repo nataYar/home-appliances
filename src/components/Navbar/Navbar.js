@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { FaPhoneAlt, FaBars, FaTimes } from 'react-icons/fa';
+import { FaPhoneAlt, FaTimes, FaBars } from 'react-icons/fa';
+import { HiOutlinePhone, HiMenuAlt1 } from 'react-icons/hi';
 import './Navbar.scss';
 
 export default function Navbar( ) {
@@ -19,7 +20,7 @@ export default function Navbar( ) {
       <div className='phone-container'>
         <div>
           <a className='phone-icon' href="tel:+15625336324">
-            <FaPhoneAlt />
+            <HiOutlinePhone />
           </a>
         </div>
         <h3>
@@ -54,11 +55,11 @@ export default function Navbar( ) {
         >testimonials</NavLink>
 
         <button id='nav-close-btn' className='nav-btn' onClick={() => toggleNavBar()}>
-          <FaTimes/>
+          <FaTimes />
         </button>
       </nav>
       <button className='nav-btn' onClick={() => toggleNavBar()}>
-        <FaBars/>
+        <HiMenuAlt1 />
       </button>
     </div>
   );

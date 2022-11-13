@@ -40,21 +40,23 @@ export default function Services() {
   ]
     
   return (
-   <>
+   <div className='services-container'>
       {
         servicesArray.map((el, key) => {
           return (
-            <div className="" key={key}>
+            <div className='service-box' key={key}>
               <div className='services-small-img-container'>
-                <img className='services-small-img-container' 
+                <img className='' 
                 src={`${el.img}`} alt="service picture" />
               </div>
-              <h3>{el.name} </h3>
-              <button className='button-standard' onClick={() => navigate(el.link)}>LEARN MORE</button>
+              <div className='service-text'>
+                <h3>{el.name}</h3>
+                <button className='button-standard' onClick={() => navigate(el.link)}>LEARN MORE</button>
+                </div>
             </div>
           )
         })
       }
-    </>
+    </div>
   )
 }

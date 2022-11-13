@@ -22,10 +22,10 @@ export default function Home() {
       <section className='section-home-intro'>
         <div>
           <h1>CITY TECH</h1>
-          <h1>Appliance Repair</h1>
+          <h3>Appliance Repair</h3>
         </div>
         <button 
-         className="button-85" role="button"
+         className="sc-button" role="button"
           onClick={e => openScheduleCallForm(e)} 
         >Schedule a call</button>
         <ScheduleCallForm scheduleFormVisible={scheduleFormVisible} callbackCloseScheduleForm={openScheduleCallForm } />
@@ -59,8 +59,8 @@ export default function Home() {
       </section>
       
       {/* <button className='services-btn' onClick={() => navigate('/services')}>See our services</button> */}
-      <section className='section-services'>
-      <h2>Services</h2>
+      <section className='services'>
+        <h2>Services</h2>
         <Services />
       </section>
 
@@ -116,6 +116,25 @@ export default function Home() {
         <div>
           <Testimonials />
         </div>
+      </section>
+
+      {/* CONTACTS___________________________________ */}
+      <section className='contacts'>
+        <h2>Contacts</h2> 
+        <div className='contacts-address'>
+          <p>Prins Hendrikkade 48A</p>
+          <p>1012 AC Amsterdam</p>
+          <p>The Netherlands</p>
+        </div>
+        <div className='contacts-contact'>
+          <a href="mailto:n.yarysheva@gmail.com">n.yarysheva@gmail.com</a>
+          <br></br>
+          <a href="tel:+19292977775">(929)297-77-75</a>
+        </div>
+        <button 
+         className="sc-button contacts-button" role="button"
+          onClick={e => openScheduleCallForm(e)} 
+        >Schedule a call</button>
       </section>
     </div>
   )

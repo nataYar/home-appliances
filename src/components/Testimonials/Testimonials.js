@@ -11,9 +11,6 @@ export default function Testimonials() {
     const [commentForm, setCommentForm] = useState(false);
     const [commentAdded, setCommentAdded] = useState(false)
 
-    const testimonialsCollection = collection(db, "testimonials");
-    
-
     useEffect(() => {
       const displaytestimonials = onSnapshot(
         collection(db, "testimonials"), 
@@ -37,10 +34,11 @@ export default function Testimonials() {
           if (el.status == 'approved'){
             return (
               <div className="reference-container" key={key}> 
-              <div>{el.text} </div>
+              <div>{el.text}</div>
               <div className='reference-btm-text'>
                 <p className='reference-name'>{el.name} </p>
                 <p>{el.city} </p>
+                <p>{el.date} </p>
               </div>
             </div>
             )

@@ -1,8 +1,27 @@
 @import "../../Styles/Variables.scss";
 
-.services-container {
-    @include flex-column-center;
-    @include section();
-    width: 100vw;
-    height: auto;
-}
+
+    .service-box {
+        @include flex-column-center;
+        width: 90vw;
+        height: auto;
+        margin-bottom: 20%;
+        .service-text {
+            width: 100%;
+            line-height: 0%;
+            height: auto;
+            @include flex-column-center($align: flex-end); 
+            button {
+                margin-bottom: 5%;
+            }
+        }
+        .services-small-img-container{
+            img{
+                max-width: 100%;
+                height: auto;
+            }
+        }
+        button{ 
+            // margin-top: 5%;
+        }
+    }

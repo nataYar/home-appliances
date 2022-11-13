@@ -3,41 +3,34 @@
 .home-container {
     @include flex-column-center($justify: space-evenly); 
     margin-top: 8vh;
-    width: 100%;
-    height: auto;
-
+    // width: 100%;
+    // padding: 0%;
+    // height: auto;
+    // background-color: #00ffd5;
+    background-color: white;
 }
 
 .section-home-intro {
     @include flex-column-center($justify: space-evenly); 
-   
     font-weight: 500;
     font-family: Saira;
     color: rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
-    height: 40vh;
+    height: 60vh;
     width: 100%;
     div {  
         @include flex-column-center; 
+        // background-color: #00ffd5;
+        width: 100%;
         h1 {
-            font-size: $font-big;
-           line-height: 0;
-            text-align: center;
+           font-size: $font-big;
+           text-align: center;
         }
     }
-    // button {
-    //     background-color: white;
-    //     font-size: $font-regular;
-    //     border-radius: 20px;
-    //     outline: none;
-    //     border: none;
-    //     padding: 2%;
-    //     text-transform: uppercase;
-    // }
 }
 
 /* CSS */
-.button-85 {
+.sc-button {
   padding: 0.6em 2em;
   border: none;
   outline: none;
@@ -54,7 +47,7 @@
   touch-action: manipulation;
 }
 
-.button-85:before {
+.sc-button:before {
   content: "";
   background: linear-gradient(
     45deg,
@@ -77,12 +70,12 @@
   -webkit-filter: blur(5px);
   width: calc(100% + 4px);
   height: calc(100% + 4px);
-  animation: glowing-button-85 20s linear infinite;
+  animation: glowing-sc-button 20s linear infinite;
   transition: opacity 0.3s ease-in-out;
   border-radius: 24px;
 }
 
-@keyframes glowing-button-85 {
+@keyframes glowing-sc-button {
   0% {
     background-position: 0 0;
   }
@@ -94,7 +87,7 @@
   }
 }
 
-.button-85:after {
+.sc-button:after {
   z-index: -1;
   content: "";
   position: absolute;
@@ -145,11 +138,12 @@ section.badges {
     }
 }
 
-.section-benefits {
+section.section-benefits {
     @include flex-column-center;
+    @include section();
     background-color: $darkBlue;
-    height: 65vh;
-    width: 100%;
+    // height: 65vh;
+    // width: 100%;
     color: $fontMainColorLight;
 }
 
@@ -184,20 +178,54 @@ section.badges {
  color: $lightYellow;
 }
 
+section h2 {
+    padding-bottom: 2rem;
+}
 section.brands {
     @include section();
-    width: 90vw;
-    height: 20vh;
+}
+
+section.services{
+    @include flex-column-center;
+    @include section();
 }
 
 section.testimonials{
     @include section();
     background-color: $darkYellow;
     div {
-        margin: 5%;
+        // margin: 5%;
+        // background-color: #002bff;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        align-items: space-between;
+        align-content: space-between
     }
     h2 {
         color: #fff;
         font-weight: 900;
     }
 }
+
+section.contacts {
+    @include section();
+    .contacts-address p {
+        margin-top: 1.5rem;
+    }
+    .contacts-contact{
+        margin-top: 2.5rem;
+    }
+    a {
+        display: block;
+        text-decoration: none;
+        color: black;
+    }
+    .contacts-button {
+        margin-top: 15%;
+        left: 50%;
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%)
+    }
+}
+

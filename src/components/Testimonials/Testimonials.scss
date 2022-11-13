@@ -1,7 +1,7 @@
 @import "../../Styles/Variables.scss";
 
 .reference-container {
-    > div:first-child {
+    div:first-child {
         width: 80%;
         padding: 1rem;
         border-radius: 1rem;
@@ -12,11 +12,11 @@
     div:first-child:before {
         content: '';
         position: absolute;
-        bottom: 3%;
+        bottom: 13%;
         left: 25%;
         width: 0;
         height: 0;
-        border: 25px solid transparent;
+        border: 20px solid transparent;
         border-top-color: #fff;
         border-bottom: 0;
         border-left: 0;
@@ -35,8 +35,8 @@
     }
 }
 
-.reference-container:nth-child(2) {
-    > div:first-child {
+.reference-container:nth-child(2n) {
+    div:first-child {
         width: 80%;
         padding: 1rem;
         border-radius: 1rem;
@@ -47,11 +47,11 @@
     div:first-child:before {
         content: '';
         position: absolute;
-        bottom: 3%;
+        bottom: 13%;
         left: 75%;
         width: 0;
         height: 0;
-        border: 25px solid transparent;
+        border: 20px solid transparent;
         border-top-color: rgb(255, 255, 255);
         border-bottom: 0;
         border-right: 0;

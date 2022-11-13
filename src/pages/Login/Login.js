@@ -1,17 +1,22 @@
 import React,  { useEffect, useState }  from 'react';
 import './Login.scss';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-// const auth = getAuth();
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebaseConfig';
+import { useLocalStorage } from 'usehooks-ts'
 import { ManageTestimonials } from '../../components/importsComponents';
 
 export default function Login() {
     const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [user, setUser] = useState('')
+    const [admin, setAdmin] = useLocalStorage('', true)
     const [testimonialsShown, setTestimonialsShown] = useState(false)
+    
+    useEffect(() => {
+        console.log(admin)
+    }, [])
+   
 
     const loginFn = (e) => {
         e.preventDefault();
@@ -19,19 +24,25 @@ export default function Login() {
         .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        setUser(user)
-        setTestimonialsShown(!testimonialsShown) 
+        setAdmin(user.uid)
+        setTestimonialsShown(!testimonialsShown)
         })
         .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log(errorCode + errorMessage)
         alert('no user found')
         });
     }
-    
+   
+
     return (
         <div>
-            { !testimonialsShown ? 
+            {/* { !testimonialsShown ? 
+                
+                : null
+            } */}
+            { admin.length > 0 ?  <ManageTestimonials /> : 
                 <div className='login-container'>
                     <form className='login' onSubmit={(e) => loginFn(e)} >
                         <input type='text' placeholder='Username'
@@ -44,10 +55,8 @@ export default function Login() {
 
                         <button id="submit" type="submit">Login</button>
                     </form>
-                </div>
-                : null
-            }
-            { testimonialsShown ?  <ManageTestimonials /> : null } 
+                </div> 
+            } 
         </div>
         
     )

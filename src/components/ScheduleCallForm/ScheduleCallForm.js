@@ -4,6 +4,7 @@ import { FaTimes } from 'react-icons/fa';
 import { Axios, db } from '../../firebaseConfig';
 import {  doc, setDoc } from "firebase/firestore";
 
+
 export default function ScheduleCallForm({scheduleFormVisible, callbackCloseScheduleForm}) {
     const [formData, setFormData] = useState({})
     const closeScheduleCallForm = () => { callbackCloseScheduleForm(); }
@@ -104,28 +105,19 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
                 </form>
                 
                 <div className="schedule-call-info-container">
-                    <ul className="contact-list">
-                        <li className="list-item"><i className=""><span className="contact-text place">City, State</span></i></li>
-                        <li className="list-item"><i className=""><span className="contact-text phone"><a href="tel:1-212-555-5555" title="Give me a call">(212) 555-2368</a></span></i></li>
-                        <li className="list-item"><i className=""><span className="contact-text gmail"><a href="mailto:#" title="Send me an email">hitmeup@gmail.com</a></span></i></li>
-                    </ul>
-
-                    <ul className="social-media-list">
-                        <li><a href="#" target="_blank" className="contact-icon">
-                            <i className="fa fa-github" aria-hidden="true"></i></a>
-                        </li>
-                        <li><a href="#" target="_blank" className="contact-icon">
-                            <i className="fa fa-codepen" aria-hidden="true"></i></a>
-                        </li>
-                        <li><a href="#" target="_blank" className="contact-icon">
-                            <i className="fa fa-twitter" aria-hidden="true"></i></a>
-                        </li>
-                        <li><a href="#" target="_blank" className="contact-icon">
-                            <i className="fa fa-instagram" aria-hidden="true"></i></a>
-                        </li>       
-                    </ul>
+                    <div className='contacts-address'>
+                    <p>Prins Hendrikkade 48A</p>
+                    <p>1012 AC Amsterdam</p>
+                    <p>The Netherlands</p>
+                    </div>
+                    <div className='contacts-contact'>
+                    <a href="mailto:n.yarysheva@gmail.com">n.yarysheva@gmail.com</a>
+                    <br></br>
+                    <a href="tel:+19292977775">(929)297-77-75</a>
+                    </div>
+                   
                 </div>
-            </div>      
-        </section>  
+            </div>
+        </section>
   )
 }

@@ -40,15 +40,16 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
             date: getCurrentDate(),
             status: 'upapproved'
         };
+        console.log(docData);
         setDoc(doc(db, "testimonials", comment.phoneNumber ), docData);
     }
 
-    function getCurrentDate(separator=''){
+    function getCurrentDate(separator='-'){
         let newDate = new Date()
         let date = newDate.getDate();
         let month = newDate.getMonth() + 1;
         let year = newDate.getFullYear();
-        return `${year}${separator}${month<10?`0${month}`:`${month}`}${separator}${date}`
+        return `${month<10?`0${month}`:`${month}`}${separator}${date}${separator}${year}`
         }
 
     function getPhoneNum (e) {
