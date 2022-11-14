@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.scss';
-import { ScheduleCallForm, Services, BrandsSlider, Testimonials } from '../../components/importsComponents';
+import { ScheduleCallForm, Services, BrandsSlider, Testimonials, Blog } from '../../components/importsComponents';
 import { default as mask } from './bagdes/mask.svg';
 import { default as gloves } from './bagdes/gloves.svg';
 import { cookSm, refSm, drSm, freezSm, ovSm, washSm } from '../../Images/imgImports';
@@ -58,10 +58,23 @@ export default function Home() {
         <h6>All the technicians work wearing gloves, shoe covers and face masks to protects you from COVID-19</h6>  
       </section>
       
-      {/* <button className='services-btn' onClick={() => navigate('/services')}>See our services</button> */}
-      <section className='services'>
-        <h2>Services</h2>
-        <Services />
+      <section className='howItWorks'>
+        <h2>How it works</h2>
+        <div>
+          <div className='numberHIW'>1</div>
+          <div className='headerHIW'>Book an appointment</div>
+          <div className='textHIW'> Describe the issue with the unit, and our technician will arrive on a scheduled window.</div>
+        </div>
+        <div>
+          <div className='numberHIW'>2</div>
+          <div className='headerHIW'>Diagnostics</div>
+          <div className='textHIW'>Our technician will honestly inspect the appliance, determine whether the appliance is worth repairing and give you a repair estimate.</div>
+        </div>
+        <div>
+          <div className='numberHIW'>3</div>
+          <div className='headerHIW'>Repair</div>
+          <div className='textHIW'>Once approved our technician can proceed with the repair.</div>
+        </div>
       </section>
 
       {/* BENEFITS___________________________________ */}
@@ -103,6 +116,12 @@ export default function Home() {
           </li>
         </ul>
       </section>
+      
+      {/* <button className='services-btn' onClick={() => navigate('/services')}>See our services</button> */}
+      <section className='services'>
+        <h2>Services</h2>
+        <Services />
+      </section>
 
      {/* BRANDS___________________________________ */}
       <section className="brands">
@@ -115,6 +134,14 @@ export default function Home() {
         <h2>Testimonials</h2> 
         <div>
           <Testimonials />
+        </div>
+      </section>
+
+       {/* BLOG___________________________________ */}
+       <section className='blog'>
+        <h2>Blog</h2> 
+        <div>
+          <Blog />
         </div>
       </section>
 

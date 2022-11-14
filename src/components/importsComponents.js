@@ -5,3 +5,4 @@ export { default as BrandsSlider  } from './BrandsSlider/BrandsSlider';
 export { default as Testimonials } from './Testimonials/Testimonials';
 export { default as CommentForm } from './CommentForm/CommentForm';
 export { default as ManageTestimonials } from './ManageTestimonials/ManageTestimonials';
+export { default as Blog } from './Blog/Blog';

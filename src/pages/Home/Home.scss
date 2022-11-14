@@ -185,6 +185,34 @@ section.brands {
     @include section();
 }
 
+section.howItWorks {
+    @include section();
+    @include flex-column-center;
+    div { 
+        @include flex-column-center;
+        margin-bottom: 5%;
+        .headerHIW {
+            font-weight: 700;
+        }
+        .numberHIW {
+            display: inline-block;
+            width: 60px;
+            line-height: 60px;
+            font-size: 44px;
+            background-color: $darkBlue;
+            font-weight: 700 !important;
+            border-radius: 50px;
+            color: white;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .textHIW { 
+            display: inline;
+            text-align: center;
+        }
+    }
+}
+
 section.services{
     @include flex-column-center;
     @include section();

@@ -34,12 +34,12 @@ export default function Testimonials() {
           if (el.status == 'approved'){
             return (
               <div className="reference-container" key={key}> 
-              <div>{el.text}</div>
-              <div className='reference-btm-text'>
-                <p className='reference-name'>{el.name} </p>
-                <p>{el.city} </p>
-                <p>{el.date} </p>
-              </div>
+                <div>{el.text}</div>
+                <div className='reference-btm-text'>
+                  <p className='reference-name'>{el.name} </p>
+                  <p>{el.city} </p>
+                  <p>{el.date} </p>
+                </div>
             </div>
             )
           } else {
