@@ -11,10 +11,10 @@
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-evenly;
-    background-color: white;
+    background-color: $darkBlue;
     box-shadow: $shadow;
         h3{
-            color: $midYellow;
+            color: $yellow;
         }
         .nav-btn {
             visibility: visible;
@@ -22,10 +22,29 @@
             background-color: transparent;
             border: none;
             outline: none;
-            display: block;
-            height: 2rem;
-            width: 2rem;
-            color: $midYellow;
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            display: inline-block;
+            margin: auto;
+            color: $darkBlue;
+            svg {
+                height: 2.5rem;
+                width: 2.5rem;
+            }
+        }
+        .menu-btn{
+            // visibility: visible;
+            // opacity: 1;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            // position: absolute;
+            // top: 2rem;
+            // right: 2rem;
+            // display: inline-block;
+            // margin: auto;
+            color: $yellow;
             svg {
                 height: 2rem;
                 width: 2rem;
@@ -38,6 +57,21 @@
                 font-size: $font-big;
             }
         }
+        .nav-link {
+            font-size: $font-mid;
+            margin-bottom: 2rem;
+            padding: .7rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: $darkBlue;
+            font-weight: 400;
+            -webkit-tap-highlight-color: $darkBlue;
+        }
+        .active {
+            color: $yellow;
+            background-color: $darkBlue;
+            border-radius: $radius;
+        }
 }
 
 .navbar {
@@ -47,22 +81,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: $darkYellow;
+    background-color: $yellow;
 }
 
-.nav-link {
-    font-size: $font-mid;
-    padding: 2rem;
-    text-transform: uppercase;
-    text-decoration: none;
-    // color: $darkBlue;
-    font-weight: 400;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-}
-
-.active {
-    color: $darkYellow;
-}
 
 .phone-container {
     height: 100%;
@@ -81,7 +102,7 @@
     h3 a {
         text-decoration: none;
         font-size: $font-regular;
-        color: $darkYellow;
+        color: $yellow;
     }
 }
 
@@ -90,15 +111,18 @@
     top: 2px;
     margin-right: .5rem;
     background-color: transparent;
-    color: $darkYellow;
+    color: $lightGray;
 }
 
 #nav-close-btn {
-    color: $midBlue;
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    font-size: $font-big;
+    // display: block;
+    // margin: auto;
+    // color: $lightBlue;
+    // position: absolute;
+    // top: 2rem;
+    // right: 2rem;
+    // font-size: $font-big;
+    // background-color: aqua;
 }
 
 @keyframes pulse {

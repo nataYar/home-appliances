@@ -27,7 +27,7 @@ export default function Home() {
         <button 
          className="sc-button" role="button"
           onClick={e => openScheduleCallForm(e)} 
-        >Schedule a call</button>
+        >Schedule A Call</button>
         <ScheduleCallForm scheduleFormVisible={scheduleFormVisible} callbackCloseScheduleForm={openScheduleCallForm } />
       </section>
 
@@ -83,7 +83,7 @@ export default function Home() {
         <ul className='benefits-list'>
           <li>
             <div className='benefits-list_img-wrapper'>
-             lo
+            
               <img src="" alt="" />
             </div>
             <div className='benefits-list_text'>
@@ -116,7 +116,7 @@ export default function Home() {
           </li>
         </ul>
       </section>
-      
+
       {/* <button className='services-btn' onClick={() => navigate('/services')}>See our services</button> */}
       <section className='services'>
         <h2>Services</h2>

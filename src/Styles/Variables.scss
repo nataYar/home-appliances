@@ -1,17 +1,20 @@
 $fontMainColorLight: #FFFFFF;
-$darkBlue: #000082;
-$midBlue: #1642BF;
-$lightBlue: #116DD2;
+$darkBlue: #003963;
+$midBlue: #008ec5;
+$lightBlue: #4bc4f1;
+$yellow: #FCD037;
 $darkYellow: #f0b400;
-$midYellow: #fcca0c;
-$lightYellow: #f9e07e;
+// $midYellow: #fcca0c;
+// $lightYellow: #f9e07e;
+$lightGray: #e5e5e5;
 
 $font-small: .8rem;
 $font-regular: 1rem;
 $font-mid: 1.5rem;
 $font-big: 2.4rem;
-$shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
 
+$shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+$radius: 1.5rem;
 // PADDINGS AND MARGINS
 @mixin section ($padding: 5%, $height: auto, $width: 90%) {
   padding: $padding;
@@ -42,13 +45,12 @@ $shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0
     left: 100vw;
     transition: .6s ease-in;
   }
-
 // STANDARD ELEMENTS
   .button-standard {
     align-items: center;
     appearance: none;
     background-color: #fff;
-    border-radius: 1.5rem;
+    border-radius: $radius;
     border-style: none;
     box-shadow: $shadow;
     box-sizing: border-box;
@@ -75,7 +77,6 @@ $shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0
     -webkit-user-select: none;
     touch-action: manipulation;
     will-change: transform,opacity;
-    // z-index: 0;
   
     :hover {
       background: #F6F9FE;
