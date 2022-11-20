@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../../firebaseConfig';
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, doc, onSnapshot } from "firebase/firestore";
 // import { FaTimes, FaRegPaperPlane } from 'react-icons/fa';
-import './Blog.scss';
+import './BlogPage.scss';
 
-export default function Blog() {
+
+export default function BlogPage() {
     const [articles, setArticles] = useState([]);
     // const [commentForm, setCommentForm] = useState(false);
     // const [commentAdded, setCommentAdded] = useState(false)
@@ -14,9 +15,9 @@ export default function Blog() {
         collection(db, "blog"), 
         (snapshot) => {
 
-          setArticles(snapshot.docs.map(doc => ({...doc.data(), id: doc.id })))
-          // console.log(snapshot.docs);
-          console.log(articles)
+          // setArticles(snapshot.docs.map(doc => ({...doc.data()})))
+          setArticles(snapshot.docs.map(doc => ({...doc.data()})   ));
+          console.log(snapshot)
         },
         (error) => {
           console.log(error)
@@ -24,23 +25,17 @@ export default function Blog() {
     }, [])
 
   return (
-    <div className='blog-list__container'>
+    <>
       { articles ?
         articles.map((el, key) => {
           if (el.popular == true){
             return (
-              <div className='blog-list__item' key={key}> 
-                <div className='blog-list__img'>
-                  <img src={`${el.src}`}
-                  alt='appliance image'/>
-                  <p>ho</p>
-                </div>
-                <div className='blog-list__text'>
-                  <div className=''>{el.text} </div>
-                  <div>
-                    <p>{el.type}</p>
-                    <p>{el.date}</p>
-                    </div>
+              <div className="reference-container" key={key}> 
+                {/* <div>{el.text}</div> */}
+                <div className='reference-btm-text'>
+                  <p className='reference-name'>{el.text} </p>
+                  <p>{el.type} </p>
+                  <p>{el.date} </p>
                 </div>
             </div>
             )
@@ -58,6 +53,6 @@ export default function Blog() {
         >
         add comment
       </button> */}
-    </div>
+    </>
   )
 }

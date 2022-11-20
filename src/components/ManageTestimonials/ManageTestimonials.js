@@ -55,6 +55,7 @@ export default function ManageTestimonials() {
               <p>NAME: {el.name}</p>
               <p>CITY: {el.city} </p>
               <p>DATE: {el.date} </p>
+              <p>PHONE: {el.phoneNumber} </p>
               {/* <p>{el.time} </p> */}
               <div className='buttons'>
                 <button 

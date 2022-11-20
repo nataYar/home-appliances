@@ -16,34 +16,12 @@
         h3{
             color: $yellow;
         }
-        .nav-btn {
-            visibility: visible;
-            opacity: 1;
-            background-color: transparent;
-            border: none;
-            outline: none;
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            display: inline-block;
-            margin: auto;
-            color: $darkBlue;
-            svg {
-                height: 2.5rem;
-                width: 2.5rem;
-            }
-        }
+        .nav-btn {@include cross-btn($midBlue)}
+
         .menu-btn{
-            // visibility: visible;
-            // opacity: 1;
             background-color: transparent;
             border: none;
             outline: none;
-            // position: absolute;
-            // top: 2rem;
-            // right: 2rem;
-            // display: inline-block;
-            // margin: auto;
             color: $yellow;
             svg {
                 height: 2rem;
@@ -68,8 +46,8 @@
             -webkit-tap-highlight-color: $darkBlue;
         }
         .active {
-            color: $yellow;
-            background-color: $darkBlue;
+            color: $darkBlue;
+            background-color: $yellow;
             border-radius: $radius;
         }
 }
@@ -81,7 +59,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: $yellow;
+    background-color: $lightGray;
 }
 
 

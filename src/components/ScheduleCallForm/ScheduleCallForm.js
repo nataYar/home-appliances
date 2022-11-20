@@ -13,11 +13,13 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
-            [e.target.phoneNumber]: formData.phoneNumber,
+            [e.target.phoneNumber]: e.target.value,
             [e.target.message]: e.target.message,
             time: new Date(),
       })
     }
+
+    
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -74,12 +76,27 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
 
     return (
         <section className={scheduleFormVisible ? 'schedule-call-container' : 'schedule-call-container hidden' }>
-            <div id="section-header">
-                <h2>Contact us</h2>
-                <FaTimes className="nav-btn" onClick={() => closeScheduleCallForm()}  />
-            </div>
-            <div className="schedule-call-wrapper">
-                <form className="schedule-call-form"
+            <div className='sc-header'>
+            <h2>Contact us</h2>
+            <button className="sc-btn" onClick={() => closeScheduleCallForm()} >
+                <FaTimes />
+            </button>
+            </div>    
+              
+            <div className="sc-wrapper">
+                <div className="sc-info-container">
+                    <div className='sc__address'>
+                        <p>Prins Hendrikkade 48A</p>
+                        <p>1012 NY</p>
+                        <p>NY</p>
+                    </div>
+                    <div className='sc__contacts'>
+                        <a href="mailto:n.yarysheva@gmail.com">n.yarysheva@gmail.com</a>
+                        <a href="tel:+19292977775">(929)297-77-75</a>
+                    </div>
+                </div>
+
+                <form className="sc-form"
                 onSubmit={handleSubmit}>
                     <div>
                         <input className="form-control" type="text" placeholder="NAME" 
@@ -88,35 +105,29 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
                         value={formData.name || ''} 
                         required />
 
-                        <input className="form-control" type="text" placeholder="PHONE NUMBER" 
-                        name="phoneNumber" 
-                        onChange={(e) => getFormattedPhoneNum(e)}
-                        value={formData.phoneNumber || ''}
-                        required />
-
-                        <textarea className="form-control" rows="10" placeholder="WANT TO ADD A MESSAGE?" 
+                        <div className='form-control__phone'>
+                            <p>+1</p>
+                            <input className="" 
+                            type="text"
+                            placeholder="PHONE NUMBER" 
+                            name="phoneNumber" 
+                            onChange={(e) => updateInput(e)}
+                            value={formData.phoneNumber || ''}
+                            maxLength='14'
+                            required />
+                        </div>
+                        
+                        <textarea className="form-control form-control__message" rows="10" placeholder="WANT TO ADD A MESSAGE?" 
                         name="message" 
                         type="text"
                         onChange={(e) => updateInput(e)}
                         value={formData.message || ''}
                         />
                     </div>
-                    <button className="button-standard" id="submit" type="submit" value="SEND">SEND </button>
+                    <button className="button-standard" type="submit" value="SEND">SEND </button>
                 </form>
                 
-                <div className="schedule-call-info-container">
-                    <div className='contacts-address'>
-                    <p>Prins Hendrikkade 48A</p>
-                    <p>1012 AC Amsterdam</p>
-                    <p>The Netherlands</p>
-                    </div>
-                    <div className='contacts-contact'>
-                    <a href="mailto:n.yarysheva@gmail.com">n.yarysheva@gmail.com</a>
-                    <br></br>
-                    <a href="tel:+19292977775">(929)297-77-75</a>
-                    </div>
-                   
-                </div>
+               
             </div>
         </section>
   )

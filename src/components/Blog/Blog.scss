@@ -1,0 +1,33 @@
+@import "../../Styles/Variables.scss";
+
+.blog-list__container{
+    // margin: 0;
+    // padding: 0;
+    width: 100%;
+    height: auto;
+    background-color: $lightBlue;
+    // vertical-align: baseline;
+    .blog-list__item{
+        width: 90%;
+        background-color: $midBlue;
+        border-radius: $radius;
+
+        .blog-list__img{
+            display: block;
+            background-color: rgb(158, 77, 234);
+            width: 5rem;
+            height: 2rem;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .blog-list__text{
+            div:first-child{
+                color: black;
+                margin-bottom: 12px;
+            }
+        }
+    }
+}

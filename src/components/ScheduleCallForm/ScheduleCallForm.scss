@@ -4,166 +4,109 @@
     @include flex-column-center($align: space-between, $justify: space-evenly); 
     @include hide-animation();
     @include section($height: 100%);
+    max-height: 100vh;
     position: fixed;
-    background-color: #fff;
-  }
+    background-color: $lightGray;
 
-  #section-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    text-transform: uppercase;
-    // letter-spacing: 6px;
-    .nav-btn {
-    width: 40px;
-    height: 40px;
-    color: $yellow;
-    }
-  }
-  
-  .schedule-call-wrapper {
-    @include flex-column-center($justify: space-evenly); 
-      .schedule-call-form {
-        @include flex-column-center($justify: space-evenly, $align: space-between); 
-        width: 100%;
-        height: 55vh;
-        padding-bottom: 2rem;
-        div {
-          height: 100%;
-          width: 100%;
-          .form-control {
-            margin: 1% 0%;
-            border-radius: .5rem;
-            border-style: none;
-            width: 80%;
-            padding: 5%;
-            background-color: #000;
-            color: #fff;
-            letter-spacing: 1px;
-          }
+    .sc-header{
+      display: flex;
+      flex-direction: row;
+      justify-content:space-between;
+      align-items: baseline;
+      width: 100%;
+      height: 10%;
+      // background-color: aquamarine;
+      h2 {
+        margin-left: 5%;
+        text-transform: uppercase;
+        color:white;
       }
-    button {
-      width: fit-content;
-      margin-left: auto;
-      margin-right: auto;
+      .sc-btn { 
+        @include cross-btn($color: $midBlue);
+      }
     }
-  }
-}
-  
-  
-  /* INFORNATION UNDER FORM */
-  .schedule-call-info-container{
-    @include flex-column-center; 
-    width: 100%;
-    height: 20vh;
-  }
-  
-  /* Location, Phone, Email Section */
-  .contact-list {
-    list-style-type: none;
-    // margin-left: -30px;
-    // padding-right: 20px;
-  }
-  
-  // .list-item {
-  //   line-height: 4;
-  //   color: #aaa;
-  // }
-  
-  // .contact-text {
-  //   font: 300 18px 'Lato', sans-serif;
-  //   letter-spacing: 1.9px;
-  //   color: #bbb;
-  // }
+    
 
-  // .phone {
-  //   margin-left: 56px;
-  // }
-  
-  // .contact-text a {
-  //   color: #bbb;
-  //   text-decoration: none;
-  //   transition-duration: 0.2s;
-  // }
-  
-  // .contact-text a:hover {
-  //   color: #fff;
-  //   text-decoration: none;
-  // }
-  
-  
-  // /* Social Media Icons */
-  // .social-media-list {
-  //   position: relative;
-  //   font-size: 22px;
-  //   text-align: center;
-  //   width: 100%;
-  //   margin: 0 auto;
-  //   padding: 0;
-  // }
-  
-  // .social-media-list li a {
-  //   color: #fff;
-  // }
-  
-  // .social-media-list li {
-  //   position: relative; 
-  //   display: inline-block;
-  //   height: 60px;
-  //   width: 60px;
-  //   margin: 10px 3px;
-  //   line-height: 60px;
-  //   border-radius: 50%;
-  //   color: #fff;
-  //   background-color: rgb(27,27,27);
-  //   cursor: pointer; 
-  //   transition: all .2s ease-in-out;
-  // }
-  
-  // .social-media-list li:after {
-  //   content: '';
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   width: 60px;
-  //   height: 60px;
-  //   line-height: 60px;
-  //   border-radius: 50%;
-  //   opacity: 0;
-  //   box-shadow: 0 0 0 1px #fff;
-  //   transition: all .2s ease-in-out;
-  // }
-  
-  // .social-media-list li:hover {
-  //   background-color: #fff; 
-  // }
-  
-  // .social-media-list li:hover:after {
-  //   opacity: 1;  
-  //   transform: scale(1.12);
-  //   transition-timing-function: cubic-bezier(0.37,0.74,0.15,1.65);
-  // }
-  
-  // .social-media-list li:hover a {
-  //   color: #000;
-  // }
-  
-  // .copyright {
-  //   font: 200 14px 'Oswald', sans-serif;
-  //   color: #555;
-  //   letter-spacing: 1px;
-  //   text-align: center;
-  // }
-  
-  // hr {
-  //   border-color: rgba(255,255,255,.6);
-  // }
-  
-  // /* Begin Media Queries*/
-  // @media only screen and (min-width: 768px) {
-  //   .schedule-call-wrapper {
-  //       background-color: fuchsia;
-  //       flex-direction: row;
-  //       align-items: flex-end;
-  //     }
-  // }
+    .sc-wrapper {
+      height: 90%;
+      @include flex-column-center($justify: space-evenly); 
+        .sc-form {
+          @include flex-column-center($justify: space-evenly, $align: space-between); 
+          width: 100%;
+          height: 70%;
+          font-size: $font-regular;
+          div {
+            // height: 100%;
+            width: 100%;
+            .form-control__phone {
+              display: flex;
+              flex-flow: row wrap;
+              justify-content: space-between;
+              align-items: baseline;
+              margin: 1% 0%;
+              border-radius: .5rem;
+              border-style: none;
+              width: 80%;
+              padding: 5%;
+              background-color: #000;
+              color: #fff;
+              letter-spacing: 1px;
+              input {
+                width: 80%;
+                border-radius: .5rem;
+                border-style: none;
+                padding: 5%;
+                color: #000;
+                letter-spacing: 1px;
+              }
+            }
+            .form-control {
+              margin: 1% 0%;
+              border-radius: .5rem;
+              border-style: none;
+              width: 80%;
+              padding: 5%;
+              background-color: #000;
+              color: #fff;
+              letter-spacing: 1px;
+            }
+            .form-control__message{
+              height: 4rem;
+            }
+        }
+        .button-standard {
+          width: fit-content;
+          margin-top: 1%;
+          margin-left: auto;
+          margin-right: auto;
+          background-color: $yellow;
+        }
+      }
+      /* INFORNATION UNDER FORM */
+      .sc-info-container{
+        margin-top: 5%;
+        background-color: $yellow;
+        border-radius: $radius; 
+        color: black;
+        @include flex-column-center(); 
+        width: 100%;
+        height: 30%;
+        .sc__contacts {
+          a {
+            margin-top: 2%;
+            text-decoration: none;
+            color: rgb(165, 4, 4);
+          }
+          
+        }
+        .sc__address{
+          color: #000;
+          margin-bottom: 3%;
+          p {
+            font-size: $font-regular;
+            margin: 0%;
+          }
+        }
+      }
+  }
+  }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Home, Blog, Login, TestimonialsPage, Refrigerator, Oven, Washer, Dryer, Cooktop, Freezer } from './pages/importsPages';
+import { Home, BlogPage, Login, TestimonialsPage, Refrigerator, Oven, Washer, Dryer, Cooktop, Freezer } from './pages/importsPages';
 import { Navbar } from './components/importsComponents';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
       element: <Home/>,
     }, {
       path: '/blog',
-      element: <Blog/>,
+      element: <BlogPage/>,
     }, {
       path: '/testimonials',
       element: <TestimonialsPage/>,

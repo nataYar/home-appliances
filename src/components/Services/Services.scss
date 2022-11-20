@@ -3,16 +3,16 @@
 
     .service-box {
         @include flex-column-center;
-        width: 90vw;
+        width: 60vw;
         height: auto;
         margin-bottom: 20%;
         .service-text {
             width: 100%;
             line-height: 0%;
             height: auto;
-            @include flex-column-center($align: flex-end); 
+            @include flex-column-center($align: center); 
             button {
-                margin-bottom: 5%;
+                // margin-bottom: 0%;
             }
         }
         .services-small-img-container{

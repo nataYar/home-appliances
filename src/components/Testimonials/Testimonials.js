@@ -16,7 +16,6 @@ export default function Testimonials() {
         collection(db, "testimonials"), 
         (snapshot) => {
           setTestimonials(snapshot.docs.map(doc => ({...doc.data(), id: doc.phoneNumber })))
-          console.log(testimonials);
         },
         (error) => {
           console.log(error)
