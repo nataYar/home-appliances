@@ -2,33 +2,28 @@
 
 .home-container {
     @include flex-column-center($justify: space-evenly); 
-    
-    // width: 100%;
-    // padding: 0%;
-    // height: auto;
-    // background-color: #00ffd5;
     background-color: $lightGray;
-}
-
-.section-home-intro {
-    @include flex-column-center($justify: space-evenly); 
-    font-weight: 500;
-    font-family: Saira;
-    color: $lightGray;
-    background-color: $darkBlue;
-    padding-top: 6.5vh;
-    height: 60vh;
-    width: 100%;
-    div {  
-        @include flex-column-center; 
-        // background-color: #00ffd5;
+    .section-home-intro {
+        @include flex-column-center($justify: space-evenly); 
+        font-weight: 500;
+        font-family: Saira;
+        color: $lightGray;
+        background-color: $darkBlue;
+        padding-top: 6.5vh;
+        height: 60vh;
         width: 100%;
-        h1 {
-           font-size: $font-big;
-           text-align: center;
+        div {  
+            @include flex-column-center; 
+            // background-color: #00ffd5;
+            width: 100%;
+            h1 {
+               font-size: $font-big;
+               text-align: center;
+            }
         }
     }
 }
+
 
 /* CSS */
 .sc-button {
@@ -45,32 +40,42 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-}
-
-.sc-button:before {
-  content: "";
-  background: linear-gradient(
-    45deg,
-    #ff7300,
-    $yellow,
-    #48ff00,
-    $darkBlue, 
-    #00ffd5,
-    #ff7300,
-  );
-//  
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  background-size: 400%;
-  z-index: -1;
-  filter: blur(5px);
-  -webkit-filter: blur(5px);
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  animation: glowing-sc-button 10s linear infinite;
-  transition: opacity 10s ease-in-out;
-  border-radius: $radius;
+  &:before {
+    content: "";
+    background: linear-gradient(
+      45deg,
+      #ff7300,
+      $yellow,
+      #48ff00,
+      $darkBlue, 
+      #00ffd5,
+      #ff7300,
+    );
+  //  
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing-sc-button 10s linear infinite;
+    transition: opacity 10s ease-in-out;
+    border-radius: $radius;
+  }
+  &:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: $yellow;
+    left: 0;
+    top: 0;
+    border-radius: 24px;
+  }
 }
 
 @keyframes glowing-sc-button {
@@ -85,17 +90,6 @@
   }
 }
 
-.sc-button:after {
-  z-index: -1;
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: $yellow;
-  left: 0;
-  top: 0;
-  border-radius: 24px;
-}
 
 section.badges {
     @include section();
@@ -108,30 +102,29 @@ section.badges {
         margin-left: auto; 
         text-align: center;
     }
-}
-
-.badges-container {
-    padding: 5% 0%;
-    height: auto;
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: space-evenly;
-    div {
-        background-color: white;
+    .badges-container {
+        padding: 5% 0%;
+        height: auto;
         display: flex;
-        justify-content: center;
+        flex-flow: row wrap;
         align-items: center;
-        height: 2.5rem;
-        width: 2.5rem;
-        padding: 2%;
-        border-radius: 50%;
-        img {
-            background-color: transparent;
-            width: 80%;
-            height: 80%;
-            border: none;
-            outline: none;
+        justify-content: space-evenly;
+        div {
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 2.5rem;
+            width: 2.5rem;
+            padding: 2%;
+            border-radius: 50%;
+            img {
+                background-color: transparent;
+                width: 80%;
+                height: 80%;
+                border: none;
+                outline: none;
+            }
         }
     }
 }
@@ -139,36 +132,37 @@ section.badges {
 section.section-benefits {
     @include flex-column-center;
     @include section();
-    background-color: $darkBlue;
+    background-color: $yellow;
     // height: 65vh;
     // width: 100%;
-    color: $fontMainColorLight;
-}
-
-.benefits-list {
-    @include flex-column-center($align: flex-start);
-    height: auto;
-    padding-left: 0%;
-    margin-left: 0%;
-    li {
-        @include flex-column-center($direction: row, $justify: flex-start);
-        width: 100%;
+    color: $darkBlue;
+    .benefits-list {
+        @include flex-column-center($align: flex-start);
         height: auto;
         padding-left: 0%;
         margin-left: 0%;
-        .benefits-list_img-wrapper{
-            padding: 0% 5%;
-        }
-        .benefits-list_text {
-            padding: 0% 1%;
-            margin-bottom: 2%;
-            width: 90%;
-            border: 2px white solid;
-            border-radius: 18px;
-            text-align: center;
+        li {
+            @include flex-column-center($direction: row, $justify: flex-start);
+            width: 100%;
+            height: auto;
+            padding-left: 0%;
+            margin-left: 0%;
+            .benefits-list_img-wrapper{
+                padding: 0% 5%;
+            }
+            .benefits-list_text {
+                padding: 0% 1%;
+                margin-bottom: 2%;
+                width: 90%;
+                border: 2px $darkBlue solid;
+                border-radius: 18px;
+                text-align: center;
+            }
         }
     }
 }
+
+
 .services-btn{
  border: none;
  outline: none;
@@ -178,9 +172,7 @@ section.section-benefits {
 
 section h2 {
     padding-bottom: 2rem;
-}
-section.brands {
-    @include section();
+    text-align: center;
 }
 
 section.howItWorks {
@@ -192,18 +184,20 @@ section.howItWorks {
         .headerHIW {
             font-weight: 700;
         }
-        .numberHIW {
+        .numberHIW{
             display: inline-block;
             width: 60px;
             line-height: 60px;
             font-size: 44px;
-            background-color: $darkBlue;
+            background-color: $midBlue;
             font-weight: 700 !important;
             border-radius: 50px;
             color: white;
             text-align: center;
             margin-bottom: 1rem;
+            
         }
+
         .textHIW { 
             display: inline;
             text-align: center;
@@ -218,7 +212,7 @@ section.services{
 
 section.testimonials{
     @include section();
-    background-color: $yellow;
+    background-color: $darkBlue;
     div {
         // margin: 5%;
         // background-color: #002bff;
@@ -232,10 +226,25 @@ section.testimonials{
         color: #fff;
         font-weight: 900;
     }
+    .button-standard{
+        margin-top: 10%; 
+        margin-bottom: 5%;
+        text-transform: uppercase
+    }
+}
+section.blog {
+    @include section();
+    background-color: $yellow;
+}
+section.brands {
+    @include section();
+    background-color: $lightGray;
 }
 
 section.contacts {
     @include section();
+    background-color: $darkBlue;
+    color: white;
     .contacts-address p {
         margin-top: 1.5rem;
     }
@@ -245,7 +254,7 @@ section.contacts {
     a {
         display: block;
         text-decoration: none;
-        color: black;
+        color: white;
     }
     .contacts-button {
         margin-top: 15%;

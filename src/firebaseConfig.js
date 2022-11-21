@@ -7,6 +7,7 @@ import { getFirestore } from "firebase/firestore";
 import { getApp } from "firebase/app";
 import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
 import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 import Axios from 'axios'
 const firebaseConfig = {
@@ -28,4 +29,6 @@ const functions = getFunctions(getApp());
 connectFunctionsEmulator(functions, "localhost", 3000);
 const auth = getAuth();
 
-export { Axios, db , app, auth};
+const storage = getStorage(app);
+
+export { Axios, db , app, auth, storage};

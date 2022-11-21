@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { db } from '../../firebaseConfig';
+import { db } from '../../../firebaseConfig';
 import { collection, doc, onSnapshot, setDoc } from "firebase/firestore";
 import './ManageTestimonials.scss';
 
@@ -11,7 +11,6 @@ export default function ManageTestimonials() {
       collection(db, "testimonials"), 
       (snapshot) => {
         setTestimonialsArr(snapshot.docs.map(doc => ({...doc.data(), id: doc.id, })))
-        console.log(testimonialsArr)
       },
       (error) => {
         console.log(error)
@@ -45,13 +44,14 @@ export default function ManageTestimonials() {
 
   return (
     <section className='manage-testimonials'>
+      {/* ADD DIV WITH COLOUR EXPLANAITION */}
       {
         testimonialsArr ? 
         testimonialsArr.map((el, key) => {
           return (
             <div key={key} id='comment' className={el.status == 'approved' ? 'approved' :
             el.status == 'deleted' ? 'deleted' : 'pending' }> 
-              <p>text: {el.text} </p>
+              <p>TEXT: {el.text} </p>
               <p>NAME: {el.name}</p>
               <p>CITY: {el.city} </p>
               <p>DATE: {el.date} </p>

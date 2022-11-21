@@ -66,12 +66,12 @@ export default function Home() {
           <div className='textHIW'> Describe the issue with the unit, and our technician will arrive on a scheduled window.</div>
         </div>
         <div>
-          <div className='numberHIW'>2</div>
+          <div className='numberHIW midBlue'>2</div>
           <div className='headerHIW'>Diagnostics</div>
           <div className='textHIW'>Our technician will honestly inspect the appliance, determine whether the appliance is worth repairing and give you a repair estimate.</div>
         </div>
         <div>
-          <div className='numberHIW'>3</div>
+          <div className='numberHIW lightBlue'>3</div>
           <div className='headerHIW'>Repair</div>
           <div className='textHIW'>Once approved our technician can proceed with the repair.</div>
         </div>
@@ -123,12 +123,6 @@ export default function Home() {
         <Services />
       </section>
 
-     {/* BRANDS___________________________________ */}
-      <section className="brands">
-        <h2>Brands</h2> 
-        <BrandsSlider />
-      </section>
-
       {/* TESTIMONIALS___________________________________ */}
       <section className='testimonials'>
         <h2>Testimonials</h2> 
@@ -143,6 +137,12 @@ export default function Home() {
         <div>
           <Blog />
         </div>
+      </section>
+
+      {/* BRANDS___________________________________ */}
+      <section className="brands">
+        <h2>Brands</h2> 
+        <BrandsSlider />
       </section>
 
       {/* CONTACTS___________________________________ */}

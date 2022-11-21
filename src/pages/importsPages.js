@@ -9,4 +9,4 @@ export { default as Washer } from './Services/All/Washer/Washer';
 export { default as Dryer } from './Services/All/Dryer/Dryer';
 export { default as Cooktop } from './Services/All/Cooktop/Cooktop';
 export { default as Freezer } from './Services/All/Freezer/Freezer';
-export { default as ManageTestimonials } from '../components/ManageTestimonials/ManageTestimonials';
+export { default as Dashboard } from '../components/admin/Dashboard/Dashboard';
