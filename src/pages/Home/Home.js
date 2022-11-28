@@ -20,9 +20,9 @@ export default function Home() {
     <div className='home-container'>
       {/* INTRO_____________________________________ */}
       <section className='section-home-intro'>
-        <div>
+        <div className='section-home-intro-text'>
           <h1>CITY TECH</h1>
-          <h3>Appliance Repair</h3>
+          <h3>appliance repair</h3>
         </div>
         <button 
          className="sc-button" role="button"
@@ -55,26 +55,29 @@ export default function Home() {
             />
           </div>
         </div>
-        <h6>All the technicians work wearing gloves, shoe covers and face masks to protects you from COVID-19</h6>  
+        <h3>All the technicians work wearing gloves, shoe covers and face masks to protects you from COVID-19</h3>  
       </section>
       
       <section className='howItWorks'>
         <h2>How it works</h2>
-        <div>
-          <div className='numberHIW'>1</div>
-          <div className='headerHIW'>Book an appointment</div>
-          <div className='textHIW'> Describe the issue with the unit, and our technician will arrive on a scheduled window.</div>
+        <div className='howItWorks_content'>
+          <div>
+            <div className='numberHIW'>1</div>
+            <div className='headerHIW'>Book an appointment</div>
+            <div className='textHIW'> Describe the issue with the unit, and our technician will arrive on a scheduled window.</div>
+          </div>
+          <div>
+            <div className='numberHIW midBlue'>2</div>
+            <div className='headerHIW'>Diagnostics</div>
+            <div className='textHIW'>Our technician will honestly inspect the appliance, determine whether the appliance is worth repairing and give you a repair estimate.</div>
+          </div>
+          <div>
+            <div className='numberHIW lightBlue'>3</div>
+            <div className='headerHIW'>Repair</div>
+            <div className='textHIW'>Once approved our technician can proceed with the repair.</div>
+          </div>
         </div>
-        <div>
-          <div className='numberHIW midBlue'>2</div>
-          <div className='headerHIW'>Diagnostics</div>
-          <div className='textHIW'>Our technician will honestly inspect the appliance, determine whether the appliance is worth repairing and give you a repair estimate.</div>
-        </div>
-        <div>
-          <div className='numberHIW lightBlue'>3</div>
-          <div className='headerHIW'>Repair</div>
-          <div className='textHIW'>Once approved our technician can proceed with the repair.</div>
-        </div>
+       
       </section>
 
       {/* BENEFITS___________________________________ */}

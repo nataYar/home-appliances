@@ -7,26 +7,26 @@
     max-height: 100vh;
     position: fixed;
     background-color: $lightGray;
-
-    .sc-header{
-      // display: flex;
-      // flex-direction: row;
-      // justify-content:space-between;
-      // align-items: baseline;
-      // width: 100%;
-      // height: 10%;
-      // background-color: aquamarine;
+    .sc-header {
+      width: 100%;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: flex-end;
       h2 {
-        // margin-left: 5%;
         text-transform: uppercase;
         color:#000;
+        align-self: center;
+        @include fancy-font();
+        font-size: $font-big;
       }
       .sc-btn { 
         @include cross-btn($color: $midBlue);
+        // justify-self: flex-end;
       }
     }
     .sc-wrapper {
       height: 90%;
+      width: 100%;
       @include flex-column-center($justify: space-evenly); 
         .sc-form {
           @include flex-column-center($justify: space-evenly, $align: space-between); 
@@ -34,7 +34,6 @@
           height: 70%;
           font-size: $font-regular;
           div {
-            // height: 100%;
             width: 100%;
             .form-control__phone {
               display: flex;
@@ -44,7 +43,7 @@
               margin: 1% 0%;
               border-radius: .5rem;
               border-style: none;
-              width: 80%;
+              width: 90%;
               padding: 5%;
               background-color: #000;
               color: #fff;
@@ -62,11 +61,12 @@
               margin: 1% 0%;
               border-radius: .5rem;
               border-style: none;
-              width: 80%;
+              width: 90%;
               padding: 5%;
               background-color: #000;
               color: #fff;
               letter-spacing: 1px;
+
             }
             .form-control__message{
               height: 4rem;
@@ -80,16 +80,17 @@
           background-color: $yellow;
         }
       }
-      /* INFORNATION UNDER FORM */
+      /* INFORNATION DIV */
       .sc-info-container{
-        margin-top: 5%;
+        @include flex-column-center(); 
         background-color: $yellow;
         border-radius: $radius; 
         color: black;
-        @include flex-column-center(); 
-        width: 100%;
-        height: 30%;
+        
+        width: 90%;
+        padding: 5%;
         .sc__contacts {
+          @include flex-column-center(); 
           a {
             margin-top: 2%;
             text-decoration: none;
@@ -98,6 +99,7 @@
           
         }
         .sc__address{
+          @include flex-column-center(); 
           color: #000;
           margin-bottom: 3%;
           p {

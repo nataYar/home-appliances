@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { db, storage } from '../../firebaseConfig';
 import { collection, onSnapshot } from "firebase/firestore";
-import { ref, getDownloadURL } from "firebase/storage";
+import { ref, getDownloadURL,  getMetadata} from "firebase/storage";
 // import { FaTimes, FaRegPaperPlane } from 'react-icons/fa';
 import './Blog.scss';
 
@@ -16,10 +16,23 @@ export default function Blog() {
       collection(db, "blog"), 
       (snapshot) => {
         setArticles(snapshot.docs.map(doc => ({...doc.data(), id: doc.id })))
-        console.log(articles)
-        getDownloadURL(ref(storage, '1.jpg'))
-        .then((url) => {console.log(url)})
+        // console.log(articles)
+
+        // getDownloadURL(ref(storage, '1.jpg'))
+        // .then((url) => {console.log(url)})
+        // .catch((error) => console.log(error))
       })
+    
+
+      // Get metadata properties
+      const imgRef = ref(storage, '1.jpg');
+      getMetadata(imgRef)
+      .then((metadata) => {
+        // console.log(metadata)
+        // Metadata now contains the metadata for 'images/forest.jpg'
+      })
+      .catch((error) => console.log(error))
+
     }, [])
 
    
@@ -40,7 +53,7 @@ export default function Blog() {
         articles.map((el, key) => {
           if (el.popular == true){
             const gsReference = ref(storage, el.src);
-            console.log(gsReference)
+            // console.log(gsReference)
             return (
               <div className='blog-list__item' key={key}> 
                 <div className='blog-list__img'>

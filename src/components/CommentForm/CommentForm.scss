@@ -1,9 +1,28 @@
 @import "../../Styles/Variables.scss";
 
-.comment-form-container {
-    @include flex-column-center($align: space-between, $justify: space-evenly); 
-    @include hide-animation();
-    @include section($height: 100%);
-    position: fixed;
-    background-color: rgb(224, 166, 166);
-}
+    .cf-header {
+        // display: flex;
+        // flex-flow: column nowrap;
+        // justify-content: space-around;
+        // align-items: baseline;
+        h2 {
+          text-transform: uppercase;
+          color:#000;
+          
+        }
+        .cf-btn { 
+            opacity: 1;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            position: relative;
+            height: 2rem;
+            width: 2rem;
+            float: right;
+            // top: 2rem;
+            // right: 2rem;
+            // display: inline-block;
+            // right: 5%;
+            color: $midBlue;
+        }
+      }

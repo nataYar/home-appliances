@@ -77,13 +77,16 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
     } 
 
     return (
-    <section className={commentForm ? 'comment-form-container' : 'comment-form-container hidden' }>
-        <div id="section-header">
-            <h2>We appreciate your comments</h2>
-            <FaTimes className="" onClick={() => callbackToggleCommentForm()}  />
+    <section className={commentForm ? 'schedule-call-container' : 'schedule-call-container hidden' }>
+        
+        <div className="sc-header">
+            <button className="sc-btn" onClick={() => callbackToggleCommentForm()}  >
+                <FaTimes />
+            </button>
+            <h2>We appreciate your comment</h2>
         </div>
-        <div className="schedule-call-wrapper">
-            <form className="schedule-call-form"
+        <div className="sc-wrapper">
+            <form className="sc-form"
             onSubmit={(e) => handleCommentSubmit(e)}>
                 <div>
                     <input className="form-control" id="name" type="text" placeholder="NAME" 
@@ -104,7 +107,7 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
                     value={comment.city || ''} 
                     required />
 
-                    <textarea className="form-control" rows="10" placeholder="WANT TO ADD A text?" 
+                    <textarea className="form-control form-control__message" rows="10" placeholder="WANT TO ADD A text?" 
                     name="text" 
                     type="text"
                     onChange={(e) => updateCommentInput(e)}

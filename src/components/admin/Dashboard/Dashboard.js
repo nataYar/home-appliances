@@ -22,7 +22,6 @@ export default function Dashboard() {
         <button className='dashboard-btn button-standard' onClick={() => toggleTestimonials()}>{testimonialsVisible ? 'hide TESTIMONIALS' : 'show TESTIMONIALS'}</button>
         <button className='dashboard-btn button-standard' onClick={() => toggleBlog()}>{blogVisible ? 'hide BLOG' : 'show BLOG'}</button>
       </div>
-      
       { testimonialsVisible ?  <ManageTestimonials/> : null }
       { blogVisible ? <ManageBlog /> : null }
     </div>

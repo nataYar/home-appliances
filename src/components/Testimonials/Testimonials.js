@@ -33,7 +33,7 @@ export default function Testimonials() {
           if (el.status == 'approved'){
             return (
               <div className="reference-container" key={key}> 
-                <div>{el.text}</div>
+                <div>{el.text}</div> 
                 <div className='reference-btm-text'>
                   <p className='reference-name'>{el.name} </p>
                   <p>{el.city} </p>
@@ -59,8 +59,8 @@ export default function Testimonials() {
       <CommentForm commentForm={commentForm} callbackToggleCommentForm={toggleCommentForm} callbackCommentAdded={commentAddedFn}/> 
       {
         commentAdded ? 
-        <div>
-          <p>Thanks for your comment! It will shortly be added to the website</p>
+        <div className='comment-added'>
+          <p >Thanks for your comment! It will shortly be added to the website</p>
         </div>
       : null
       }
