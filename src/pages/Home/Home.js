@@ -86,35 +86,29 @@ export default function Home() {
         <ul className='benefits-list'>
           <li>
             <div className='benefits-list_img-wrapper'>
-            
-              <img src="" alt="" />
+              <img src={require('../../Images/whyChooseUs/cup1.png')}  alt="cup" />
             </div>
             <div className='benefits-list_text'>
-              <p>Same Day Service</p>
+              <h3>10 years experience in appliance repair</h3>
+              <p>Quick work of licensed, insured and highly experienced technicians</p>
             </div>
           </li>
           <li>
             <div className='benefits-list_img-wrapper'>
-              <img src="" alt="" />
+              <img src={require('../../Images/whyChooseUs/heart.png')}  alt="" />
             </div>
             <div className='benefits-list_text'>
-              <p>30 Day Warranty on labor</p>
+              <h3>Instant Response</h3>
+              <p>Our team is always available to talk to you and answers to any of your questions</p>
             </div>
           </li>
           <li>
             <div className='benefits-list_img-wrapper'>
-              <img src="" alt="" />
+              <img src={require('../../Images/whyChooseUs/man3.png')}  alt="" />
             </div>
             <div className='benefits-list_text'>
-              <p>90 Day Warranty on installed parts</p>
-            </div>
-          </li>
-          <li>
-            <div className='benefits-list_img-wrapper'>
-              <img src="" alt="" />
-            </div>
-            <div className='benefits-list_text'>
-              <p>No Extra Charge On Weekends or Holidays</p>
+              <h3>Professional Quality Service</h3>
+              <p>We are committed to customer services excellence. We value each customer and treat you and your home with respect and care</p>
             </div>
           </li>
         </ul>
@@ -146,6 +140,32 @@ export default function Home() {
       <section className="brands">
         <h2>Brands</h2> 
         <BrandsSlider />
+      </section>
+      
+      {/* BRANDS___________________________________ */}
+      <section className="timetable">
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <td>Day</td>
+                <td>Hours of operation</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Monday-Friday</td>
+                <td>8:00 am - 7:00 pm</td>
+              </tr>
+              <tr>
+                <td>Saturday-Sunday</td>
+                <td>8:00 am - 6:00 pm</td>
+              </tr>
+            </tbody> 
+           
+            
+          </table>
+        </div>
       </section>
 
       {/* CONTACTS___________________________________ */}
