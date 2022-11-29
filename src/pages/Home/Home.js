@@ -142,7 +142,7 @@ export default function Home() {
         <BrandsSlider />
       </section>
       
-      {/* BRANDS___________________________________ */}
+      {/* HOURS___________________________________ */}
       <section className="timetable">
         <div>
           <table>
@@ -162,9 +162,20 @@ export default function Home() {
                 <td>8:00 am - 6:00 pm</td>
               </tr>
             </tbody> 
-           
-            
           </table>
+        </div>
+      </section>
+
+      {/* PRICES___________________________________ */}
+      <section className="prices">
+        <div className='prices-container'>
+         <div className='prices-container_item'>
+          <div>Refrigerator Repair</div>
+          <div className='prices-container_item-price'>
+            <p>$ 179</p>
+            <p>+ PARTS</p>
+          </div>
+         </div>
         </div>
       </section>
 
