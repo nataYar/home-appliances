@@ -1,0 +1,17 @@
+@import "../../Styles/Variables.scss";
+
+.brands-container {
+    @include flex-column-center($justify: flex-start);
+    @include standard-font(); 
+    color: $yellow;
+    background-color: $darkBlue;
+    height: 90vh;
+    padding-top: 10vh;
+    width: 100%;
+    .brands-container_list {
+        color: $lightGray;
+        text-align: center;
+        width: 90%;
+        padding-top: 10vh;
+    }
+}

@@ -1,13 +1,11 @@
 import React,  { useEffect, useState }  from 'react';
 import './Login.scss';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebaseConfig';
 import { useLocalStorage } from 'usehooks-ts';
 import { Dashboard } from '../../components/importsComponents';
 
 export default function Login() {
-    const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [admin, setAdmin] = useLocalStorage('', true)

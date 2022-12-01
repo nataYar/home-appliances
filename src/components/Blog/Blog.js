@@ -77,14 +77,6 @@ export default function Blog() {
         })
       : null
       }
-
-      {/* <button 
-        className="button-standard" role="button"
-        onClick={
-        () => toggleCommentForm() }
-        >
-        add comment
-      </button> */}
     </div>
   )
 }

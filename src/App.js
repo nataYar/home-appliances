@@ -1,19 +1,31 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Home, BlogPage, Login, TestimonialsPage, Refrigerator, Oven, Washer, Dryer, Cooktop, Freezer } from './pages/importsPages';
-import { Navbar } from './components/importsComponents';
+import { Home, BlogPage, Brands, Login, TestimonialsPage, Refrigerator, Oven, Washer, Dryer, Cooktop, Freezer } from './pages/importsPages';
+import { Navbar, Services } from './components/importsComponents';
 
 function App() {
   const routes = [
     {
       path: '/',
       element: <Home/>,
+      children: [
+        {
+          path: "/#services",
+          element: <Services />,
+        },
+      ],
     }, {
       path: '/blog',
       element: <BlogPage/>,
     }, {
+    //   path: '/services',
+    //   element:<Services/>,
+    // }, {
       path: '/testimonials',
       element: <TestimonialsPage/>,
+    }, {
+      path: '/brands',
+      element:<Brands/>,
     }, {
       path: '/refrigerator',
       element:<Refrigerator/>,

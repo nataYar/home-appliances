@@ -51,8 +51,7 @@ export default function Testimonials() {
       <button 
         className="button-standard" role="button"
         onClick={
-        () => toggleCommentForm() }
-        >
+        () => toggleCommentForm() }>
         add comment
       </button>
       

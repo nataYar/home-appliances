@@ -319,22 +319,32 @@ section.timetable {
 
 section.prices {
     @include section();
-    padding: 15% 0%;
+    margin: 0%;
+    padding-top: 8vh;
     .prices-container {
         @include flex-column-center;
        .prices-container_item{
-        // background-color: $lightBlue;
         width: 100%;
         height: fit-content;
-        // padding: 0%;
-        // margin: 0%;
+        margin-bottom: 5%;
+        padding-bottom: 2%;
+        border-bottom: $midBlue 1px solid;
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
-        align-items: baseline;
+        align-items: center;
+        // div:first-child{
+             
+        // }
         .prices-container_item-price {
-            p:first-child{
+            @include flex-column-center();
+            .prices-container_item-number{
                 font-size: $font-mid;
+                color: $midBlue;
+            }
+            .prices-container_item-text{
+                @include standard-font-light();
+                font-size: $font-small;
             }
             p{
                 margin: 0%;

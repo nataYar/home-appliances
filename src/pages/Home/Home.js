@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './Home.scss';
 import { ScheduleCallForm, Services, BrandsSlider, Testimonials, Blog } from '../../components/importsComponents';
 import { default as mask } from './bagdes/mask.svg';
@@ -17,7 +18,7 @@ export default function Home() {
   }
 
   return (
-    <div className='home-container'>
+    <div id='home' className='home-container'>
       {/* INTRO_____________________________________ */}
       <section className='section-home-intro'>
         <div className='section-home-intro-text'>
@@ -114,8 +115,7 @@ export default function Home() {
         </ul>
       </section>
 
-      {/* <button className='services-btn' onClick={() => navigate('/services')}>See our services</button> */}
-      <section className='services'>
+      <section id="services" className='services'>
         <h2>Services</h2>
         <Services />
       </section>
@@ -129,7 +129,7 @@ export default function Home() {
       </section>
 
        {/* BLOG___________________________________ */}
-       <section className='blog'>
+       <section id="blog" className='blog'>
         <h2>Blog</h2> 
         <div>
           <Blog />
@@ -140,6 +140,7 @@ export default function Home() {
       <section className="brands">
         <h2>Brands</h2> 
         <BrandsSlider />
+      <button className='button-standard' onClick={() => navigate('/brands')}>SEE ALL BRANDS</button>
       </section>
       
       {/* HOURS___________________________________ */}
@@ -167,20 +168,49 @@ export default function Home() {
       </section>
 
       {/* PRICES___________________________________ */}
-      <section className="prices">
+      <section id="prices" className="prices">
         <div className='prices-container'>
+
          <div className='prices-container_item'>
-          <div>Refrigerator Repair</div>
+          <div>Appliance Diagnostic</div>
           <div className='prices-container_item-price'>
-            <p>$ 179</p>
-            <p>+ PARTS</p>
+            <p className='prices-container_item-number'>$79</p>
+            <p className='prices-container_item-text'>diagnostic</p>
           </div>
          </div>
+
+         <div className='prices-container_item'>
+          <div>Standard Brand Appliance Repair</div>
+          <div className='prices-container_item-price'>
+            <p className='prices-container_item-text'>from</p>
+            <p className='prices-container_item-number'>$ 179</p>
+            <p className='prices-container_item-text'>+ parts</p>
+          </div>
+         </div>
+
+         <div className='prices-container_item'>
+          <div>Premium Brand Appliance Repair</div>
+          <div className='prices-container_item-price'>
+            <p className='prices-container_item-text'>from</p>
+            <p className='prices-container_item-number'>$ 229</p>
+            <p className='prices-container_item-text'>+ parts</p>
+          </div>
+         </div>
+
+         <div className='prices-container_item'>
+          <div>Luxury Brand Appliance Repair</div>
+          <div className='prices-container_item-price'>
+            <p className='prices-container_item-text'>from</p>
+            <p className='prices-container_item-number'>$ 369</p>
+            <p className='prices-container_item-text'>+ parts</p>
+          </div>
+         </div>
+
         </div>
       </section>
 
       {/* CONTACTS___________________________________ */}
-      <section className='contacts'>
+      <section id="contacts" className='contacts'>
         <h2>Contacts</h2> 
         <div className='contacts-address'>
           <p>Prins Hendrikkade 48A</p>
