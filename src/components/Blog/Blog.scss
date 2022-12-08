@@ -1,22 +1,21 @@
 @import "../../Styles/Variables.scss";
 
 .blog-list__container{
-    // margin: 0;
-    // padding: 0;
     width: 100%;
     height: auto;
-    background-color: $lightBlue;
-    // vertical-align: baseline;
+    margin-bottom: 5%;
     .blog-list__item{
         width: 90%;
-        background-color: $midBlue;
+        padding: 5%;
+        background-color: $lightGray;
         border-radius: $radius;
-
+        display: flex;
+        flex-flow: row nowrap;
         .blog-list__img{
             display: block;
-            background-color: rgb(158, 77, 234);
-            width: 5rem;
-            height: 2rem;
+            width: 30%;
+            height: auto;
+            margin-right: 2%;
             img{
                 width: 100%;
                 height: 100%;
@@ -24,9 +23,21 @@
             }
         }
         .blog-list__text{
+            
             div:first-child{
                 color: black;
-                margin-bottom: 12px;
+            }
+            .blog-list__text-info{
+                @include standard-font-light();
+                display: flex;
+                justify-content: flex-end;
+                
+                text-transform: lowercase;
+                font-size: $font-small;
+                color: rgb(202, 39, 102);
+                p {
+                    margin-left: 5%;
+                }
             }
         }
     }

@@ -8,12 +8,12 @@ function App() {
     {
       path: '/',
       element: <Home/>,
-      children: [
-        {
-          path: "/#services",
-          element: <Services />,
-        },
-      ],
+      // children: [
+      //   {
+      //     path: "/#services",
+      //     element: <Services />,
+      //   },
+      // ],
     }, {
       path: '/blog',
       element: <BlogPage/>,

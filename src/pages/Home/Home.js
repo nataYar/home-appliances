@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Routes, Route } from 'react-router-dom';
 import './Home.scss';
 import { ScheduleCallForm, Services, BrandsSlider, Testimonials, Blog } from '../../components/importsComponents';
 import { default as mask } from './bagdes/mask.svg';
 import { default as gloves } from './bagdes/gloves.svg';
 import { cookSm, refSm, drSm, freezSm, ovSm, washSm } from '../../Images/imgImports';
-
 
 export default function Home() {
   const [scheduleFormVisible, setScheduleFormVisible] = useState(false);
@@ -121,7 +119,7 @@ export default function Home() {
       </section>
 
       {/* TESTIMONIALS___________________________________ */}
-      <section className='testimonials'>
+      <section id='testimonials' className='testimonials'>
         <h2>Testimonials</h2> 
         <div>
           <Testimonials />
@@ -134,13 +132,14 @@ export default function Home() {
         <div>
           <Blog />
         </div>
+        <button className='button-standard' onClick={() => navigate('/blog')}>SEE ALL ARTICLES</button>
       </section>
 
       {/* BRANDS___________________________________ */}
       <section className="brands">
         <h2>Brands</h2> 
         <BrandsSlider />
-      <button className='button-standard' onClick={() => navigate('/brands')}>SEE ALL BRANDS</button>
+      <button className='button-standard margin-top' onClick={() => navigate('/brands')}>SEE ALL BRANDS</button>
       </section>
       
       {/* HOURS___________________________________ */}
@@ -214,13 +213,13 @@ export default function Home() {
         <h2>Contacts</h2> 
         <div className='contacts-address'>
           <p>Prins Hendrikkade 48A</p>
-          <p>1012 AC Amsterdam</p>
-          <p>The Netherlands</p>
+          <p>1012 AC Hogwarts</p>
+          <p>The Neverland</p>
         </div>
         <div className='contacts-contact'>
           <a href="mailto:n.yarysheva@gmail.com">n.yarysheva@gmail.com</a>
           <br></br>
-          <a href="tel:+19292977775">(929)297-77-75</a>
+          <a href="tel:+19292977775">(929) 297-7775</a>
         </div>
         <button 
          className="sc-button contacts-button" role="button"

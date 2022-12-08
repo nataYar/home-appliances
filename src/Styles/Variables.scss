@@ -47,7 +47,6 @@ $radius: 1.5rem;
   // right: 2rem;
   // display: inline-block;
   // margin: auto;
-  // align-self: ;
   color: $color;
   svg {
     height: 2.5rem;
@@ -81,7 +80,7 @@ $radius: 1.5rem;
     width: 100vw;
   }
 
-
+.margin-top {margin-top: 5%;}
 .hidden{
     transform: translateX(100vw);
     left: 100vw;

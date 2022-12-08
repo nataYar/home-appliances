@@ -13,6 +13,8 @@
         height: 60vh;
         width: 100%;
         background-image: url('../../Images/backgrounds/SL.jpg');
+        // background-image: url('../../Images/backgrounds/waves.jpg');
+        background-position-x: 30%;
         // background-image: url("../../Images/backgrounds/part-male-construction-worker_small.jpg");
         background-size: cover;
         // background-position: center;
@@ -30,7 +32,6 @@
                 font-size: 2rem;
                 text-transform: uppercase;
             }
-
         }
     }
 }
@@ -41,6 +42,7 @@
   @include standard-font(); 
   padding: 0.6em 2em;
   border: none;
+  -webkit-appearance: none;
   outline: none;
   color: black;
   text-transform: uppercase;
@@ -53,22 +55,24 @@
   touch-action: manipulation;
   &:before {
     content: "";
-    background: linear-gradient(
-      45deg,
-      #ff7300,
-      $yellow,
-      #48ff00,
-      $darkBlue, 
-      #00ffd5,
-      #ff7300,
-    ); 
+    // background-color: red;
+    // background: linear-gradient( 45deg,#ff7300, $yellow, #48ff00, $darkBlue, #00ffd5, #ff7300 ); 
+    // background: linear-gradient( 45deg,#ff7300, $yellow, #48ff00, $darkBlue, #00ffd5, #ff7300 ); 
+    // background: linear-gradient( 45deg,#ff7300, $yellow, #48ff00, $darkBlue, #00ffd5, #ff7300 ); 
+    // background: linear-gradient( 45deg,#ff7300, $yellow, #48ff00, $darkBlue, #00ffd5, #ff7300 ); 
+
+    background-color: #ff7300; /* fallback color if gradients are not supported */
+    background-image: -webkit-linear-gradient( 45deg,#ff7300, $yellow, #48ff00, $darkBlue, #00ffd5, #ff7300 );  /* For Chrome 25 and Safari 6, iOS 6.1, Android 4.3 */
+    background-image: -moz-linear-gradient( 45deg,#ff7300, $yellow, #48ff00, $darkBlue, #00ffd5, #ff7300 );  /* For Firefox (3.6 to 15) */
+    background-image: -o-linear-gradient( 45deg,#ff7300, $yellow, #48ff00, $darkBlue, #00ffd5, #ff7300 ); /* For old Opera (11.1 to 12.0) */ 
+    background-image: linear-gradient( 45deg,#ff7300, $yellow, #48ff00, $darkBlue, #00ffd5, #ff7300 );  /* Standard syntax; must be last */
     position: absolute;
     top: -2px;
     left: -2px;
     background-size: 400%;
     z-index: -1;
-    filter: blur(5px);
-    -webkit-filter: blur(5px);
+    // filter: blur(5px);
+    // -webkit-filter: blur(5px);
     width: calc(100% + 4px);
     height: calc(100% + 4px);
     animation: glowing-sc-button 10s linear infinite;
@@ -84,19 +88,21 @@
     background: $yellow;
     left: 0;
     top: 0;
+    border: none;
+    outline: none;
     border-radius: 24px;
   }
 }
 
 @keyframes glowing-sc-button {
   0% {
-    background-position: 0 0;
+    background-position: 0% 0%;
   }
   50% {
-    background-position: 400% 0;
+    background-position: 400% 0%;
   }
   100% {
-    background-position: 0 0;
+    background-position: 0% 0%;
   }
 }
 
@@ -166,7 +172,7 @@ section.section-benefits {
                 width: auto;
                 padding: 0% 5%;
                 img {
-                    width: 100%;
+                    width: auto;
                     height: 100%;
                 }
             }
@@ -294,7 +300,7 @@ section.brands {
 
 section.timetable {
     @include section();
-    padding: 15% 0%;
+    padding: 20% 0%;
     table {
         @include standard-font();
         border-radius: $radius;
