@@ -197,7 +197,8 @@ section.section-benefits {
 section h2 {
     @include fancy-font();
     font-size: $font-big;
-    padding: 3% 0%;
+    margin-top: 0%;
+    padding: 5% 0%;
     text-align: center;
 }
 

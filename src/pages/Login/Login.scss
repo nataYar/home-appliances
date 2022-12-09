@@ -2,7 +2,7 @@
 
 .login-container {
     @include flex-column-center($align: space-between, $justify: space-evenly); 
-    @include section($padding: 10vh 5%, $height: 100%);
+    @include section($height: 100%);
   }
 
 

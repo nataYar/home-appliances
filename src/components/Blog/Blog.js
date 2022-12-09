@@ -1,6 +1,6 @@
 import React from 'react';
 // import { FaTimes, FaRegPaperPlane } from 'react-icons/fa';
-import {freezSm} from '../../Images/imgImports';
+import { cookSm, refSm, drSm, freezSm, ovSm, washSm } from '../../Images/imgImports';
 import './Blog.scss';
 
 export default function Blog() {
@@ -8,16 +8,42 @@ export default function Blog() {
       {
       id: '1',
       popular: true,
-      type: 'refrigerator',
-      date: '06/2022',
+      type: 'refrigerators',
+      brand: 'Samsung',
       url: freezSm,
-      brief:'blah blah this text is about how to fix a fridge',
+      brief:'how to fix a fridge',
       text: [
           'text begining', 
           'text middle', 
           'text end' 
         ]
-      }
+      },
+      {
+        id: '2',
+        popular: true,
+        type: 'washing machines',
+        brand: 'AEG',
+        url: washSm,
+        brief:'how to fix a washing machine',
+        text: [
+            'text begining', 
+            'text middle', 
+            'text end' 
+          ]
+        },
+        {
+          id: '3',
+          popular: true,
+          type: 'cook tops',
+          brand: 'Bosch',
+          url: cookSm,
+          brief:'how to fix a cook top',
+          text: [
+              'text begining', 
+              'text middle', 
+              'text end' 
+            ]
+          },
     ] 
 
     const goToTheArticle = (id) => {
@@ -37,21 +63,16 @@ export default function Blog() {
                 </div>
                 <div className='blog-list__text'>
                   <div className=''>{el.brief} </div>
-                  {
+                  {/* {
                     el.text.map((p, index) => {
                       return (
                         <div key={index}>{p}</div>
                       )
                     })
-                  }
+                  } */}
                   <div className='blog-list__text-info'>
-                    <button 
-                      className='button-standard' role='button'
-                      onClick={ (id) => goToTheArticle(el.id) }>
-                      read more
-                    </button>
                     <p>{el.type}</p>
-                    <p>{el.date}</p>
+                    <p>{el.brand}</p>
                     </div>
                 </div>
                 

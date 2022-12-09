@@ -55,10 +55,10 @@ $radius: 1.5rem;
 }
 
 // PADDINGS AND MARGINS
-@mixin section ($padding: 5%, $height: auto, $width: 90%) {
+@mixin section ($height: auto, $width: 90%) {
   overflow-x: hidden;
   @include standard-font();
-  padding: $padding;
+  padding: 15% 5%;
   height: $height;
   width: $width;
 }
@@ -81,6 +81,7 @@ $radius: 1.5rem;
   }
 
 .margin-top {margin-top: 5%;}
+
 .hidden{
     transform: translateX(100vw);
     left: 100vw;
