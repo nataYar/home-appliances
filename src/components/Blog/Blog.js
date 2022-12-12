@@ -10,7 +10,7 @@ export default function Blog() {
       popular: true,
       type: 'refrigerators',
       brand: 'Samsung',
-      url: freezSm,
+      mainiImg: freezSm,
       brief:'how to fix a fridge',
       text: [
           'text begining', 
@@ -23,7 +23,7 @@ export default function Blog() {
         popular: true,
         type: 'washing machines',
         brand: 'AEG',
-        url: washSm,
+        mainiImg: washSm,
         brief:'how to fix a washing machine',
         text: [
             'text begining', 
@@ -36,7 +36,7 @@ export default function Blog() {
           popular: true,
           type: 'cook tops',
           brand: 'Bosch',
-          url: cookSm,
+          mainiImg: cookSm,
           brief:'how to fix a cook top',
           text: [
               'text begining', 
@@ -58,7 +58,7 @@ export default function Blog() {
               <div className='blog-list__item' key={el.id}> 
                 <div className='blog-list__img'>
                   <img 
-                  src={el.url}
+                  src={el.mainiImg}
                   alt='appliance image'/>
                 </div>
                 <div className='blog-list__text'>
