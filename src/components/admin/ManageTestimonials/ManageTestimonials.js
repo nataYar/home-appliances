@@ -44,7 +44,6 @@ export default function ManageTestimonials() {
 
   return (
     <section className='manage-testimonials'>
-      {/* ADD DIV WITH COLOUR EXPLANAITION */}
       {
         testimonialsArr ? 
         testimonialsArr.map((el, key) => {

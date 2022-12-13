@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { CreatePost} from '../../importsComponents';
 
 import { db } from '../../../firebaseConfig';
@@ -6,10 +6,6 @@ import { collection, doc, onSnapshot, setDoc, Timestamp } from "firebase/firesto
 
 
 export default function ManageBlog() {
-    // const [postsArr, setPostsArr] = useState([]);
-    // const [postData, setPostData] = useState({});
-
-    // const [postsId, setPostId] = useState('');
     const [newPostModuleVisible, setNewPostModuleVisible] = useState(false)
 
     const toggleNewPostVisibility = () => {

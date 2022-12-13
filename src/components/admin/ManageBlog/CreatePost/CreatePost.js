@@ -29,43 +29,50 @@ export default function CreatePost ({ postId }) {
     //     });
     // }, [])
 
+    const updatePostInput = e => {
+        setPostData({
+            ...postData,
+            title: e.target.value
+        });
+    }
 
+    const submitPost = (e) => {
+        e.preventDefault()
+        writePost();
+        setPostData({
+            title: '',
+        })
+    }
 
-const updatePostInput = e => {
-    setPostData({
-        ...postData,
-        title: e.target.value
-    });
-}
+    const writePost = () => {
+        const data = {
+            ...postData,
+            title: postData.title,
+            time: getDate(),
+        };
+        setDoc(doc(db, "blog", postId), data, {
+            merge: true
+        });
+    }
 
-const submitPost = (e) => {
-    e.preventDefault()
-    writePost();
-    setPostData({
-        title: '',
-    })
-}
+    function getDate(separator='-'){
+        let newDate = new Date()
+        let date = newDate.getDate();
+        let month = newDate.getMonth() + 1;
+        let year = newDate.getFullYear();
+        return `${month<10?`0${month}`:`${month}`}${separator}${date}${separator}${year}`
+    }
 
-const writePost = () => {
-    const data = {
-        ...postData,
-        title: postData.title,
-        time: new Date(),
-    };
-    setDoc(doc(db, "blog", postId), data, {
-        merge: true
-    });
-}
-
-
-const onEditorStateChange = (editorState) => {
-    setEditorState(editorState)
-    const text = convertToRaw(editorState.getCurrentContent())
-    setDoc(doc(db, "blog", postId), text, {
-        merge: true
-    });
-}
-
+    const onEditorStateChange = (editorState) => {
+        setEditorState(editorState)
+        const data = {
+            ...postData,
+            mainText: convertToRaw(editorState.getCurrentContent())
+        };
+        setDoc(doc(db, "blog", postId), data, {
+            merge: true
+        });
+    }
 
   return (
     <div>
@@ -81,6 +88,18 @@ const onEditorStateChange = (editorState) => {
 
             <button className="button-standard" type="submit" value="SEND">SEND </button>
         </form>
+
+        <div>
+            <label htmlFor="applianceTypes">Type of appliance:</label>
+            <select name="applianceTypes" id="applianceType">
+                <option value="refrigerator">Refrigerator </option>
+                <option value="dryer">Dryer</option>
+                <option value="cooktop">Cooktop</option>
+                <option value="oven">Oven</option>
+                <option value="freezer">Freezer</option>
+                <option value="washer">Washer</option>
+            </select>
+        </div>
 
         <Editor 
         editorClassName='editor'
