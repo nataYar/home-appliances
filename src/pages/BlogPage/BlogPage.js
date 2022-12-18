@@ -38,9 +38,11 @@ export default function BlogPage() {
           <div key={key} 
           style={ {marginTop:'5rem' } }>
             {el.title}
+            <br/>
+            {el.time}
             <Editor editorState={editorState} readOnly={true}
             />
-            {el.time}
+            
           </div>
           )
       })

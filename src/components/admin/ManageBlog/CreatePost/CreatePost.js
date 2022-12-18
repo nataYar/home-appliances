@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 
-import { db } from '../../../../firebaseConfig';
+import { db, storage } from '../../../../firebaseConfig';
+import {
+    ref,
+    uploadBytes,
+    getDownloadURL,
+    listAll,
+    list } from "firebase/storage";
+
 import { collection, doc, onSnapshot, setDoc } from "firebase/firestore";
 
 import { Editor } from 'react-draft-wysiwyg';
@@ -11,7 +18,23 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 export default function CreatePost ({ postId }) {
     const [postData, setPostData] = useState({});
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
-   
+    const [imageUpload, setImageUpload] = useState(null);
+
+    const uploadFile = (e) => {
+        if (imageUpload == null) return;
+        const imageRef = ref(storage, `images/${imageUpload.name}`);
+        uploadBytes(imageRef, imageUpload)
+        .then((snapshot) => {
+          getDownloadURL(snapshot.ref).then((url) => {
+            // setImageUrls(url);
+            console.log(url)
+          });
+        });
+        document.getElementById('inputImg').value = null;
+        setEditorState({editorState})
+    }
+    
+
     // useEffect(() => {
     //     const id = Date.now().toString();
     //     setPostId(id)
@@ -39,9 +62,11 @@ export default function CreatePost ({ postId }) {
     const submitPost = (e) => {
         e.preventDefault()
         writePost();
+        uploadFile();
         setPostData({
-            title: '',
+            title: ''
         })
+        setImageUpload(null);
     }
 
     const writePost = () => {
@@ -80,26 +105,33 @@ export default function CreatePost ({ postId }) {
             <textarea className="form-control" rows="10" placeholder="Title" 
             name="title" 
             type="text"
-            onChange={(e) => updatePostInput(e)}
-            value={postData.title || ''}
+            onChange={ (e) => updatePostInput(e) }
+            value={ postData.title || '' }
+            required
             />
 
-            <input type="file" id="img" name="img" accept="image/*"></input> 
-
-            <button className="button-standard" type="submit" value="SEND">SEND </button>
+            <input type="file" id="inputImg" name="img" accept="image/*"
+            onChange={(e) => {
+                setImageUpload(e.target.files[0]);
+              }}
+              required
+            />
+            {/* <button onClick={uploadFile}>Upload Image</button> */}
+            <div>
+                <label htmlFor="applianceTypes">Type: </label>
+                <select name="applianceTypes" id="type">
+                    <option value="common mistakes">Common mistakes</option>
+                    <option value="refrigerator">Refrigerator</option>
+                    <option value="dryer">Dryer</option>
+                    <option value="cooktop">Cooktop</option>
+                    <option value="oven">Oven</option>
+                    <option value="freezer">Freezer</option>
+                    <option value="washer">Washer</option>
+                    <option value="washer">Water heater</option>
+                </select>
+            </div>
+            <button className="button-standard" type="submit" value="SEND">SEND</button>
         </form>
-
-        <div>
-            <label htmlFor="applianceTypes">Type of appliance:</label>
-            <select name="applianceTypes" id="applianceType">
-                <option value="refrigerator">Refrigerator </option>
-                <option value="dryer">Dryer</option>
-                <option value="cooktop">Cooktop</option>
-                <option value="oven">Oven</option>
-                <option value="freezer">Freezer</option>
-                <option value="washer">Washer</option>
-            </select>
-        </div>
 
         <Editor 
         editorClassName='editor'

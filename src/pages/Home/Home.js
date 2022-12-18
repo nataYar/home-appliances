@@ -168,6 +168,7 @@ export default function Home() {
 
       {/* PRICES___________________________________ */}
       <section id="prices" className="prices">
+        <h2>Our fees</h2>
         <div className='prices-container'>
 
          <div className='prices-container_item'>
