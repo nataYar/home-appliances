@@ -6,13 +6,6 @@ import './BlogPage.scss';
 
 export default function BlogPage() {
     const [articles, setArticles] = useState([]);
-    // const contentState = convertFromRaw(initialState);
-    // const editorState = EditorState.createWithContent(contentState)
-
-    // the raw state, stringified
-    // const rawDraftContentState = JSON.stringify(convertToRaw(editorState.getCurrentContent()) );
-    // // convert the raw state back to a useable ContentState object
-    // const contentState = convertFromRaw( JSON.parse( rawDraftContentState) );
 
     useEffect(() => {
       const displayArticles = onSnapshot(
@@ -29,43 +22,61 @@ export default function BlogPage() {
     }, [])
 
   return (
-    <>
-    {
-      articles.map((el, key) => {
-      const contentState = convertFromRaw(el.mainText);
-      const editorState = EditorState.createWithContent(contentState);
-        return(
-          <div key={key} 
-          style={ {marginTop:'5rem' } }>
-            {el.title}
-            <br/>
-            {el.time}
-            <Editor editorState={editorState} readOnly={true}
-            />
-            
-          </div>
-          )
-      })
-     }
+    <div className='blog-page'>
+      {/* BREADCRUMBS */}
 
-      {/* { articles ?
+      {/* filter by APPLIANCE TYPE  */}
+      <div className='filter'>
+        <label htmlFor="applianceTypes">Filter by appliance: </label>
+        <select name="applianceTypes" >
+            <option value="common mistakes">Common mistakes</option>
+            <option value="refrigerator">Refrigerator</option>
+            <option value="dryer">Dryer</option>
+            <option value="cooktop">Cooktop</option>
+            <option value="oven">Oven</option>
+            <option value="freezer">Freezer</option>
+            <option value="washer">Washer</option>
+            <option value="washer">Water heater</option>
+        </select>
+       </div>
+       {/* FILTER by BRAND  */}
+       <div className='filter'>
+        <label htmlFor="applianceTypes">Filter by brand: </label>
+        <select name="applianceTypes" >
+            <option value="common mistakes">Samsung</option>
+            <option value="refrigerator">AEG</option>
+            <option value="dryer">BOSCH</option>
+            {/* <option value="cooktop">Cooktop</option>
+            <option value="oven">Oven</option>
+            <option value="freezer">Freezer</option>
+            <option value="washer">Washer</option>
+            <option value="washer">Water heater</option> */}
+        </select>
+      </div>
+      <div className='blog-page_container'>
+      {
         articles.map((el, key) => {
-          if (el.popular == true){
-            return (
-              <div className="reference-container" key={key}> 
-                <div className='reference-btm-text'>
-                  <p className='reference-name'>{el.text} </p>
-                  <p>{el.type} </p>
-                  <p>{el.date} </p>
-                </div>
+        const contentState = convertFromRaw(el.mainText);
+        const editorState = EditorState.createWithContent(contentState);
+          return(
+            <div className='blog-page_post' key={key}>
+              <div className='blog-page_info'>
+                <p className='blog-page_brand'>{el.brand}</p>
+                <p className='blog-page_type'>{el.type}</p>
+              </div>
+              <h4>{el.title}</h4>
+              <div className='blog-page_img'>
+                <img src={el.imgSrc} />
+              </div>
+              <Editor editorState={editorState} readOnly={true}
+              />
+              <p className='blog-page_date'>{el.time}</p>
             </div>
             )
-          } else {
-            return 
-          }
         })
-      : null
-      } */}
-    </>
+      }
+      </div>
+    </div>
+   
   )
 }

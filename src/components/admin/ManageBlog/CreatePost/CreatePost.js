@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
 
 import { db, storage } from '../../../../firebaseConfig';
-import {
-    ref,
-    uploadBytes,
-    getDownloadURL,
-    listAll,
-    list } from "firebase/storage";
-
-import { collection, doc, onSnapshot, setDoc } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore";
 
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState } from 'draft-js';
@@ -26,12 +20,17 @@ export default function CreatePost ({ postId }) {
         uploadBytes(imageRef, imageUpload)
         .then((snapshot) => {
           getDownloadURL(snapshot.ref).then((url) => {
-            // setImageUrls(url);
-            console.log(url)
+            const data = {
+                ...postData,
+                imgSrc: url
+            };
+            setDoc(doc(db, "blog", postId), data, {
+                merge: true
+            });
           });
         });
         document.getElementById('inputImg').value = null;
-        setEditorState({editorState})
+        // setEditorState({editorState})
     }
     
 

@@ -1,0 +1,58 @@
+@import "../../Styles/Variables.scss";
+.blog-page{
+    padding-top: 10vh;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    .filter {
+        margin-bottom: 5%;
+        margin-left: 5%;
+    }
+    .blog-page_container{
+        padding: 0% 3%;
+        @include standard-font();
+        background-color: white;
+        .blog-page_post{
+            margin-top: 1.5rem;
+            background-color: $lightGray;
+            padding: 2% 5%;
+            border-radius: $radius;
+            h4 {
+                color: $midBlue;
+            }
+            .blog-page_date{ 
+                @include standard-font-light();
+                font-size: $font-small;
+                text-align: end;
+                margin-top: 10%;
+            }
+            .blog-page_info{
+                text-align: end;
+                padding-top: 2%; 
+                p {
+                    text-transform: lowercase;
+                    font-size: $font-small;
+                    display: inline;
+                    margin-left: 5%;
+                }
+                p.blog-page_type{
+                    color: rgb(229, 3, 3);
+                }
+                p.blog-page_brand{
+                    color: rgb(8, 147, 13);
+                }
+            }
+            .blog-page_img {
+                width: 5rem;
+                height: 5rem;
+                margin-right: 5%;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 10px;
+                }
+            }   
+        }
+    }
+}

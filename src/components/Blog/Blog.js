@@ -39,12 +39,7 @@ export default function Blog() {
   //       // Metadata now contains the metadata for 'images/forest.jpg'
   //     })
   //     .catch((error) => console.log(error))
-
   //   }, [])
-
-    const goToTheArticle = (id) => {
-      console.log(id)
-    } 
 
   return (
     <div className='blog-list__container'>
@@ -53,7 +48,7 @@ export default function Blog() {
               <div className='blog-list__item' key={key}> 
                 <div className='blog-list__img'>
                   <img 
-                  src={el.mainiImg}
+                  src={el.imgSrc}
                   alt='appliance image'/>
                 </div>
                 <div className='blog-list__text'>

@@ -34,52 +34,28 @@ export default function Navbar( ) {
         <a href="/#blog" className={"nav-link"} onClick={() => toggleNavBar()} > blog </a>
         <a href="/#prices" className={"nav-link"} onClick={() => toggleNavBar()} > prices </a>
         <a href="/#contacts" className={"nav-link"} onClick={() => toggleNavBar()} > contacts </a> */}
-
-        {/* <NavLink
-        onClick={() => toggleNavBar()}
-        to="/#home"
-        className={"nav-link"}
-        >home</NavLink> */}
-
-        {/* <HashLink
+        <HashLink
         to="/#services"
         onClick={() => toggleNavBar()}
         className="nav-link"
-        activeClassName="selected"
-        activeStyle={{ color: 'red' }}
-        >Services</HashLink> */}
-
-        <HashLink
-        smooth to="/#services"
-        onClick={() => toggleNavBar()}
-        className="nav-link"
-        // className={(props) => {
-        //   return `${props.isActive ? 'nav-link active ' : 'nav-link'}`;
-        // }}
-        // activeStyle={{ color: 'red' }}
         >Services</HashLink>
 
         <HashLink
-        smooth to="/#testimonials"
+        to="/#testimonials"
         onClick={() => toggleNavBar()}
-        // className={isActive =>
-        //   "nav-link" + (!isActive ? " unselected" : " selected")
-        // }
         className="nav-link"
         >testimonials</HashLink>
 
         <HashLink
-        smooth to="/#prices"
+        to="/#prices"
         onClick={() => toggleNavBar()}
         className="nav-link"
-        // activeStyle={{ color: 'red' }}
         >Prices</HashLink>
 
         <HashLink
-        smooth to="/#contacts"
+        to="/#contacts"
         onClick={() => toggleNavBar()}
         className="nav-link"
-        // activeStyle={{ color: 'red' }}
         >Contacts</HashLink>
 
         <button id='nav-close-btn' className='nav-btn' onClick={() => toggleNavBar()}>

@@ -20,6 +20,28 @@ export default function ManageBlog() {
          { newPostModuleVisible ? <CreatePost postId={Date.now().toString()} /> : null }
 
 
+         {/* {
+            articles.map((el, key) => {
+            const contentState = convertFromRaw(el.mainText);
+            const editorState = EditorState.createWithContent(contentState);
+            return(
+                <div className='blog-page_post' key={key}>
+                <div className='blog-page_info'>
+                    <p className='blog-page_brand'>{el.brand}</p>
+                    <p className='blog-page_type'>{el.type}</p>
+                </div>
+                <h4>{el.title}</h4>
+                <div className='blog-page_img'>
+                    <img src={el.imgSrc} />
+                </div>
+                <Editor editorState={editorState} readOnly={true}
+                />
+                <p className='blog-page_date'>{el.time}</p>
+                </div>
+                )
+            })
+        } */}
+
        {/* { blogArr.map((el, key) => {
             // const gsReference = ref(storage, el.src);
             // console.log(gsReference)
@@ -40,7 +62,8 @@ export default function ManageBlog() {
                     </div>
                 </div>
             )
-        })} */}
+        })
+        } */}
 
 
     </div>
