@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { db, storage } from '../../../../firebaseConfig';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -13,8 +13,11 @@ export default function CreatePost ({ postId }) {
     const [postData, setPostData] = useState({});
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [imageUpload, setImageUpload] = useState(null);
+    const [type, setType] = useState(null);
+    const [brand, setBrand] = useState(null);
 
-    const uploadFile = (e) => {
+
+    const uploadFile = () => {
         if (imageUpload == null) return;
         const imageRef = ref(storage, `images/${imageUpload.name}`);
         uploadBytes(imageRef, imageUpload)
@@ -34,22 +37,25 @@ export default function CreatePost ({ postId }) {
     }
     
 
-    // useEffect(() => {
-    //     const id = Date.now().toString();
-    //     setPostId(id)
-    //     console.log(id)
-    // },[])
+    useEffect(() => {
+        const data = {
+            ...postData,
+            type: type
+        };
+        setDoc(doc(db, "blog", postId), data, {
+            merge: true
+        });
+    },[type])
 
-    // useEffect(() => {
-    //     const displaytestimonials = onSnapshot(
-    //     collection(db, "testimonials"), 
-    //     (snapshot) => {
-    //         setTestimonialsArr(snapshot.docs.map(doc => ({...doc.data(), id: doc.id, })))
-    //     },
-    //     (error) => {
-    //         console.log(error)
-    //     });
-    // }, [])
+    useEffect(() => {
+        const data = {
+            ...postData,
+            brand: brand
+        };
+        setDoc(doc(db, "blog", postId), data, {
+            merge: true
+        });
+    },[brand])
 
     const updatePostInput = e => {
         setPostData({
@@ -115,10 +121,10 @@ export default function CreatePost ({ postId }) {
               }}
               required
             />
-            {/* <button onClick={uploadFile}>Upload Image</button> */}
+
             <div>
                 <label htmlFor="applianceTypes">Type: </label>
-                <select name="applianceTypes" id="type">
+                <select name="applianceTypes" id="selectType" onChange= { (e) => setType(e.target.value) }>
                     <option value="common mistakes">Common mistakes</option>
                     <option value="refrigerator">Refrigerator</option>
                     <option value="dryer">Dryer</option>
@@ -129,6 +135,21 @@ export default function CreatePost ({ postId }) {
                     <option value="washer">Water heater</option>
                 </select>
             </div>
+
+            <div>
+                <label htmlFor="applianceBrand">Filter by brand: </label>
+                <select name="applianceBrand" id="selectBrand" onChange= { (e) => setBrand(e.target.value) }>
+                    <option value="samsung">Samsung</option>
+                    <option value="aeg">AEG</option>
+                    <option value="bosch">BOSCH</option>
+                    {/* <option value="cooktop">Cooktop</option>
+                    <option value="oven">Oven</option>
+                    <option value="freezer">Freezer</option>
+                    <option value="washer">Washer</option>
+                    <option value="washer">Water heater</option> */}
+                </select>
+            </div>
+
             <button className="button-standard" type="submit" value="SEND">SEND</button>
         </form>
 

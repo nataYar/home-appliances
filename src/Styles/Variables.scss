@@ -40,6 +40,7 @@ $radius: 1.5rem;
   visibility: visible;
   opacity: 1;
   background-color: transparent;
+  // background-color: #f0b400;
   border: none;
   outline: none;
   // position: absolute;
@@ -48,9 +49,11 @@ $radius: 1.5rem;
   // display: inline-block;
   // margin: auto;
   color: $color;
+  height: 2.5rem;
+  width: 2.5rem;
   svg {
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 100%;
+    width: 100%;
   }
 }
 

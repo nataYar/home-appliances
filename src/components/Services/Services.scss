@@ -1,27 +1,22 @@
 @import "../../Styles/Variables.scss";
 
-
-    .service-box {
-        @include flex-column-center;
-        width: 60vw;
+.service-box {
+    @include flex-column-center;
+    width: 90vw;
+    height: auto;
+    margin-bottom: 10%;
+    h3 {
+        @include standard-font();
+        font-size: $font-mid;
+    }
+    .service-box_small-img-container {
+        width: 70%;
         height: auto;
-        margin-bottom: 20%;
-        .service-text {
+        img {
             width: 100%;
-            line-height: 0%;
-            height: auto;
-            @include flex-column-center($align: center); 
-            button {
-                // margin-bottom: 0%;
-            }
-        }
-        .services-small-img-container{
-            img{
-                max-width: 100%;
-                height: auto;
-            }
-        }
-        button{ 
-            // margin-top: 5%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
         }
     }
+}

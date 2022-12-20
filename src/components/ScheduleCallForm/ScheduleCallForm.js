@@ -19,8 +19,6 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
       })
     }
 
-    
-
     const handleSubmit = e => {
         e.preventDefault()
         writeRequest();
@@ -77,10 +75,11 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
     return (
         <section className={scheduleFormVisible ? 'schedule-call-container' : 'schedule-call-container hidden' }>
             <div className='sc-header'>
+                <h2>Contact us</h2>
                 <button className="sc-btn" onClick={() => closeScheduleCallForm()} >
                     <FaTimes />
                 </button>
-                <h2>Contact us</h2>
+                
             </div>    
               
             <div className="sc-wrapper">
@@ -100,10 +99,10 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
                 onSubmit={handleSubmit}>
                     <div>
                         <input className="form-control" type="text" placeholder="NAME" 
-                        name="name" 
-                        onChange={(e) => updateInput(e)}
-                        value={formData.name || ''} 
-                        required />
+                            name="name" 
+                            onChange={(e) => updateInput(e)}
+                            value={formData.name || ''} 
+                            required />
 
                         <div className='form-control__phone'>
                             <p>+1</p>
@@ -117,17 +116,17 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
                             required />
                         </div>
                         
-                        <textarea className="form-control form-control__message" rows="10" placeholder="WANT TO ADD A MESSAGE?" 
-                        name="message" 
-                        type="text"
-                        onChange={(e) => updateInput(e)}
-                        value={formData.message || ''}
+                        <textarea className="form-control form-control__message" 
+                            rows="10" 
+                            placeholder="WANT TO ADD A MESSAGE?" 
+                            name="message" 
+                            type="text"
+                            onChange={(e) => updateInput(e)}
+                            value={formData.message || ''}
                         />
                     </div>
                     <button className="button-standard" type="submit" value="SEND">SEND </button>
                 </form>
-                
-               
             </div>
         </section>
   )
