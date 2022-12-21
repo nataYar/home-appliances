@@ -1,21 +1,36 @@
-import React, { useState, useRef } from 'react';
+import React, { useState,  useEffect } from 'react';
 // import { NavLink, useLocation } from 'react-router-dom';
 // import { HashLink } from 'react-router-hash-link';
 import { HashLink } from 'react-router-hash-link';
 import { FaPhoneAlt, FaTimes } from 'react-icons/fa';
+import { MdHomeRepairService } from 'react-icons/md';
 import { HiMenuAlt1 } from 'react-icons/hi';
 import './Navbar.scss';
 
 export default function Navbar( ) {
   const [navVisible, setNavVisible] = useState(false);
+  const [activeLink, setActiveLink] = useState('')
 
-  const navRef = useRef();
+  useEffect(()=> {
+    if(activeLink.length > 0) {
+      if (document.querySelector('.selected')){
+        console.log('found selected!')
+        document.querySelector('.selected').classList.remove('selected');
+      }
+      document.getElementById(activeLink).classList.add('selected')
+    } 
+  }, [activeLink])
 
   const toggleNavBar = () => { setNavVisible(!navVisible) }
-  
+  const addActiveClass = (e) => {
+    setActiveLink(e.currentTarget.id)
+    // e.currentTarget.classList.toggle('selected');
+  }
   return (
     <div className='nav'>
-      <a className='nav-btn' href="/"><h3>LOGO</h3></a>
+      <a className='nav-btn' href="/">
+        <MdHomeRepairService />
+      </a>
       
       <div className='phone-container'>
         <div>
@@ -28,33 +43,37 @@ export default function Navbar( ) {
           </a>
       </div>
 
-      <nav ref={navRef} className={navVisible ? 'navbar' : 'navbar hidden' }>
+      <nav className={navVisible ? 'navbar' : 'navbar hidden' }>
         {/* <a href="/" className={"nav-link"} onClick={() => toggleNavBar()} > home </a>
         <a href="/#services" className={"nav-link"} onClick={() => toggleNavBar()} > services </a>
         <a href="/#blog" className={"nav-link"} onClick={() => toggleNavBar()} > blog </a>
         <a href="/#prices" className={"nav-link"} onClick={() => toggleNavBar()} > prices </a>
         <a href="/#contacts" className={"nav-link"} onClick={() => toggleNavBar()} > contacts </a> */}
         <HashLink
+        id='servicesLink'
         to="/#services"
-        onClick={() => toggleNavBar()}
+        onClick={(e) => {toggleNavBar(); addActiveClass(e);}}
         className="nav-link"
         >Services</HashLink>
 
         <HashLink
+        id='testimonialsLink'
         to="/#testimonials"
-        onClick={() => toggleNavBar()}
+        onClick={(e) => {toggleNavBar(); addActiveClass(e);}}
         className="nav-link"
         >testimonials</HashLink>
 
         <HashLink
+        id='pricesLink'
         to="/#prices"
-        onClick={() => toggleNavBar()}
+        onClick={(e) => {toggleNavBar(); addActiveClass(e);}}
         className="nav-link"
         >Prices</HashLink>
 
         <HashLink
+        id='contactsLink'
         to="/#contacts"
-        onClick={() => toggleNavBar()}
+        onClick={(e) => {toggleNavBar(); addActiveClass(e);}}
         className="nav-link"
         >Contacts</HashLink>
 

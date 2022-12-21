@@ -24,11 +24,17 @@
     a.logo:hover {
         text-decoration: none;
     }
-        h3{
+        
+        .nav-btn {
+            background-color: transparent;
+            border: none;
+            outline: none;
             color: $yellow;
-            margin: auto;
+            svg {
+                height: 2rem;
+                width: 2rem;
+            }
         }
-        .nav-btn {@include cross-btn($midBlue)}
 
         .menu-btn{
             background-color: transparent;
@@ -55,6 +61,15 @@
             text-decoration: none;
             color: $darkBlue;
             font-weight: 400;
+            &:active{
+                color: rgb(240, 12, 12);
+            }
+            &:hover{
+                color: coral;
+            }
+            // &:visited{
+            //     color: fuchsia;
+            // }
         }
         .selected {
             background-color: $yellow;
@@ -91,7 +106,7 @@
     }
     a {
         text-decoration: none;
-        font-size: $font-regular;
+        font-size: $font-small;
         color: $yellow;
         h3{
             @include standard-font-light();
@@ -108,14 +123,14 @@
 }
 
 #nav-close-btn {
-    // display: block;
-    // margin: auto;
-    // color: $lightBlue;
-    // position: absolute;
-    // top: 2rem;
-    // right: 2rem;
-    // font-size: $font-big;
-    // background-color: aqua;
+    color: $darkYellow;
+    position: absolute;
+    top: 3rem;
+    right: 2rem;
+    svg {
+        height: 3rem;
+        width: 3rem;
+    }
 }
 
 @keyframes pulse {

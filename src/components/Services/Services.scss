@@ -7,7 +7,10 @@
     margin-bottom: 10%;
     h3 {
         @include standard-font();
+        font-weight: 500;
         font-size: $font-mid;
+        color: #d30f0f;
+        // color: $darkYellow;
     }
     .service-box_small-img-container {
         width: 70%;
