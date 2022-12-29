@@ -9,8 +9,9 @@
         @include standard-font();
         font-weight: 500;
         font-size: $font-mid;
-        color: #d30f0f;
-        // color: $darkYellow;
+        background-color: $darkYellow;
+        padding: .5rem;
+        border-radius: $radius;
     }
     .service-box_small-img-container {
         width: 70%;

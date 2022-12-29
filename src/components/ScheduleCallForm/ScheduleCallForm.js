@@ -7,6 +7,7 @@ import {  doc, setDoc } from "firebase/firestore";
 
 export default function ScheduleCallForm({scheduleFormVisible, callbackCloseScheduleForm}) {
     const [formData, setFormData] = useState({})
+
     const closeScheduleCallForm = () => { callbackCloseScheduleForm(); }
 
     const updateInput = e => {
@@ -27,6 +28,7 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
             phoneNumber: '',
             message: '',
         })
+        closeScheduleCallForm() 
     }
 
     const writeRequest = () => {
@@ -48,29 +50,29 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
     //     })
     // }
 
-    function getFormattedPhoneNum(e) {
-        let output = "(";
-        e.target.value.replace( /^\D*(\d{0,3})\D*(\d{0,3})\D*(\d{0,4})/, function( match, g1, g2, g3 )
-            {
-              if ( g1.length ) {
-                output += g1;
-                if ( g1.length == 3 ) {
-                    output += ")";
-                    if ( g2.length ) {
-                        output += " " + g2; 
-                        if ( g2.length == 3 ) {
-                            output += "-";
-                            if ( g3.length ) {
-                                output += g3;
-                            }
-                        }
-                    }
-                 }
-              }
-            }
-          );
-        setFormData({...formData, phoneNumber: output})
-    } 
+    // function getFormattedPhoneNum(e) {
+    //     let output = "(";
+    //     e.target.value.replace( /^\D*(\d{0,3})\D*(\d{0,3})\D*(\d{0,4})/, function( match, g1, g2, g3 )
+    //         {
+    //           if ( g1.length ) {
+    //             output += g1;
+    //             if ( g1.length == 3 ) {
+    //                 output += ")";
+    //                 if ( g2.length ) {
+    //                     output += " " + g2; 
+    //                     if ( g2.length == 3 ) {
+    //                         output += "-";
+    //                         if ( g3.length ) {
+    //                             output += g3;
+    //                         }
+    //                     }
+    //                 }
+    //              }
+    //           }
+    //         }
+    //       );
+    //     setFormData({...formData, phoneNumber: output})
+    // } 
 
     return (
         <section className={scheduleFormVisible ? 'schedule-call-container' : 'schedule-call-container hidden' }>
@@ -96,7 +98,7 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
                 </div>
 
                 <form className="sc-form"
-                onSubmit={handleSubmit}>
+                onSubmit={handleSubmit }>
                     <div>
                         <input className="form-control" type="text" placeholder="NAME" 
                             name="name" 
@@ -112,7 +114,6 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
                             name="phoneNumber" 
                             onChange={(e) => updateInput(e)}
                             value={formData.phoneNumber || ''}
-                            maxLength='10'
                             required />
                         </div>
                         

@@ -1,0 +1,27 @@
+@import "../../Styles/Variables.scss";
+
+@media screen and (min-width: 768px) {
+    .phone-container {
+        // height: 100%;
+        // width: 55%;
+        // display: flex;
+        // flex-flow: row nowrap;
+        // justify-content: center;
+        // align-items: center;
+        div {
+            // border: none;
+            font-size: $font-mid;
+            // animation: pulse 1.5s infinite;
+            // background-color:aqua;
+        }
+        a {
+            // text-decoration: none;
+            font-size: $font-mid;
+            // color: $yellow;
+            h3{
+                @include standard-font();
+
+            }
+        }
+    }
+}

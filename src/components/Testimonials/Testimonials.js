@@ -5,6 +5,8 @@ import { collection, onSnapshot } from "firebase/firestore";
 // import { FaTimes, FaRegPaperPlane } from 'react-icons/fa';
 
 import './Testimonials.scss';
+import './Testimonials-mq.scss';
+
 
 export default function Testimonials() {
     const [testimonials, setTestimonials] = useState([]);
@@ -27,7 +29,7 @@ export default function Testimonials() {
   const commentAddedFn = () => { setCommentAdded(true) }
 
   return (
-    <>
+    <div className='testimonials-container'>
       { testimonials ?
         testimonials.map((el, key) => {
           if (el.status == 'approved'){
@@ -64,6 +66,6 @@ export default function Testimonials() {
       : null
       }
       
-    </>
+    </div>
   )
 }

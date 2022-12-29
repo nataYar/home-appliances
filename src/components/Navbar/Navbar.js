@@ -1,11 +1,10 @@
 import React, { useState,  useEffect } from 'react';
-// import { NavLink, useLocation } from 'react-router-dom';
-// import { HashLink } from 'react-router-hash-link';
 import { HashLink } from 'react-router-hash-link';
 import { FaPhoneAlt, FaTimes } from 'react-icons/fa';
 import { MdHomeRepairService } from 'react-icons/md';
 import { HiMenuAlt1 } from 'react-icons/hi';
 import './Navbar.scss';
+import './Navbar-mq.scss';
 
 export default function Navbar( ) {
   const [navVisible, setNavVisible] = useState(false);
@@ -22,10 +21,8 @@ export default function Navbar( ) {
   }, [activeLink])
 
   const toggleNavBar = () => { setNavVisible(!navVisible) }
-  const addActiveClass = (e) => {
-    setActiveLink(e.currentTarget.id)
-    // e.currentTarget.classList.toggle('selected');
-  }
+  const addActiveClass = (e) => { setActiveLink(e.currentTarget.id) }
+
   return (
     <div className='nav'>
       <a className='nav-btn' href="/">

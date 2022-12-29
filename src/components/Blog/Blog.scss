@@ -3,20 +3,21 @@
 .blog-list__container{
     width: 100%;
     height: auto;
-    .blog-list__item{
+    .blog-list__item {
         display: flex;
         flex-flow: row nowrap;
         width: 90%;
-        height: 5rem;
-        padding: 3%;
+        height: auto;
+        padding: .5rem;
         background-color: $lightGray;
         border-radius: $radius;
         margin-bottom: 5%;
+        position: relative;
         .blog-list__img {
             flex-shrink: 0;
             width: 5rem;
             height: 5rem;
-            margin-right: 5%;
+            margin-right: 1rem;
             img{
                 width: 100%;
                 height: 100%;
@@ -27,14 +28,14 @@
         .blog-list__text{
             width: 100%;
             height: 100%;
-            display: flex;
-            flex-flow: column nowrap;
-            justify-content: space-between;
-            align-content: space-around;
+            padding-bottom: 1rem;
             div:first-child{
                 color: black;
             }
             .blog-list__text-info{
+                position: absolute;
+                bottom: 3%;
+                left: 6.5rem;
                 @include standard-font-light();
                 display: inline-flex;
                 text-transform: lowercase;
@@ -43,6 +44,8 @@
                 p {
                     margin-right: 5%;
                     padding: 0%;
+                    margin: 0%;
+                    
                 }
             }
         }

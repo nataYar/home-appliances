@@ -42,22 +42,22 @@
             font-weight: 900;
         }
     }
-}
-
-.reference-container:nth-child(2n) {
-    align-items: flex-end;
-    div:first-child:before {
-        left: 80%;
-        bottom: 4%;
-        border: 25px solid transparent;
-        border-top-color: rgb(255, 255, 255);
-        border-bottom: 0;
-        border-right: 0;
-        margin-right: -12.5px;
-        margin-bottom: -25px;
+    &:nth-child(2n) {
+        align-items: flex-end;
+        div:first-child:before {
+            left: 80%;
+            bottom: 4%;
+            border: 25px solid transparent;
+            border-top-color: rgb(255, 255, 255);
+            border-bottom: 0;
+            border-right: 0;
+            margin-right: -12.5px;
+            margin-bottom: -25px;
+            }
+        .reference-btm-text{
+            text-align: end;
+            margin-right: 5%;
         }
-    .reference-btm-text{
-        text-align: end;
-        margin-right: 5%;
     }
 }
+

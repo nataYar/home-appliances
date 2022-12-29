@@ -9,7 +9,7 @@ import { EditorState } from 'draft-js';
 import { convertFromRaw, convertToRaw } from 'draft-js';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
-export default function CreatePost ({ postId }) {
+export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
     const [postData, setPostData] = useState({});
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [imageUpload, setImageUpload] = useState(null);
@@ -72,6 +72,9 @@ export default function CreatePost ({ postId }) {
             title: ''
         })
         setImageUpload(null);
+        setType('');
+        setBrand('');
+        toggleNewPostVisibility()
     }
 
     const writePost = () => {
@@ -125,6 +128,7 @@ export default function CreatePost ({ postId }) {
             <div>
                 <label htmlFor="applianceTypes">Type: </label>
                 <select name="applianceTypes" id="selectType" onChange= { (e) => setType(e.target.value) }>
+                    <option value="common mistakes">No type</option>
                     <option value="common mistakes">Common mistakes</option>
                     <option value="refrigerator">Refrigerator</option>
                     <option value="dryer">Dryer</option>
@@ -139,6 +143,7 @@ export default function CreatePost ({ postId }) {
             <div>
                 <label htmlFor="applianceBrand">Filter by brand: </label>
                 <select name="applianceBrand" id="selectBrand" onChange= { (e) => setBrand(e.target.value) }>
+                    <option value="">No brand</option>
                     <option value="samsung">Samsung</option>
                     <option value="aeg">AEG</option>
                     <option value="bosch">BOSCH</option>

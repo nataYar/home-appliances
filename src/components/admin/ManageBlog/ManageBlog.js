@@ -17,7 +17,7 @@ export default function ManageBlog() {
         <button className="button-standard" value="Add new article"
         onClick={() => toggleNewPostVisibility()}
         >Add new article</button>
-         { newPostModuleVisible ? <CreatePost postId={Date.now().toString()} /> : null }
+         { newPostModuleVisible ? <CreatePost postId={Date.now().toString()} toggleNewPostVisibility={toggleNewPostVisibility}/> : null }
 
 
          {/* {

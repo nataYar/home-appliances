@@ -12,12 +12,16 @@
         padding-top: 6.5vh;
         height: 60vh;
         width: 100%;
-        background-image: url('../../Images/backgrounds/SL.jpg');
+        // background-image: url('../../Images//backgrounds/bkkkk.svg');
         // background-image: url('../../Images/backgrounds/waves.jpg');
-        background-position-x: 30%;
-        // background-image: url("../../Images/backgrounds/part-male-construction-worker_small.jpg");
+        background-position-x: 60%;
+        background-image: url("../../Images/backgrounds/bb.jpg");
         background-size: cover;
         // background-position: center;
+        svg {
+            height: 100%;
+            width: 100%; 
+        }
         .section-home-intro-text{  
             @include flex-column-center(); 
             color: $yellow;
@@ -205,24 +209,11 @@ section h2 {
 section.howItWorks {
     @include flex-column-center;
     height: auto;
+    padding: 10% 0%;
     width: 100%;
-    background-image: url('../../Images/backgrounds/part-male-construction-worker_small.webp');
+    background-image: url('../../Images/backgrounds/darkBG.webp');
     background-size: cover;
     background-position-x: 35%;
-    // &::before { 
-    //     content: '';
-    //     height: 100%;
-    //     // padding: 50% 0%;
-    //     position: absolute;
-    //     z-index: 999;
-    //     top: 96%;
-    //     bottom: 0;
-    //     left: 0;
-    //     right: 0;
-    //     background-color: #e66465;
-    //     opacity: .6;
-    //     // background-color: #00ffd5;
-    // }
     h2 {
         color: $yellow;
     }
@@ -253,6 +244,7 @@ section.howItWorks {
                 
             }
             .textHIW {
+                font-size: $font-regular;
                 color: #fff;
                 display: inline;
                 text-align: center;
@@ -269,7 +261,7 @@ section.services{
     @include section();
 }
 
-section.testimonials{
+section.testimonials {
     @include section();
     background-color: $midBlue;
     padding-bottom: 15%;
@@ -281,7 +273,7 @@ section.testimonials{
         align-content: space-between
     }
     h2 {
-        color: #fff;
+        color: $yellow;
         font-weight: 900;
     }
     .button-standard{
@@ -383,4 +375,3 @@ section.contacts {
         transform: translateX(-50%)
     }
 }
-

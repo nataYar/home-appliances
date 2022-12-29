@@ -5,13 +5,22 @@
     @include standard-font(); 
     color: $yellow;
     background-color: $darkBlue;
-    height: 90vh;
-    padding-top: 10vh;
+    height: auto;
+    padding: 10vh 0%;
     width: 100%;
+    font-size: $font-regular;
     .brands-container_list {
         color: $lightGray;
-        text-align: center;
+        text-align: left;
         width: 90%;
-        padding-top: 10vh;
+        padding-top: 5%;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .brands-container {
+        .brands-container_list {
+            font-size: $font-mid;
+        }
     }
 }

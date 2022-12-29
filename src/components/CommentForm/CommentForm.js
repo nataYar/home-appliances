@@ -40,7 +40,6 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
             date: getCurrentDate(),
             status: 'upapproved'
         };
-        console.log(docData);
         setDoc(doc(db, "testimonials", comment.phoneNumber ), docData);
     }
 

@@ -1,10 +1,10 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import './Services.scss'
 import { cookSm, refSm, drSm, freezSm, ovSm, washSm } from '../../Images/imgImports';
 
 export default function Services() {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const servicesArray  = [
     {

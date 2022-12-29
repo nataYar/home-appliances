@@ -35,16 +35,12 @@ export default function BlogPage() {
       const filterByBrand = document.getElementById("filterByBrand");
       if (e.target == filterByBrand) {
           setFilterBrand(e.target.value.toLowerCase());
-          console.log(e.target.value)
       }
       if (e.target == filterByType) {
         setFilterType(e.target.value.toLowerCase())
-        console.log(filterType)
         handleFilter();
       } 
     }
-
-    useEffect(() => {console.log(filteredArticles)}, [filteredArticles])
 
     useEffect(() => { handleFilter()}, [filterType, filterBrand])
 

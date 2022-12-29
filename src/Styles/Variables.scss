@@ -40,14 +40,8 @@ $radius: 1.5rem;
   visibility: visible;
   opacity: 1;
   background-color: transparent;
-  // background-color: #f0b400;
   border: none;
   outline: none;
-  // position: absolute;
-  // top: 2rem;
-  // right: 2rem;
-  // display: inline-block;
-  // margin: auto;
   color: $color;
   height: 2.5rem;
   width: 2.5rem;
@@ -57,6 +51,20 @@ $radius: 1.5rem;
   }
 }
 
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) { @content; }
+}
+
+
 // PADDINGS AND MARGINS
 @mixin section ($height: auto, $width: 90%) {
   overflow-x: hidden;
@@ -64,7 +72,12 @@ $radius: 1.5rem;
   padding: 15% 5%;
   height: $height;
   width: $width;
+  @include for-tablet-portrait-up {
+    padding: 5%;
+  }
+  
 }
+
 
 @mixin flex-column-center($direction: column, $justify: center, $align: center) {
     display: flex;
@@ -85,7 +98,7 @@ $radius: 1.5rem;
 
 .margin-top {margin-top: 5%;}
 
-.hidden{
+.hidden {
     transform: translateX(100vw);
     left: 100vw;
     transition: .6s ease-in;

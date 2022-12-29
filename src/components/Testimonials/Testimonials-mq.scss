@@ -1,0 +1,33 @@
+@import "../../Styles/Variables.scss";
+
+@media screen and (min-width: 768px) {
+.reference-container {
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    color: $yellow;
+    font-size: $font-mid;
+    .reference-btm-text{
+        margin-top: 4%;
+        margin-left: 5%;
+        >p {
+            margin: 0%;
+        }
+    }
+    div:first-child {
+        max-width: 70%;
+        min-width: 30%;
+        width: fit-content;
+    }
+
+    &:nth-child(2n) {
+        div:first-child {
+            max-width: 70%;
+            min-width: 30%;
+            width: fit-content;
+        }
+    }
+}
+    
+
+}

@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../../firebaseConfig';
-import { collection, doc, onSnapshot } from "firebase/firestore";
-
-// import { FaTimes, FaRegPaperPlane } from 'react-icons/fa';
-import { cookSm, refSm, drSm, freezSm, ovSm, washSm } from '../../Images/imgImports';
+import { collection, onSnapshot } from "firebase/firestore";
 import './Blog.scss';
 
 export default function Blog() {

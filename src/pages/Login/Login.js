@@ -10,6 +10,7 @@ export default function Login() {
     const [password, setPassword] = useState('')
     const [admin, setAdmin] = useLocalStorage('', true)
 
+
     const loginFn = (e) => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
@@ -33,7 +34,7 @@ export default function Login() {
     return (
         <div>
             { admin.length > 0 ?  
-            <Dashboard />
+                <Dashboard />
             : 
             <div className='login-container'>
                 <form className='login' onSubmit={(e) => loginFn(e)} >

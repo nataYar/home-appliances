@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, lazy } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.scss';
-import { ScheduleCallForm, Services, BrandsSlider, Testimonials, Blog } from '../../components/importsComponents';
+import './Home-mq.scss';
 import { default as mask } from './bagdes/mask.svg';
 import { default as gloves } from './bagdes/gloves.svg';
-import { cookSm, refSm, drSm, freezSm, ovSm, washSm } from '../../Images/imgImports';
+
+const Services = lazy(() => import('../../components/Services/Services'));
+const ScheduleCallForm = lazy(() => import('../../components/ScheduleCallForm/ScheduleCallForm'));
+const BrandsSlider = lazy(() => import('../../components/BrandsSlider/BrandsSlider'));
+const Testimonials = lazy(() => import('../../components/Testimonials/Testimonials'));
+const Blog = lazy(() => import('../../components/Blog/Blog'));
 
 export default function Home() {
   const [scheduleFormVisible, setScheduleFormVisible] = useState(false);
@@ -18,8 +23,10 @@ export default function Home() {
   return (
     <div id='home' className='home-container'>
       {/* INTRO_____________________________________ */}
-      <section className='section-home-intro'>
-        <div className='section-home-intro-text'>
+      <section className='section-home-intro'  
+      >
+        <div className='section-home-intro-text'
+        >
           <h1>CITY TECH</h1>
           <h3>appliance repair</h3>
         </div>
@@ -29,7 +36,6 @@ export default function Home() {
         >Schedule A Call</button>
         <ScheduleCallForm scheduleFormVisible={scheduleFormVisible} callbackCloseScheduleForm={openScheduleCallForm } />
       </section>
-
       {/* BADGES_____________________________________ */}
       <section className='badges'>
         <div className='badges-container'>

@@ -24,60 +24,52 @@
     a.logo:hover {
         text-decoration: none;
     }
-        
-        .nav-btn {
-            background-color: transparent;
-            border: none;
-            outline: none;
-            color: $yellow;
-            svg {
-                height: 2rem;
-                width: 2rem;
-            }
+    .nav-btn {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: $yellow;
+        svg {
+            height: 2rem;
+            width: 2rem;
         }
+    }
 
-        .menu-btn{
-            background-color: transparent;
-            border: none;
-            outline: none;
-            color: $yellow;
-            svg {
-                height: 2rem;
-                width: 2rem;
-            }
+    .menu-btn{
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: $yellow;
+        svg {
+            height: 2rem;
+            width: 2rem;
         }
-        .responsive-nav {
-            transform: none;
-            padding-top: 2rem;
-            .nav-btn {
-                font-size: $font-big;
-            }
+    }
+    .responsive-nav {
+        transform: none;
+        padding-top: 2rem;
+        .nav-btn {
+            font-size: $font-big;
         }
-        .nav-link {
-            font-size: $font-mid;
-            margin-bottom: 2rem;
-            padding: .7rem;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: $darkBlue;
-            font-weight: 400;
-            &:active{
-                color: rgb(240, 12, 12);
-            }
-            &:hover{
-                color: coral;
-            }
-            // &:visited{
-            //     color: fuchsia;
-            // }
+    }
+    .nav-link {
+        font-size: $font-mid;
+        margin-bottom: 2rem;
+        padding: .7rem;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: $darkBlue;
+        font-weight: 400;
+        
+        &:hover{
+        background-color: $yellow;
+        border-radius: $radius;
         }
-        .selected {
-            background-color: $yellow;
-            border-radius: $radius;
-        }
-        .active {
-            background-color: $yellow;
-        }
+    }
+    .selected {
+        background-color: $yellow;
+        border-radius: $radius;
+    }
 }
 
 .navbar {

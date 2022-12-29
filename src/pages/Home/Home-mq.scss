@@ -1,0 +1,102 @@
+@import "../../Styles/Variables.scss";
+
+// tablet
+@media screen and (min-width: 600px) {
+    .sc-button {
+        font-size: 1.3rem;
+    }
+    section h2{
+        // font-size: $font-big;
+        font-size: 3rem;
+    }
+    //INTRO SECTION
+    .home-container {
+        .section-home-intro {
+            height: 60vh;
+            .section-home-intro-text{  
+                h1 {
+                   font-size: 5rem;
+                }
+                h3{
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
+
+    section.badges {
+        h3 {
+            font-size: $font-mid;
+        }
+    }
+    // HOW IT WORKS section 
+    section.howItWorks {
+        .howItWorks_content { 
+            > div {
+                .headerHIW {
+                    font-size: 1.4rem;
+                }
+                .textHIW {
+                    font-size: $font-mid;
+                }
+            }
+            
+        }
+    }
+
+    section.section-benefits {
+        // font-size: $font-big;
+        .benefits-list {
+            li {
+                .benefits-list_text {
+                    h3{
+                        font-size: 1.8rem;
+                    }
+                    p{
+                        font-size: $font-mid;
+                    }
+                   
+                }
+            }
+        }
+    }
+
+
+    //SERVICES
+    section.services{
+        .services-container {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            align-items: flex-start;
+            .service-box {
+                box-sizing: border-box;
+                text-align: center;
+                width: 30vw;
+                height: auto;
+                margin-bottom: 5%;
+                .service-box_small-img-container {
+                    width: 80%;
+                }
+            }
+        }
+    }
+
+    //TESTIMONIALS
+    section.testimonials {
+        padding-bottom: 15%;
+        div {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: space-between;
+            align-items: space-between;
+            align-content: space-between
+        }
+        .button-standard{
+            margin-top: 10%; 
+            text-transform: uppercase
+        }
+    }
+
+    
+}
