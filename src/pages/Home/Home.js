@@ -142,7 +142,7 @@ export default function Home() {
       </section>
 
       {/* BRANDS___________________________________ */}
-      <section className="brands">
+      <section id='brands' className="brands">
         <h2>Brands</h2> 
         <BrandsSlider />
       <button className='button-standard margin-top' onClick={() => navigate('/brands')}>SEE ALL BRANDS</button>
@@ -211,7 +211,6 @@ export default function Home() {
             <p className='prices-container_item-text'>+ parts</p>
           </div>
          </div>
-
         </div>
       </section>
 

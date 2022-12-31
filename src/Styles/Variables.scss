@@ -64,20 +64,17 @@ $radius: 1.5rem;
   @media (min-width: 1800px) { @content; }
 }
 
-
 // PADDINGS AND MARGINS
 @mixin section ($height: auto, $width: 90%) {
   overflow-x: hidden;
   @include standard-font();
-  padding: 15% 5%;
+  padding: 10% 5%;
   height: $height;
   width: $width;
   @include for-tablet-portrait-up {
     padding: 5%;
   }
-  
 }
-
 
 @mixin flex-column-center($direction: column, $justify: center, $align: center) {
     display: flex;

@@ -61,11 +61,25 @@ export default function Navbar( ) {
         >testimonials</HashLink>
 
         <HashLink
+        id='blogLink'
+        to="/#blog"
+        onClick={(e) => {toggleNavBar(); addActiveClass(e);}}
+        className="nav-link"
+        >Blog</HashLink>
+
+        <HashLink
+        id='brandsLink'
+        to="/#brands"
+        onClick={(e) => {toggleNavBar(); addActiveClass(e);}}
+        className="nav-link"
+        >Brands</HashLink>
+
+        <HashLink
         id='pricesLink'
         to="/#prices"
         onClick={(e) => {toggleNavBar(); addActiveClass(e);}}
         className="nav-link"
-        >Prices</HashLink>
+        >Fees</HashLink>
 
         <HashLink
         id='contactsLink'

@@ -37,7 +37,7 @@ export default function BlogPage() {
           setFilterBrand(e.target.value.toLowerCase());
       }
       if (e.target == filterByType) {
-        setFilterType(e.target.value.toLowerCase())
+        setFilterType(e.target.value.toLowerCase());
         handleFilter();
       } 
     }
@@ -105,13 +105,14 @@ export default function BlogPage() {
         filteredArticles.map((el, key) => {
         const contentState = convertFromRaw(el.mainText);
         const editorState = EditorState.createWithContent(contentState);
+        // if (el.status == 'approved'){
           return(
             <div className='blog-page_post' key={key}>
               <div className='blog-page_info'>
                 <p className='blog-page_brand'>{el.brand}</p>
                 <p className='blog-page_type'>{el.type}</p>
               </div>
-              <h4>{el.title}</h4>
+              <h3>{el.title}</h3>
               <div className='blog-page_img'>
                 <img src={el.imgSrc} />
               </div>
@@ -120,6 +121,9 @@ export default function BlogPage() {
               <p className='blog-page_date'>{el.time}</p>
             </div>
             )
+        // }else {
+        //   return 
+        // }
         })
       }
       </div>

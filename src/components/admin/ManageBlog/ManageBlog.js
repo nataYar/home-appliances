@@ -1,71 +1,101 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CreatePost} from '../../importsComponents';
-
 import { db } from '../../../firebaseConfig';
-import { collection, doc, onSnapshot, setDoc, Timestamp } from "firebase/firestore";
+import { collection, onSnapshot, deleteDoc, doc } from "firebase/firestore";
+import { EditorState, convertFromRaw } from 'draft-js';
+import { Editor } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
+import './ManageBlog.scss';
 
 export default function ManageBlog() {
     const [newPostModuleVisible, setNewPostModuleVisible] = useState(false)
+    const [articlesPending, setArticlesPending] = useState([]);
+    const [articlesApproved, setArticlesApproved] = useState([]);
+    const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
     const toggleNewPostVisibility = () => {
         setNewPostModuleVisible(!newPostModuleVisible)
     }
 
+    useEffect(() => {
+        const showPosts = onSnapshot(
+          collection(db, "blog"), 
+          (snapshot) => {
+            setArticlesPending(snapshot.docs.map(doc => 
+              ({ ...doc.data() })
+              )
+            )
+          },
+          (error) => {
+            console.log(error)
+          });
+      }, [])
+
+      useEffect(() => {
+        const showPosts = onSnapshot(
+          collection(db, "blog"), 
+          (snapshot) => {
+            setArticlesApproved(snapshot.docs.map(doc => 
+              ({ ...doc.data() })
+              )
+            )
+          },
+          (error) => {
+            console.log(error)
+          });
+      }, [])
+
+      const deletePost = (el) => {
+        deleteDoc(doc(db, "blog", el.postId));
+      }
+
+      function mapArray(arr) {
+        return arr.map((el, ind) => {
+            const contentState = convertFromRaw(el.mainText);
+            const editorState = EditorState.createWithContent(contentState);
+                return(
+                    <div className='blog-page_post' key={ind}>
+                        <div className='buttons'>
+                            <button 
+                            className="button-standard" role="button"
+                            onClick={ () => deletePost(el)}
+                            >
+                            DELETE
+                            </button>
+                        </div>
+
+                        <div className='blog-page_info'>
+                            {el.brand ? <p className='blog-page_brand'>{el.brand}</p> : null} 
+                            {el.type ? <p className='blog-page_type'>{el.type}</p> : null} 
+                            
+                        </div>
+                        <h3> {el.title}</h3>
+                        <div className='blog-page_img'>
+                            <img src={el.imgSrc} />
+                        </div>
+                        <Editor 
+                        editorState={editorState} 
+                        // onEditorStateChange={onEditorStateChange} 
+                        toolbarClassName='hide-toolbar'
+                        readOnly={true}
+                        />
+                        <p className='blog-page_date'>{el.time}</p>
+                    </div>
+                )})
+        }
+    
     return (
-    <div> 
+    <div className='manage-blog_container'> 
         <button className="button-standard" value="Add new article"
         onClick={() => toggleNewPostVisibility()}
         >Add new article</button>
-         { newPostModuleVisible ? <CreatePost postId={Date.now().toString()} toggleNewPostVisibility={toggleNewPostVisibility}/> : null }
-
-
-         {/* {
-            articles.map((el, key) => {
-            const contentState = convertFromRaw(el.mainText);
-            const editorState = EditorState.createWithContent(contentState);
-            return(
-                <div className='blog-page_post' key={key}>
-                <div className='blog-page_info'>
-                    <p className='blog-page_brand'>{el.brand}</p>
-                    <p className='blog-page_type'>{el.type}</p>
-                </div>
-                <h4>{el.title}</h4>
-                <div className='blog-page_img'>
-                    <img src={el.imgSrc} />
-                </div>
-                <Editor editorState={editorState} readOnly={true}
-                />
-                <p className='blog-page_date'>{el.time}</p>
-                </div>
-                )
-            })
-        } */}
-
-       {/* { blogArr.map((el, key) => {
-            // const gsReference = ref(storage, el.src);
-            // console.log(gsReference)
-            return (
-                <div className='blog-list__item' key={key}> 
-                    <div className='blog-list__img'>
-                    <img 
-                    // src={el => {getImgUrl(el)}}
-                    alt='appliance image'/>
-                    <p>ho</p>
-                    </div>
-                    <div className='blog-list__text'>
-                    <div className=''>{el.text} </div>
-                    <div>
-                        <p>{el.type}</p>
-                        <p>{el.date}</p>
-                        </div>
-                    </div>
-                </div>
-            )
-        })
-        } */}
-
-
+        { newPostModuleVisible ? < CreatePost postId={Date.now().toString()} toggleNewPostVisibility={toggleNewPostVisibility} /> : null }
+         <div className='manage-blog_posts-container'>
+            <h2>Your articles</h2>
+            { mapArray(articlesApproved) }
+         </div>
+        
     </div>
   )
 }

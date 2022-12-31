@@ -26,7 +26,6 @@ export default function ManageTestimonials() {
     date: el.date,
     status: 'approved',
   };
-  
     setDoc(doc(db, "testimonials", el.phoneNumber ), data);
   }
 
@@ -37,7 +36,7 @@ export default function ManageTestimonials() {
       city: el.city,
       text: el.text,
       date: el.date,
-      status: 'deleted',
+      // status: 'deleted',
     };
     setDoc(doc(db, "testimonials", el.phoneNumber), data);
   }
@@ -49,7 +48,7 @@ export default function ManageTestimonials() {
         testimonialsArr.map((el, key) => {
           return (
             <div key={key} id='comment' className={el.status == 'approved' ? 'approved' :
-            el.status == 'deleted' ? 'deleted' : 'pending' }> 
+            el.status == 'deleted' ? 'deleted' : 'pending' } > 
               <p>TEXT: {el.text} </p>
               <p>NAME: {el.name}</p>
               <p>CITY: {el.city} </p>

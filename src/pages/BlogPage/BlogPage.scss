@@ -1,32 +1,39 @@
 @import "../../Styles/Variables.scss";
-.blog-page{
+
+.blog-page {
     padding-top: 10vh;
     box-sizing: border-box;
     width: 100%;
     height: auto;
+    padding-bottom: 5%;
     .filter {
         margin-bottom: 5%;
         margin-left: 5%;
     }
-    .blog-page_container{
-        padding: 0% 3%;
+    .blog-page_container {
+        // padding: 0% 3%;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
         @include standard-font();
         background-color: white;
-        .blog-page_post{
+        .blog-page_post {
             margin-top: 1.5rem;
-            background-color: $lightGray;
+            background-color: rgb(251, 251, 251);
+            box-shadow: .5rem .5rem hsl(47, 97%, 60%);
             padding: 2% 5%;
             border-radius: $radius;
-            h4 {
+            h3 {
                 color: $midBlue;
             }
-            .blog-page_date{ 
+            .blog-page_date { 
+                background-color: aqua;
                 @include standard-font-light();
                 font-size: $font-small;
                 text-align: end;
                 margin-top: 10%;
             }
-            .blog-page_info{
+            .blog-page_info {
                 text-align: end;
                 padding-top: 2%; 
                 p {
@@ -35,7 +42,7 @@
                     display: inline;
                     margin-left: 5%;
                 }
-                p.blog-page_type{
+                p.blog-page_type {
                     color: rgb(229, 3, 3);
                 }
                 p.blog-page_brand{

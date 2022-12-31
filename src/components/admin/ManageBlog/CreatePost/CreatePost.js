@@ -1,67 +1,163 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { Component,
+  useEffect,
+  useMemo,
+  useRef,
+  useState } from 'react';
 import { db, storage } from '../../../../firebaseConfig';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
+import { EditorState, RichUtils, convertToRaw} from 'draft-js';
 
-import { Editor } from 'react-draft-wysiwyg';
-import { EditorState } from 'draft-js';
-import { convertFromRaw, convertToRaw } from 'draft-js';
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import Editor, { createEditorStateWithText } from '@draft-js-plugins/editor';
+import createInlineToolbarPlugin, { Separator } from '@draft-js-plugins/inline-toolbar';
+import {
+  ItalicButton,
+  BoldButton,
+  UnderlineButton,
+  CodeButton,
+  HeadlineOneButton,
+  HeadlineTwoButton,
+  HeadlineThreeButton,
+  UnorderedListButton,
+  OrderedListButton,
+  BlockquoteButton,
+  CodeBlockButton,
+} from '@draft-js-plugins/buttons';
+
+import './editorStyles.css';
+// import 'draft-js/dist/Draft.css';
+import './CreatePost.scss'
+import convertFromHTMLToContentBlocks from 'draft-js/lib/convertFromHTMLToContentBlocks';
+
+const text =
+  'In this editor a toolbar shows up once you select part of the text …';
 
 export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
     const [postData, setPostData] = useState({});
-    const [editorState, setEditorState] = useState(EditorState.createEmpty());
+    // const [editorState, setEditorState] = useState(EditorState.createEmpty());
+    const [editorState, setEditorState] = useState(() => createEditorStateWithText(''));
     const [imageUpload, setImageUpload] = useState(null);
     const [type, setType] = useState(null);
     const [brand, setBrand] = useState(null);
+    
+    //code from pluging
+    const [plugins, InlineToolbar] = useMemo(() => {
+      const inlineToolbarPlugin = createInlineToolbarPlugin();
+      return [[inlineToolbarPlugin], inlineToolbarPlugin.InlineToolbar];
+    }, []);
+
+    useEffect(() => {
+        // fixing issue with SSR https://github.com/facebook/draft-js/issues/2332#issuecomment-761573306
+        setEditorState(createEditorStateWithText(text));
+    }, []);
+
+    const editor = useRef(null);
+
+    const onChange = (value) => {
+        setEditorState(value);
+    };
+
+    const focus = () => {
+        var _a;
+        (_a = editor.current) === null || _a === void 0 ? void 0 : _a.focus();
+    };
+
+    // headlines
+    const HeadlinesPicker = (props) => {
+
+      useEffect(() => {
+        setTimeout(() => {
+          window.addEventListener('click', onWindowClick);
+        });
+        return () => {
+          window.removeEventListener('click', onWindowClick);
+        };
+      }, []);
+
+      const onWindowClick = () => {
+        console.log(props)
+        // Call `onOverrideContent` again with `undefined`
+        // so the toolbar can show its regular content again.
+        props.onOverrideContent(undefined);
+      }
+
+        const buttons = [HeadlineOneButton, HeadlineTwoButton, HeadlineThreeButton];
+        return (
+          <div>
+            { buttons.map((Button, i) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <Button key={i} {...props} 
+              // onClick={handleClick()}
+               />
+            ))}
+          </div>
+        );
+    }
+
+    const HeadlinesButton = (props) => {
+        // When using a click event inside overridden content, mouse down
+      // events needs to be prevented so the focus stays in the editor
+      // and the toolbar remains visible  onMouseDown = (event) => event.preventDefault()
+      const onMouseDown = (event) => { event.preventDefault(); }
+    
+      const onClick = () => {
+        // A button can call `onOverrideContent` to replace the content
+        // of the toolbar. This can be useful for displaying sub
+        // menus or requesting additional information from the user.
+        props.onOverrideContent(HeadlinesPicker);
+      }
+        return (
+          <div
+            onMouseDown={(e) => onMouseDown(e)}
+            className='headlineButtonWrapper' 
+          >
+            <button 
+            onClick={onClick}
+             className='headlineButton'>
+              H
+            </button>
+          </div>
+        );
+      
+    }
 
 
+    //func-s below are mine
     const uploadFile = () => {
         if (imageUpload == null) return;
         const imageRef = ref(storage, `images/${imageUpload.name}`);
         uploadBytes(imageRef, imageUpload)
         .then((snapshot) => {
           getDownloadURL(snapshot.ref).then((url) => {
-            const data = {
+            setPostData({
                 ...postData,
                 imgSrc: url
-            };
-            setDoc(doc(db, "blog", postId), data, {
-                merge: true
             });
           });
         });
         document.getElementById('inputImg').value = null;
         // setEditorState({editorState})
     }
-    
 
     useEffect(() => {
-        const data = {
-            ...postData,
-            type: type
-        };
-        setDoc(doc(db, "blog", postId), data, {
-            merge: true
-        });
+      setPostData({
+        ...postData,
+        type: type
+      });
     },[type])
 
     useEffect(() => {
-        const data = {
-            ...postData,
-            brand: brand
-        };
-        setDoc(doc(db, "blog", postId), data, {
-            merge: true
-        });
+      setPostData({
+          ...postData,
+          brand: brand
+      });
     },[brand])
 
     const updatePostInput = e => {
-        setPostData({
-            ...postData,
-            title: e.target.value
-        });
+      setPostData({
+          ...postData,
+          title: e.target.value
+      });
     }
 
     const submitPost = (e) => {
@@ -69,7 +165,7 @@ export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
         writePost();
         uploadFile();
         setPostData({
-            title: ''
+            title: '', 
         })
         setImageUpload(null);
         setType('');
@@ -78,10 +174,16 @@ export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
     }
 
     const writePost = () => {
+      console.log(postData)
+      console.log({editorState})
         const data = {
             ...postData,
             title: postData.title,
+            mainText: convertToRaw(editorState.getCurrentContent()),
+            brand: brand,
+            type: type,
             time: getDate(),
+            postId: postId,
         };
         setDoc(doc(db, "blog", postId), data, {
             merge: true
@@ -98,33 +200,43 @@ export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
 
     const onEditorStateChange = (editorState) => {
         setEditorState(editorState)
-        const data = {
+        setPostData({
             ...postData,
-            mainText: convertToRaw(editorState.getCurrentContent())
-        };
-        setDoc(doc(db, "blog", postId), data, {
-            merge: true
+            // mainText: convertToRaw(editorState.getCurrentContent())
+            mainText: editorState
         });
     }
+
+    const handleKeyCommand = (command, editorState) => {
+      const newState = RichUtils.handleKeyCommand(editorState, command);
+      if (newState) {
+        this.onChange(newState);
+        return 'handled';
+      }
+      return 'not-handled';
+    }
+
 
   return (
     <div>
         <form className="sc-form" onSubmit={submitPost} >
+            <div>
+                <button className="button-standard" type="submit" value="SEND">SEND</button>
+                <button className="button-standard" value="CANCEL">CANCEL</button>
+            </div>
             <textarea className="form-control" rows="10" placeholder="Title" 
             name="title" 
-            type="text"
+            type="mainText"
             onChange={ (e) => updatePostInput(e) }
             value={ postData.title || '' }
             required
             />
-
             <input type="file" id="inputImg" name="img" accept="image/*"
             onChange={(e) => {
                 setImageUpload(e.target.files[0]);
               }}
-              required
+              // required
             />
-
             <div>
                 <label htmlFor="applianceTypes">Type: </label>
                 <select name="applianceTypes" id="selectType" onChange= { (e) => setType(e.target.value) }>
@@ -154,14 +266,44 @@ export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
                     <option value="washer">Water heater</option> */}
                 </select>
             </div>
-
-            <button className="button-standard" type="submit" value="SEND">SEND</button>
         </form>
 
-        <Editor 
-        editorClassName='editor'
+        <div className='editor' onClick={focus}>
+          <Editor
+            editorKey="CustomInlineToolbarEditor"
+            editorState={editorState}
+            onChange={onChange}
+            plugins={plugins}
+            ref={(element) => {
+              editor.current = element;
+            }}
+          />
+          <InlineToolbar>
+          {
+            // may be use React.Fragment instead of div to improve perfomance after React 16
+            (externalProps) => (
+              <div>
+                <BoldButton {...externalProps} />
+                <ItalicButton {...externalProps} />
+                <UnderlineButton {...externalProps} />
+                <Separator {...externalProps} />
+                <HeadlinesButton {...externalProps} />
+                <UnorderedListButton {...externalProps} />
+                <OrderedListButton {...externalProps} />
+                <BlockquoteButton {...externalProps} />
+              </div>
+            )
+          }
+        </InlineToolbar>
+        </div>
+        {/* <Editor 
+        placeholder='... type your new post here...'
         editorState={editorState}
-        onEditorStateChange={onEditorStateChange} />
+        onChange={onEditorStateChange} 
+        wrapperClassName="wrapper-editor"
+        editorClassName="editor"
+        handleKeyCommand={handleKeyCommand}
+          /> */}
     </div>
   )
 }
