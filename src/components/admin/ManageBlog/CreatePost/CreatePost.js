@@ -1,12 +1,12 @@
-import React, { Component,
-  useEffect,
+import React, { 
   useMemo,
+  useEffect,
   useRef,
   useState } from 'react';
 import { db, storage } from '../../../../firebaseConfig';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
-import { EditorState, RichUtils, convertToRaw} from 'draft-js';
+import { RichUtils, convertToRaw} from 'draft-js';
 
 import Editor, { createEditorStateWithText } from '@draft-js-plugins/editor';
 import createInlineToolbarPlugin, { Separator } from '@draft-js-plugins/inline-toolbar';
@@ -14,27 +14,20 @@ import {
   ItalicButton,
   BoldButton,
   UnderlineButton,
-  CodeButton,
   HeadlineOneButton,
   HeadlineTwoButton,
   HeadlineThreeButton,
   UnorderedListButton,
   OrderedListButton,
   BlockquoteButton,
-  CodeBlockButton,
 } from '@draft-js-plugins/buttons';
-
 import './editorStyles.css';
-// import 'draft-js/dist/Draft.css';
-import './CreatePost.scss'
-import convertFromHTMLToContentBlocks from 'draft-js/lib/convertFromHTMLToContentBlocks';
 
 const text =
   'In this editor a toolbar shows up once you select part of the text …';
 
 export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
     const [postData, setPostData] = useState({});
-    // const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [editorState, setEditorState] = useState(() => createEditorStateWithText(''));
     const [imageUpload, setImageUpload] = useState(null);
     const [type, setType] = useState(null);
@@ -64,7 +57,6 @@ export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
 
     // headlines
     const HeadlinesPicker = (props) => {
-
       useEffect(() => {
         setTimeout(() => {
           window.addEventListener('click', onWindowClick);
@@ -87,7 +79,6 @@ export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
             { buttons.map((Button, i) => (
               // eslint-disable-next-line react/no-array-index-key
               <Button key={i} {...props} 
-              // onClick={handleClick()}
                />
             ))}
           </div>
@@ -121,8 +112,6 @@ export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
       
     }
 
-
-    //func-s below are mine
     const uploadFile = () => {
         if (imageUpload == null) return;
         const imageRef = ref(storage, `images/${imageUpload.name}`);
@@ -136,7 +125,6 @@ export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
           });
         });
         document.getElementById('inputImg').value = null;
-        // setEditorState({editorState})
     }
 
     useEffect(() => {
@@ -197,25 +185,6 @@ export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
         let year = newDate.getFullYear();
         return `${month<10?`0${month}`:`${month}`}${separator}${date}${separator}${year}`
     }
-
-    const onEditorStateChange = (editorState) => {
-        setEditorState(editorState)
-        setPostData({
-            ...postData,
-            // mainText: convertToRaw(editorState.getCurrentContent())
-            mainText: editorState
-        });
-    }
-
-    const handleKeyCommand = (command, editorState) => {
-      const newState = RichUtils.handleKeyCommand(editorState, command);
-      if (newState) {
-        this.onChange(newState);
-        return 'handled';
-      }
-      return 'not-handled';
-    }
-
 
   return (
     <div>
@@ -296,14 +265,6 @@ export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
           }
         </InlineToolbar>
         </div>
-        {/* <Editor 
-        placeholder='... type your new post here...'
-        editorState={editorState}
-        onChange={onEditorStateChange} 
-        wrapperClassName="wrapper-editor"
-        editorClassName="editor"
-        handleKeyCommand={handleKeyCommand}
-          /> */}
     </div>
   )
 }
