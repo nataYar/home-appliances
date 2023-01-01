@@ -10,27 +10,12 @@ import './ManageBlog.scss';
 
 export default function ManageBlog() {
     const [newPostModuleVisible, setNewPostModuleVisible] = useState(false)
-    const [articlesPending, setArticlesPending] = useState([]);
     const [articlesApproved, setArticlesApproved] = useState([]);
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
     const toggleNewPostVisibility = () => {
         setNewPostModuleVisible(!newPostModuleVisible)
     }
-
-    useEffect(() => {
-        const showPosts = onSnapshot(
-          collection(db, "blog"), 
-          (snapshot) => {
-            setArticlesPending(snapshot.docs.map(doc => 
-              ({ ...doc.data() })
-              )
-            )
-          },
-          (error) => {
-            console.log(error)
-          });
-      }, [])
 
       useEffect(() => {
         const showPosts = onSnapshot(
@@ -76,7 +61,6 @@ export default function ManageBlog() {
                         </div>
                         <Editor 
                         editorState={editorState} 
-                        // onEditorStateChange={onEditorStateChange} 
                         toolbarClassName='hide-toolbar'
                         readOnly={true}
                         />
@@ -87,9 +71,12 @@ export default function ManageBlog() {
     
     return (
     <div className='manage-blog_container'> 
-        <button className="button-standard" value="Add new article"
-        onClick={() => toggleNewPostVisibility()}
-        >Add new article</button>
+        {! newPostModuleVisible ? 
+          <button className="button-standard btn-add-blog" value="Add new article"
+          onClick={() => toggleNewPostVisibility()}
+          >Add new article</button>
+          : null
+        }
         { newPostModuleVisible ? < CreatePost postId={Date.now().toString()} toggleNewPostVisibility={toggleNewPostVisibility} /> : null }
          <div className='manage-blog_posts-container'>
             <h2>Your articles</h2>

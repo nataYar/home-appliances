@@ -112,7 +112,7 @@ export default function BlogPage() {
                 <p className='blog-page_brand'>{el.brand}</p>
                 <p className='blog-page_type'>{el.type}</p>
               </div>
-              <h3>{el.title}</h3>
+              <h2>{el.title}</h2>
               <div className='blog-page_img'>
                 <img src={el.imgSrc} />
               </div>

@@ -23,11 +23,10 @@
             box-shadow: .5rem .5rem hsl(47, 97%, 60%);
             padding: 2% 5%;
             border-radius: $radius;
-            h3 {
+            h2 {
                 color: $midBlue;
             }
             .blog-page_date { 
-                background-color: aqua;
                 @include standard-font-light();
                 font-size: $font-small;
                 text-align: end;

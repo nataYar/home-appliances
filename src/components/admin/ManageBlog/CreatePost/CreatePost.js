@@ -6,7 +6,7 @@ import React, {
 import { db, storage } from '../../../../firebaseConfig';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
-import { RichUtils, convertToRaw} from 'draft-js';
+import { convertToRaw} from 'draft-js';
 
 import Editor, { createEditorStateWithText } from '@draft-js-plugins/editor';
 import createInlineToolbarPlugin, { Separator } from '@draft-js-plugins/inline-toolbar';
@@ -21,7 +21,7 @@ import {
   OrderedListButton,
   BlockquoteButton,
 } from '@draft-js-plugins/buttons';
-import './editorStyles.css';
+import './editorStyles.scss';
 
 const text =
   'In this editor a toolbar shows up once you select part of the text …';
@@ -32,8 +32,8 @@ export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
     const [imageUpload, setImageUpload] = useState(null);
     const [type, setType] = useState(null);
     const [brand, setBrand] = useState(null);
-    
-    //code from pluging
+    const editor = useRef(null);
+
     const [plugins, InlineToolbar] = useMemo(() => {
       const inlineToolbarPlugin = createInlineToolbarPlugin();
       return [[inlineToolbarPlugin], inlineToolbarPlugin.InlineToolbar];
@@ -44,11 +44,7 @@ export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
         setEditorState(createEditorStateWithText(text));
     }, []);
 
-    const editor = useRef(null);
-
-    const onChange = (value) => {
-        setEditorState(value);
-    };
+    const onChange = (value) => { setEditorState(value); };
 
     const focus = () => {
         var _a;
@@ -67,7 +63,6 @@ export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
       }, []);
 
       const onWindowClick = () => {
-        console.log(props)
         // Call `onOverrideContent` again with `undefined`
         // so the toolbar can show its regular content again.
         props.onOverrideContent(undefined);
@@ -109,22 +104,6 @@ export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
             </button>
           </div>
         );
-      
-    }
-
-    const uploadFile = () => {
-        if (imageUpload == null) return;
-        const imageRef = ref(storage, `images/${imageUpload.name}`);
-        uploadBytes(imageRef, imageUpload)
-        .then((snapshot) => {
-          getDownloadURL(snapshot.ref).then((url) => {
-            setPostData({
-                ...postData,
-                imgSrc: url
-            });
-          });
-        });
-        document.getElementById('inputImg').value = null;
     }
 
     useEffect(() => {
@@ -151,32 +130,69 @@ export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
     const submitPost = (e) => {
         e.preventDefault()
         writePost();
-        uploadFile();
-        setPostData({
-            title: '', 
-        })
-        setImageUpload(null);
-        setType('');
-        setBrand('');
-        toggleNewPostVisibility()
+        cleanUp()
+    }
+   
+    const uploadFile = () => {
+      if (imageUpload == null) return;
+      const imageRef = ref(storage, `images/${imageUpload.name}`);
+      uploadBytes(imageRef, imageUpload)
+      .then((snapshot) => {
+        getDownloadURL(snapshot.ref).then((url) => {
+          const data = {
+            ...postData,
+            imgSrc: url
+          }
+          setDoc(doc(db, "blog", postId), data, {
+            merge: true
+        });
+        });
+        
+      });
     }
 
     const writePost = () => {
-      console.log(postData)
-      console.log({editorState})
-        const data = {
-            ...postData,
-            title: postData.title,
-            mainText: convertToRaw(editorState.getCurrentContent()),
-            brand: brand,
-            type: type,
-            time: getDate(),
-            postId: postId,
-        };
-        setDoc(doc(db, "blog", postId), data, {
-            merge: true
-        });
+      uploadFile();
+      const data = {
+          ...postData,
+          title: postData.title,
+          mainText: convertToRaw(editorState.getCurrentContent()),
+          brand: brand,
+          type: type,
+          // imgSrc: postData.imgSrc,
+          time: getDate(),
+          postId: postId,
+      };
+      setDoc(doc(db, "blog", postId), data, {
+          merge: true
+      });
     }
+
+    const cleanUp = () => {
+      console.log('clean up')
+
+      setPostData({
+        // imgSrc: null,
+        title: '', 
+        // brand: null,
+        // type: null
+      })
+      setImageUpload(null);
+      setType(null);
+      setBrand(null);
+      // setImgURL(null)
+      document.getElementById('inputImg').value = null;
+      toggleNewPostVisibility()
+    }
+
+    // useEffect(()=>{
+    //   console.log(imageUpload)
+    // }, [imageUpload])
+
+
+    useEffect(()=>{
+      console.log(postData.imgSrc)
+    }, [postData.imgSrc])
 
     function getDate(separator='-'){
         let newDate = new Date()
@@ -187,27 +203,31 @@ export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
     }
 
   return (
-    <div>
-        <form className="sc-form" onSubmit={submitPost} >
-            <div>
-                <button className="button-standard" type="submit" value="SEND">SEND</button>
+    <div className='create-post_container'>
+        <form className='sc-form' onSubmit={submitPost} >
+            <div className='create-post_container-btns'>
                 <button className="button-standard" value="CANCEL">CANCEL</button>
+                <button className="button-standard" type="submit" value="SEND">SEND</button>
             </div>
-            <textarea className="form-control" rows="10" placeholder="Title" 
+            <textarea className="form-control" rows="2" placeholder="Title" 
             name="title" 
             type="mainText"
             onChange={ (e) => updatePostInput(e) }
             value={ postData.title || '' }
             required
             />
-            <input type="file" id="inputImg" name="img" accept="image/*"
-            onChange={(e) => {
-                setImageUpload(e.target.files[0]);
-              }}
-              // required
-            />
             <div>
-                <label htmlFor="applianceTypes">Type: </label>
+              <p>Attach image: </p>
+              <input type="file" id="inputImg" name="img" accept="image/*"
+              onChange={(e) => {
+                  setImageUpload(e.target.files[0]);
+                }}
+                // required
+            />
+            </div>
+            
+            <div>
+                <label htmlFor="applianceTypes">Choose type: </label>
                 <select name="applianceTypes" id="selectType" onChange= { (e) => setType(e.target.value) }>
                     <option value="common mistakes">No type</option>
                     <option value="common mistakes">Common mistakes</option>
@@ -222,7 +242,7 @@ export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
             </div>
 
             <div>
-                <label htmlFor="applianceBrand">Filter by brand: </label>
+                <label htmlFor="applianceBrand">Choose brand: </label>
                 <select name="applianceBrand" id="selectBrand" onChange= { (e) => setBrand(e.target.value) }>
                     <option value="">No brand</option>
                     <option value="samsung">Samsung</option>
