@@ -41,7 +41,6 @@ export default function Blog() {
   return (
     <div className='blog-list__container'>
       { articles.map((el, key) => {
-         if (el.status == 'approved'){
             return (
               <div className='blog-list__item' key={key}> 
                 <div className='blog-list__img'>
@@ -57,9 +56,7 @@ export default function Blog() {
                     </div>
                 </div>
             </div>
-            ) } else {
-              return 
-            }
+            ) 
         })
       }
     </div>

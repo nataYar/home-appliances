@@ -147,7 +147,6 @@ export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
             merge: true
         });
         });
-        
       });
     }
 
@@ -159,7 +158,6 @@ export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
           mainText: convertToRaw(editorState.getCurrentContent()),
           brand: brand,
           type: type,
-          // imgSrc: postData.imgSrc,
           time: getDate(),
           postId: postId,
       };
@@ -169,30 +167,15 @@ export default function CreatePost ({ postId, toggleNewPostVisibility  }) {
     }
 
     const cleanUp = () => {
-      console.log('clean up')
-
       setPostData({
-        // imgSrc: null,
         title: '', 
-        // brand: null,
-        // type: null
       })
       setImageUpload(null);
       setType(null);
       setBrand(null);
-      // setImgURL(null)
       document.getElementById('inputImg').value = null;
       toggleNewPostVisibility()
     }
-
-    // useEffect(()=>{
-    //   console.log(imageUpload)
-    // }, [imageUpload])
-
-
-    useEffect(()=>{
-      console.log(postData.imgSrc)
-    }, [postData.imgSrc])
 
     function getDate(separator='-'){
         let newDate = new Date()

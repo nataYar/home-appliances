@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../../../firebaseConfig';
-import { collection, doc, onSnapshot, setDoc } from "firebase/firestore";
+import { collection, doc, onSnapshot, setDoc, deleteDoc } from "firebase/firestore";
 import './ManageTestimonials.scss';
 
 export default function ManageTestimonials() {
@@ -36,9 +36,8 @@ export default function ManageTestimonials() {
       city: el.city,
       text: el.text,
       date: el.date,
-      // status: 'deleted',
     };
-    setDoc(doc(db, "testimonials", el.phoneNumber), data);
+    deleteDoc(doc(db, "testimonials", el.phoneNumber), data);
   }
 
   return (
@@ -48,7 +47,7 @@ export default function ManageTestimonials() {
         testimonialsArr.map((el, key) => {
           return (
             <div key={key} id='comment' className={el.status == 'approved' ? 'approved' :
-            el.status == 'deleted' ? 'deleted' : 'pending' } > 
+            'pending' } > 
               <p>TEXT: {el.text} </p>
               <p>NAME: {el.name}</p>
               <p>CITY: {el.city} </p>
