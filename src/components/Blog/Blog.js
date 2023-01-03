@@ -3,8 +3,9 @@ import { db } from '../../firebaseConfig';
 import { collection, onSnapshot } from "firebase/firestore";
 import './Blog.scss';
 
-export default function Blog() {
+export default function Blog( numOfArticles ) {
   const [articles, setArticles] = useState([]);
+  const [sixArticles, setSixArticles] = useState([])
 
   useEffect(() => {
     const displayArticles = onSnapshot(
@@ -19,6 +20,10 @@ export default function Blog() {
         console.log(error)
       });
   }, [])
+
+  useEffect(()=> {
+    setSixArticles(articles.slice(0, 5))
+  }, [articles])
   
   // useEffect(() => {
   //     const displayArticles = onSnapshot(

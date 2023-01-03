@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { CommentForm } from '../importsComponents';
+import React, { useEffect, useState, lazy } from 'react';
 import { db } from '../../firebaseConfig';
 import { collection, onSnapshot } from "firebase/firestore";
-// import { FaTimes, FaRegPaperPlane } from 'react-icons/fa';
-
 import './Testimonials.scss';
 import './Testimonials-mq.scss';
-
+const CommentForm  = lazy(() => import('../CommentForm/CommentForm'));
 
 export default function Testimonials() {
     const [testimonials, setTestimonials] = useState([]);
     const [commentForm, setCommentForm] = useState(false);
-    const [commentAdded, setCommentAdded] = useState(false)
+    const [commentAdded, setCommentAdded] = useState(false);
+    const [sixPosts, setSixPosts] = useState([])
 
     useEffect(() => {
       const displaytestimonials = onSnapshot(
@@ -23,6 +21,10 @@ export default function Testimonials() {
           console.log(error)
         });
     }, [])
+
+    useEffect(()=> {
+      setSixPosts(testimonials.slice(0, 6))
+    }, [testimonials])
     
   const toggleCommentForm = () => {setCommentForm(!commentForm) }
 
@@ -30,8 +32,8 @@ export default function Testimonials() {
 
   return (
     <div className='testimonials-container'>
-      { testimonials ?
-        testimonials.map((el, key) => {
+      { sixPosts ?
+        sixPosts.map((el, key) => {
           if (el.status == 'approved'){
             return (
               <div className="reference-container" key={key}> 
@@ -58,14 +60,6 @@ export default function Testimonials() {
       </button>
       
       <CommentForm commentForm={commentForm} callbackToggleCommentForm={toggleCommentForm} callbackCommentAdded={commentAddedFn}/> 
-      {
-        commentAdded ? 
-        <div className='comment-added'>
-          <p >Thanks for your comment! It will shortly be added to the website</p>
-        </div>
-      : null
-      }
-      
     </div>
   )
 }

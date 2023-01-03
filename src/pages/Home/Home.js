@@ -136,7 +136,7 @@ export default function Home() {
        <section id="blog" className='blog'>
         <h2>Blog</h2> 
         <div>
-          <Blog />
+          <Blog numOfArticles='5' />
         </div>
         <button className='button-standard' onClick={() => navigate('/blog')}>SEE ALL ARTICLES</button>
       </section>

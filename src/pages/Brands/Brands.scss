@@ -5,6 +5,7 @@
     @include standard-font(); 
     color: $yellow;
     background-color: $darkBlue;
+    min-height: 100vh;
     height: auto;
     padding: 10vh 0%;
     width: 100%;

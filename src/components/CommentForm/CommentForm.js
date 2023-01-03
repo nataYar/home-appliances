@@ -6,15 +6,15 @@ import { db } from '../../firebaseConfig';
 import {  doc, setDoc } from "firebase/firestore";
 
 export default function CommentForm({ commentForm, callbackToggleCommentForm, callbackCommentAdded }) {
-    const [comment, setComment] = useState({})
-    
+    const [comment, setComment] = useState({city: 'Brooklyn'})
+
     const updateCommentInput = e => {
         setComment({
             ...comment,
             [e.target.name]: e.target.value,
             [e.target.phoneNumber]: comment.phoneNumber,
             [e.target.text]: e.target.text,
-            [e.target.city]: e.target.value,
+            // [e.target.city]: e.target.value,
       })
     }
 
@@ -38,7 +38,7 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
             city: comment.city,
             text: comment.text,
             date: getCurrentDate(),
-            status: 'upapproved'
+            status: 'unapproved'
         };
         setDoc(doc(db, "testimonials", comment.phoneNumber ), docData);
     }
@@ -79,11 +79,12 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
     <section className={commentForm ? 'schedule-call-container' : 'schedule-call-container hidden' }>
         
         <div className="sc-header">
-            <button className="sc-btn" onClick={() => callbackToggleCommentForm()}  >
+            <button  className="cf-btn" onClick={() => callbackToggleCommentForm()}  >
                 <FaTimes />
             </button>
             <h2>We appreciate your comment</h2>
         </div>
+      
         <div className="sc-wrapper">
             <form className="sc-form"
             onSubmit={(e) => handleCommentSubmit(e)}>
@@ -93,26 +94,59 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
                     onChange={(e) => updateCommentInput(e)}
                     value={comment.name || ''} 
                     required />
-
+                    
+                    <p className='light-font'>(Phone number will not be displayed in a comment)</p>
                     <input className="form-control" type="text" placeholder="PHONE NUMBER" 
                     name="phoneNumber" 
                     onChange={(e) => getPhoneNum(e)}
                     value={comment.phoneNumber || ''} 
                     required />
+                    
 
-                    <input className="form-control" type="text" placeholder="CITY" 
+                    {/* <input className="form-control" type="text" placeholder="CITY" 
                     name="city" 
                     onChange={(e) => updateCommentInput(e)}
                     value={comment.city || ''} 
                     required />
+                     */}
 
-                    <textarea className="form-control form-control__message" rows="10" placeholder="WANT TO ADD A text?" 
+                    
+                    {/* <div className='filter-city_container'>
+                        <label className='light-font' htmlFor="nyNeighbourhood">Borough: </label>
+                        <div className='filter-city'>
+                            <select name="nyNeighbourhood" id="nyNeighbourhood" 
+                            defaultValue='Brooklyn'
+                            onChange= { (e) => setComment({ ...comment, city: e.target.value }) }>
+                                <option value="Bronx">Bronx</option>
+                                <option value="Brooklyn" >Brooklyn</option>
+                                <option value="Manhattan">Manhattan</option>
+                                <option value="Queens">Queens</option>
+                                <option value="Staten Island">Staten Island</option>
+                            </select>
+                        </div>
+                    </div> */}
+                    <div className='form-control__phone' id ='filter-city_container'>
+                        <p>BOROUGH: </p>
+                        <select name="nyNeighbourhood" id="nyNeighbourhood" 
+                            defaultValue='Brooklyn'
+                            onChange= { (e) => setComment({ ...comment, city: e.target.value }) }>
+                            <option value="Bronx">Bronx</option>
+                            <option value="Brooklyn" >Brooklyn</option>
+                            <option value="Manhattan">Manhattan</option>
+                            <option value="Queens">Queens</option>
+                            <option value="Staten Island">Staten Island</option>
+                        </select>
+                    </div>
+                    
+
+                    <textarea className="form-control" rows="2" placeholder="WANT TO ADD A TEXT?" 
                     name="text" 
                     type="text"
                     onChange={(e) => updateCommentInput(e)}
                     value={comment.text || ''}
                     />
                 </div>
+                
                 <button className="button-standard" id="submit" type="submit" value="SEND">SEND</button>
             </form>
         </div>

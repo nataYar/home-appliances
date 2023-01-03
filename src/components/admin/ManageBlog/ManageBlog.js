@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { CreatePost} from '../../importsComponents';
+import React, { useState, useEffect, lazy } from 'react';
 import { db } from '../../../firebaseConfig';
 import { collection, onSnapshot, deleteDoc, doc } from "firebase/firestore";
-import { EditorState, convertFromRaw } from 'draft-js';
-import { Editor } from 'react-draft-wysiwyg';
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-
+import { Editor,  EditorState, convertFromRaw } from 'draft-js';
 import './ManageBlog.scss';
+const CreatePost = lazy(() => import('../ManageBlog/CreatePost/CreatePost'));
 
 export default function ManageBlog() {
     const [newPostModuleVisible, setNewPostModuleVisible] = useState(false)
     const [articlesApproved, setArticlesApproved] = useState([]);
-    const [editorState, setEditorState] = useState(EditorState.createEmpty());
-
+    
     const toggleNewPostVisibility = () => {
         setNewPostModuleVisible(!newPostModuleVisible)
     }

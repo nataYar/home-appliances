@@ -1,28 +1,59 @@
 @import "../../Styles/Variables.scss";
-
-    .cf-header {
-        // display: flex;
-        // flex-flow: column nowrap;
-        // justify-content: space-around;
-        // align-items: baseline;
-        h2 {
-          text-transform: uppercase;
-          color:#000;
-          
-        }
-        .cf-btn { 
-            opacity: 1;
-            background-color: transparent;
-            border: none;
-            outline: none;
-            position: relative;
-            height: 2rem;
-            width: 2rem;
-            float: right;
-            // top: 2rem;
-            // right: 2rem;
-            // display: inline-block;
-            // right: 5%;
-            color: $midBlue;
+  *:focus {
+    outline: 0;
+  }
+  .sc-header {
+      display: flex;
+      flex-flow: column nowrap;
+      // justify-content: space-around;
+      // align-items: baseline;
+      h2 {
+        text-transform: uppercase;
+        color:#000;
+        
+      }
+      .cf-btn { 
+          align-self: flex-end;
+          opacity: 1;
+          background-color: transparent;
+          border: none;
+          outline: none;
+          position: inherit;
+          height: 2rem;
+          width: 2rem;
+          color: $midBlue;
+          @include cross-btn($color: $midBlue);
+          margin-bottom: 1rem;
+      }
+    }
+    #filter-city_container {
+      justify-content: flex-start;
+      padding: 2% 0% 2% 5%;
+      align-items: baseline;
+      p {
+        box-sizing: border-box;
+        letter-spacing: normal;
+        width: 50%;
+        @include standard-font;
+      }
+      select {
+        box-sizing: border-box;
+        display: block;
+        width: 45%;
+        border-radius: 10px;
+        padding: 2%;
+        @include standard-font-light;
+        text-transform: uppercase;
+        &:after {
+          color: #fff;
+          background: #cfdcff;
         }
       }
+    }
+    .light-font {
+      @include standard-font-light;
+      text-align:center
+    }
+    .standard-font{
+      @include standard-font;
+    }

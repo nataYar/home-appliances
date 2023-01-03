@@ -121,9 +121,6 @@ export default function BlogPage() {
               <p className='blog-page_date'>{el.time}</p>
             </div>
             )
-        // }else {
-        //   return 
-        // }
         })
       }
       </div>

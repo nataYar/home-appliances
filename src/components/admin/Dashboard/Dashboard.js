@@ -1,11 +1,13 @@
-import React, {useState} from 'react';
+import React, { useState, lazy } from 'react';
 import './Dashboard.scss';
-import { ManageTestimonials, ManageBlog } from '../../importsComponents'
+const ManageTestimonials = lazy(() => import('../ManageTestimonials/ManageTestimonials'));
+const ManageBlog= lazy(() => import('../ManageBlog/ManageBlog'));
 
 export default function Dashboard() {
     const [testimonialsVisible, setTestimonialsVisible] = useState(false)
     const [blogVisible, setBlogVisible] = useState(false)
-
+   
+    
     const toggleTestimonials = () => {
       setTestimonialsVisible(!testimonialsVisible);
       setBlogVisible(false)

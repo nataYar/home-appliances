@@ -1,9 +1,9 @@
-import React,  { useEffect, useState }  from 'react';
+import React,  { useEffect, useState, lazy }  from 'react';
 import './Login.scss';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebaseConfig';
 import { useLocalStorage } from 'usehooks-ts';
-import { Dashboard } from '../../components/importsComponents';
+const Dashboard = lazy(() => import('../../../src/components/admin/Dashboard/Dashboard'));
 
 export default function Login() {
     const [email, setEmail] = useState('')
