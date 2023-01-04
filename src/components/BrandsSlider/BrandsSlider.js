@@ -11,6 +11,7 @@ export default function BrandsSlider() {
         brands.map((el , key)=> (
           <div className='brand-img-container' key={key}>
             <img
+            alt='brand name'
               src={el}
               key={el}
             />

@@ -45,13 +45,13 @@ export default function Blog( numOfArticles ) {
 
   return (
     <div className='blog-list__container'>
-      { articles.map((el, key) => {
+      { sixArticles.map((el, key) => {
             return (
               <div className='blog-list__item' key={key}> 
                 <div className='blog-list__img'>
                   <img 
                   src={el.imgSrc}
-                  alt='appliance image'/>
+                  />
                 </div>
                 <div className='blog-list__text'>
                   <div className=''>{el.title} </div>

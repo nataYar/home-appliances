@@ -5,14 +5,14 @@
     .sc-button {
         font-size: 1.3rem;
     }
-    section h2{
+    section h2 {
         // font-size: $font-big;
         font-size: 3rem;
     }
     //INTRO SECTION
     .home-container {
         .section-home-intro {
-            height: 60vh;
+            height: 70vh;
             background-image: url("../../Images/backgrounds/bb1024_120kb.webp");
             .section-home-intro-text{  
                 h1 {
@@ -26,8 +26,28 @@
     }
 
     section.badges {
+        @include flex-column-center();
+        height: 20vh;
+        overflow-y: hidden;
+        position: relative;
+        z-index: 99;
+        // background-color: chartreuse;
+        .badges-container {
+            width: 60%;
+            padding: 2% 0%;
+            div {
+                height: 2.5rem;
+                width: 2.5rem;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+        }
         h3 {
-            font-size: $font-mid;
+            font-size: $font-regular;
+            // margin: 0%;
         }
     }
     // HOW IT WORKS section 
@@ -46,7 +66,8 @@
     }
 
     section.section-benefits {
-        // font-size: $font-big;
+        position: relative;
+        z-index: 99;
         .benefits-list {
             li {
                 .benefits-list_text {
@@ -61,7 +82,6 @@
             }
         }
     }
-
 
     //SERVICES
     section.services{
@@ -98,6 +118,97 @@
             text-transform: uppercase
         }
     }
+}
 
-    
+@media screen and (min-width: 1024px) {
+    section.howItWorks {
+        @include flex-column-center;
+        height: 50vh;
+        padding: 10% 0%;
+        width: 100%;
+        background-image: url('../../Images/backgrounds/darkBG.webp');
+
+        h2 {
+            color: $yellow;
+            margin: 0%;
+            padding: 0%;
+            padding-bottom: 3rem;
+        }
+        .howItWorks_content { 
+            width: 100%;
+            > div {
+                background-color: none;
+                @include flex-column-center;
+                color: $yellow;
+                // background-color: aqua;
+                // margin: 0%;
+                padding: 0%;
+                padding-bottom: 2rem;
+                .headerHIW {
+                    font-weight: 700;
+                    font-size: $font-regular;
+                    text-transform: uppercase;
+                    margin: 0%;
+                    padding: 0%;
+                }
+                .numberHIW{
+                    @include fancy-font();
+                    display: inline-block;
+                    margin-bottom: 1rem;
+                    width: 60px;
+                    font-size: 44px;
+                    background-color: $midBlue;
+                    font-weight: 700 !important;
+                    border-radius: 50px;
+                    color: white;
+                    text-align: center;
+                }
+                .textHIW {
+                    width:50%;
+                    font-size: $font-regular;
+                    color: #fff;
+                    display: inline;
+                    text-align: center;
+                    margin: 0%;
+                    padding: 0%;
+                }
+            }
+        }
+    }
+
+    section.section-benefits {
+        @include flex-column-center;
+        @include section($height: 60vh);
+        background-color: $yellow;
+        color: $darkBlue;
+        
+        .benefits-list {
+            @include flex-column-center($direction: row);
+            height: auto;
+            padding-left: 0%;
+            margin-left: 0%;
+            li {
+                @include flex-column-center();
+                width: 30%;
+                height: auto;
+                padding-left: 0%;
+                margin-left: 0%;
+                .benefits-list_img-wrapper{
+                    // display: block;
+                    // height: 4rem;
+                    width: auto;
+                    padding: 0% 5%;
+                    img {
+                        width: auto;
+                        height: 100%;
+                    }
+                }
+                .benefits-list_text {
+                    padding: 0% 1%;
+                    width: 90%;
+                    text-align: center;
+                }
+            }
+        }
+    }
 }

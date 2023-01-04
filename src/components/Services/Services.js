@@ -49,7 +49,7 @@ export default function Services() {
                 {/* <button className='button-standard' onClick={() => navigate(el.link)}>LEARN MORE</button> */}
                 <div className='service-box_small-img-container'>
                   <img className='' 
-                  src={`${el.img}`} alt="service picture" />
+                  src={`${el.img}`} />
                 </div>
             </div>
           )

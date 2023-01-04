@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState} from 'react';
 import './ScheduleCallForm.scss';
 import { FaTimes } from 'react-icons/fa';
 import { Axios, db } from '../../firebaseConfig';
@@ -52,7 +52,7 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
 
 
     return (
-        <section className={scheduleFormVisible ? 'schedule-call-container' : 'schedule-call-container hidden' }>
+        <section className={scheduleFormVisible ? 'schedule-call-container' : 'schedule-call-container hiddenToRight' }>
             <div className='sc-header'>
                 <h2>Contact us</h2>
                 <button className="sc-btn" onClick={() => closeScheduleCallForm()} >

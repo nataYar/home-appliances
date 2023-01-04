@@ -39,7 +39,7 @@ export default function ManageBlog() {
                     <div className='blog-page_post' key={ind}>
                         <div className='buttons'>
                             <button 
-                            className="button-standard" role="button"
+                            className="button-standard"
                             onClick={ () => deletePost(el)}
                             >
                             DELETE

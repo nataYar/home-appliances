@@ -1,5 +1,4 @@
 // Import the functions you need from the SDKs you need
-import firebase from 'firebase/app'; // doing import firebase from 'firebase' or import * as firebase from firebase is not good practice.
 import 'firebase/auth';
 import 'firebase/database'
 import { initializeApp } from "firebase/app";

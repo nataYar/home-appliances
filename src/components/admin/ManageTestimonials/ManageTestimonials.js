@@ -60,7 +60,7 @@ export default function ManageTestimonials() {
       {
         testimonialsSorted.map((el, key) => {
             return (
-              <div key={key} id='comment' className={el.status == 'approved' ? 'approved' :
+              <div key={key} id='comment' className={el.status === 'approved' ? 'approved' :
               'pending' } > 
                 <p>TEXT: {el.text} </p>
                 <p>NAME: {el.name}</p>
@@ -70,13 +70,13 @@ export default function ManageTestimonials() {
                 {/* <p>{el.time} </p> */}
                 <div className='buttons'>
                   <button 
-                  className="button-standard" role="button"
+                  className="button-standard" 
                   onClick={ () => deleteFn(el)}
                   >
                   delete
                   </button>
                   <button 
-                  className="button-standard" role="button"
+                  className="button-standard"
                   onClick={() => approveFn(el) }
                   >
                   approve

@@ -33,10 +33,10 @@ export default function BlogPage() {
     function defineFilter(e){
       const filterByType = document.getElementById("filterByType");
       const filterByBrand = document.getElementById("filterByBrand");
-      if (e.target == filterByBrand) {
+      if (e.target === filterByBrand) {
           setFilterBrand(e.target.value.toLowerCase());
       }
-      if (e.target == filterByType) {
+      if (e.target === filterByType) {
         setFilterType(e.target.value.toLowerCase());
         handleFilter();
       } 
@@ -114,7 +114,8 @@ export default function BlogPage() {
               </div>
               <h2>{el.title}</h2>
               <div className='blog-page_img'>
-                <img src={el.imgSrc} />
+                <img src={el.imgSrc} alt=''
+                />
               </div>
               <Editor editorState={editorState} readOnly={true}
               />

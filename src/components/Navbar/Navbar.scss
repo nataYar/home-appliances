@@ -14,44 +14,95 @@
     justify-content: space-evenly;
     background-color: $midBlue;
     box-shadow: $shadow;
-    a.logo{
-        text-decoration: none;
-        height: 2rem;
-    }
-    a.logo:link {
-        text-decoration: none;
-    }
-    a.logo:hover {
-        text-decoration: none;
-    }
-    .nav-btn {
-        background-color: transparent;
-        border: none;
-        outline: none;
-        color: $yellow;
-        svg {
-            height: 2rem;
-            width: 2rem;
-        }
-    }
+    .nav-mob{
+        @include standard-font();
+        position: fixed;
+        z-index: 11111;
+        top: 0;
+        left: 0;
+        height: 7vh;
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: $midBlue;
+        box-shadow: $shadow;
 
-    .menu-btn{
-        background-color: transparent;
-        border: none;
-        outline: none;
-        color: $yellow;
-        svg {
+        a.logo{
+            text-decoration: none;
             height: 2rem;
-            width: 2rem;
+            &:link {
+                text-decoration: none;
+            }
+            &:hover {
+                text-decoration: none;
+            }
         }
-    }
-    .responsive-nav {
-        transform: none;
-        padding-top: 2rem;
+        
         .nav-btn {
-            font-size: $font-big;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            color: $yellow;
+            svg {
+                height: 2rem;
+                width: 2rem;
+            }
+        }
+    
+        .menu-btn {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            color: $yellow;
+            svg {
+                height: 2rem;
+                width: 2rem;
+            }
+        }
+    
+        .phone-container {
+            height: 100%;
+            width: 55%;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
+            div {
+                border: none;
+                font-size: $font-small;
+                animation: pulse 1.5s infinite;
+                background-color: transparent;
+            }
+            .phone-icon {
+                position: relative;
+                top: 2px;
+                margin-right: .5rem;
+                background-color: transparent;
+                color: $lightGray;
+            }
+            a {
+                text-decoration: none;
+                font-size: $font-small;
+                color: $yellow;
+                h3{
+                    @include standard-font-light();
+                }
+            }
         }
     }
+    
+}
+
+.navbar {
+    position: absolute;
+    @include hide-animation();
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $lightGray;
     .nav-link {
         font-size: $font-mid;
         margin-bottom: 2rem;
@@ -72,47 +123,6 @@
     }
 }
 
-.navbar {
-    position: absolute;
-    @include hide-animation();
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: $lightGray;
-}
-
-
-.phone-container {
-    height: 100%;
-    width: 55%;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    div {
-        border: none;
-        font-size: $font-small;
-        animation: pulse 1.5s infinite;
-        background-color: transparent;
-    }
-    a {
-        text-decoration: none;
-        font-size: $font-small;
-        color: $yellow;
-        h3{
-            @include standard-font-light();
-        }
-    }
-}
-
-.phone-icon {
-    position: relative;
-    top: 2px;
-    margin-right: .5rem;
-    background-color: transparent;
-    color: $lightGray;
-}
 
 #nav-close-btn {
     color: $darkYellow;
@@ -131,43 +141,75 @@
     100% { transform: scale(1); }
   }
 
-@media only screen and (min-width: 1024px) {
-    .nav-header {
-        z-index: 99;
-        height: 7vh;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-right: 60%;
-        width: 40%;
-        padding-left: 5%;
 
-        .responsive-nav {
-            padding-top: 0rem;
+.nav-desktop{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    .sc-button{
+        font-size: $font-small;
+    }
+    .nav-link {
+        margin-right: 1rem;
+        font-size: $font-small;
+        padding: .5rem;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: $lightGray;
+        font-weight: 400;
+        &:hover{
+        background-color: $darkYellow;
+        border-radius: $radius;
         }
-        .nav-btn {
-            visibility: hidden;
-            opacity: 0;
+        &:focus {
+            outline: none;
+          }
+    }
+    .selected {
+        background-color: $yellow;
+        border-radius: $radius;
+    }
+    .menu-btn {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: $yellow;
+        height: 2rem;
+            width: 2rem;
+        svg {
+            height: 100%;
+            width: 100%;
         }
     }
-
-    .navbar {
-        background-color: $midBlue;
-        position: fixed;
-        z-index: 100;
-        transform: none;
-        top: 0;
-        left: 40%;
-        height: 7vh;
-        width: 60%;
-        padding-right: 10%;
+    .phone-container {
+        height: 100%;
+        width: auto;
         display: flex;
         flex-flow: row nowrap;
-    }
-
-    .nav-link {
-        cursor: pointer;
-        font-size: 1rem;
-        padding: 2rem;
+        justify-content: center;
+        align-items: center;
+        div {
+            border: none;
+            font-size: $font-small;
+            animation: pulse 1.5s infinite;
+            background-color: transparent;
+        }
+        .phone-icon {
+            position: relative;
+            top: 2px;
+            margin-right: .5rem;
+            background-color: transparent;
+            color: $lightGray;
+        }
+        a {
+            text-decoration: none;
+            font-size: $font-small;
+            color: white;
+            h3{
+                @include standard-font-light();
+            }
+        }
     }
 }

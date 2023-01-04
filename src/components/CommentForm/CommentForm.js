@@ -14,7 +14,6 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
             [e.target.name]: e.target.value,
             [e.target.phoneNumber]: comment.phoneNumber,
             [e.target.text]: e.target.text,
-            // [e.target.city]: e.target.value,
       })
     }
 
@@ -57,11 +56,11 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
             {
               if ( g1.length ) {
                 output += g1;
-                if ( g1.length == 3 ) {
+                if ( g1.length === 3 ) {
                     output += ")";
                     if ( g2.length ) {
                         output += " " + g2; 
-                        if ( g2.length == 3 ) {
+                        if ( g2.length === 3 ) {
                             output += "-";
                             if ( g3.length ) {
                                 output += g3;
@@ -76,7 +75,7 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
     } 
 
     return (
-    <section className={commentForm ? 'schedule-call-container' : 'schedule-call-container hidden' }>
+    <section className={commentForm ? 'schedule-call-container' : 'schedule-call-container hiddenToRight' }>
         
         <div className="sc-header">
             <button  className="cf-btn" onClick={() => callbackToggleCommentForm()}  >

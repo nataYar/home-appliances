@@ -10,7 +10,7 @@ $darkYellow: #f0b400;
 // $lightYellow: #f9e07e;
 $lightGray: #e5e5e5;
 
-$font-small: .9rem;
+$font-small: .8rem;
 $font-regular: 1rem;
 $font-mid: 1.5rem;
 $font-big: 2.4rem;
@@ -95,11 +95,15 @@ $radius: 1.5rem;
 
 .margin-top {margin-top: 5%;}
 
-.hidden {
-    transform: translateX(100vw);
-    left: 100vw;
-    transition: .6s ease-in;
-  }
+.hide {
+  display: none;
+}
+
+.hiddenToRight {
+  transform: translateX(100vw);
+  left: 100vw;
+  transition: .6s ease-in;
+}
 // STANDARD ELEMENTS
   .button-standard {
     @include standard-font();
@@ -182,5 +186,15 @@ $radius: 1.5rem;
     }
     &:-moz-placeholder { /* Firefox 18- */
       @include standard-font();
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    .sc-button {
+        font-size: 1.3rem;
+    }
+    section h2 {
+        // font-size: $font-big;
+        font-size: 3rem;
     }
   }

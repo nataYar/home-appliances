@@ -34,7 +34,7 @@ export default function Testimonials() {
     <div className='testimonials-container'>
       { sixPosts ?
         sixPosts.map((el, key) => {
-          if (el.status == 'approved'){
+          if (el.status === 'approved'){
             return (
               <div className="reference-container" key={key}> 
                 <div>{el.text}</div> 
@@ -53,7 +53,7 @@ export default function Testimonials() {
       }
 
       <button 
-        className="button-standard" role="button"
+        className="button-standard"
         onClick={
         () => toggleCommentForm() }>
         add comment

@@ -64,7 +64,6 @@
     // background: linear-gradient( 45deg,#ff7300, $yellow, #48ff00, $darkBlue, #00ffd5, #ff7300 ); 
     // background: linear-gradient( 45deg,#ff7300, $yellow, #48ff00, $darkBlue, #00ffd5, #ff7300 ); 
     // background: linear-gradient( 45deg,#ff7300, $yellow, #48ff00, $darkBlue, #00ffd5, #ff7300 ); 
-
     background-color: #ff7300; /* fallback color if gradients are not supported */
     background-image: -webkit-linear-gradient( 45deg,#ff7300, $yellow, #48ff00, $darkBlue, #00ffd5, #ff7300 );  /* For Chrome 25 and Safari 6, iOS 6.1, Android 4.3 */
     background-image: -moz-linear-gradient( 45deg,#ff7300, $yellow, #48ff00, $darkBlue, #00ffd5, #ff7300 );  /* For Firefox (3.6 to 15) */
@@ -157,8 +156,8 @@ section.section-benefits {
     @include section();
     background-color: $yellow;
     color: $darkBlue;
-    position: relative;
-    z-index: 100;
+    // position: relative;
+    // z-index: 100;
     .benefits-list {
         @include flex-column-center($align: flex-start);
         height: auto;
@@ -205,6 +204,7 @@ section h2 {
     text-align: center;
 }
 
+
 section.howItWorks {
     @include flex-column-center;
     height: auto;
@@ -213,6 +213,20 @@ section.howItWorks {
     background-image: url('../../Images/backgrounds/darkBG.webp');
     background-size: cover;
     background-position-x: 35%;
+    // .parallax {
+    //     /* The image used */
+    //     background-image: url('../../Images/backgrounds/darkBG.webp');
+      
+    //     /* Set a specific height */
+    //     min-height: 500px;
+      
+    //     /* Create the parallax scrolling effect */
+    //     background-attachment: fixed;
+    //     background-position: center;
+    //     background-repeat: no-repeat;
+    //     background-size: cover;
+    //   }
+
     h2 {
         color: $yellow;
     }

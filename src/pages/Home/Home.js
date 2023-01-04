@@ -1,10 +1,10 @@
-import React, { useState, lazy } from 'react';
+import React, { useState, useEffect, lazy } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.scss';
 import './Home-mq.scss';
 import { default as mask } from './bagdes/mask.svg';
 import { default as gloves } from './bagdes/gloves.svg';
-
+import Navbar from '../../components/Navbar/Navbar';
 const Services = lazy(() => import('../../components/Services/Services'));
 const ScheduleCallForm = lazy(() => import('../../components/ScheduleCallForm/ScheduleCallForm'));
 const BrandsSlider = lazy(() => import('../../components/BrandsSlider/BrandsSlider'));
@@ -13,6 +13,7 @@ const Blog = lazy(() => import('../../components/Blog/Blog'));
 
 export default function Home() {
   const [scheduleFormVisible, setScheduleFormVisible] = useState(false);
+  const size = useWindowSize();
 
   const navigate = useNavigate();
 
@@ -20,18 +21,45 @@ export default function Home() {
     setScheduleFormVisible(!scheduleFormVisible)
   }
 
+
+  function useWindowSize() {
+    const [windowSize, setWindowSize] = useState({
+      width: undefined,
+      height: undefined,
+    });
+    useEffect(() => {
+      // Handler to call on window resize
+      function handleResize() {
+        // Set window width/height to state
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      }
+      // Add event listener
+      window.addEventListener("resize", handleResize);
+      // Call handler right away so state gets updated with initial window size
+      handleResize();
+      // Remove event listener on cleanup
+      return () => window.removeEventListener("resize", handleResize);
+    }, []); // Empty array ensures that effect is only run on mount
+    return windowSize;
+  }
+
+
+
   return (
     <div id='home' className='home-container'>
+       <Navbar windowSize={size.width} callbackCloseScheduleForm={ openScheduleCallForm } />
       {/* INTRO_____________________________________ */}
-      <section className='section-home-intro'  
-      >
-        <div className='section-home-intro-text'
-        >
+      <section className='section-home-intro'>
+       
+        <div className='section-home-intro-text'>
           <h1>CITY TECH</h1>
           <h3>appliance repair</h3>
         </div>
         <button 
-         className="sc-button" role="button"
+         className="sc-button hide"
           onClick={e => openScheduleCallForm(e)} 
         >Schedule A Call</button>
         <ScheduleCallForm scheduleFormVisible={scheduleFormVisible} callbackCloseScheduleForm={openScheduleCallForm } />
@@ -40,22 +68,22 @@ export default function Home() {
       <section className='badges'>
         <div className='badges-container'>
           <div>
-            <img className='badge-about-us' 
+            <img className='badge-about-us' alt=''
             src={require('./bagdes/vaccine.png')}
             />
           </div>
           <div>
-            <img className='badge-about-us mask' 
+            <img className='badge-about-us mask' alt=''
               src={mask} 
               />
           </div>
           <div>
-            <img className='badge-about-us shoecover' 
+            <img className='badge-about-us shoecover' alt=''
             src={require('./bagdes/shoecover.png')} 
             />
           </div>
           <div>
-            <img className='badge-about-us gloves'
+            <img className='badge-about-us gloves' alt=''
             src={gloves} 
             />
           </div>
@@ -228,7 +256,7 @@ export default function Home() {
           <a href="tel:+19292977775">(929) 297-7775</a>
         </div>
         <button 
-         className="sc-button contacts-button" role="button"
+         className="sc-button contacts-button"
           onClick={e => openScheduleCallForm(e)} 
         >Schedule a call</button>
       </section>
