@@ -3,7 +3,7 @@ import { db } from '../../../firebaseConfig';
 import { collection, onSnapshot, deleteDoc, doc } from "firebase/firestore";
 import { Editor,  EditorState, convertFromRaw } from 'draft-js';
 import './ManageBlog.scss';
-const CreatePost = lazy(() => import('../ManageBlog/CreatePost/CreatePost'));
+import { CreatePost } from '../../importsComponents'
 
 export default function ManageBlog() {
     const [newPostModuleVisible, setNewPostModuleVisible] = useState(false)

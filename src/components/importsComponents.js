@@ -5,3 +5,5 @@ export { default as BrandsSlider  } from './BrandsSlider/BrandsSlider';
 export { default as Testimonials } from './Testimonials/Testimonials';
 export { default as CreatePost } from './admin/ManageBlog/CreatePost/CreatePost';
 export { default as Blog } from './Blog/Blog';
+export { default as ManageTestimonials } from '../components/admin/ManageTestimonials/ManageTestimonials';
+export { default as ManageBlog } from '../components/admin/ManageBlog/ManageBlog';

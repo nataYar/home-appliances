@@ -155,17 +155,13 @@ export default function Home() {
       {/* TESTIMONIALS___________________________________ */}
       <section id='testimonials' className='testimonials'>
         <h2>Testimonials</h2> 
-        <div>
           <Testimonials />
-        </div>
       </section>
 
        {/* BLOG___________________________________ */}
        <section id="blog" className='blog'>
         <h2>Blog</h2> 
-        <div>
-          <Blog numOfArticles='5' />
-        </div>
+        <Blog numOfArticles='6' />
         <button className='button-standard' onClick={() => navigate('/blog')}>SEE ALL ARTICLES</button>
       </section>
 

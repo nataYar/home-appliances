@@ -1,20 +1,30 @@
 @import "../../Styles/Variables.scss";
-
-.service-box {
-    @include flex-column-center;
-    width: 90vw;
+.services-container {
+    width: 90%;
     height: auto;
+    @include flex-column-center($direction: row);
+.service-box {
+    background-color: $darkYellow;
+    border-radius: 1rem;
+    @include flex-column-center();
+    box-sizing: border-box;
+    width: 48%;
+    margin: 1%;
+    // height: auto;
     margin-bottom: 10%;
+    padding: 5%;
     h3 {
         @include standard-font();
+        // width: 
+        text-align: center;
         font-weight: 500;
         font-size: $font-mid;
-        background-color: $darkYellow;
-        padding: .5rem;
-        border-radius: $radius;
+        // background-color: $darkYellow;
+        padding: 0rem;
+        border-radius: 1rem;
     }
     .service-box_small-img-container {
-        width: 70%;
+        width: 90%;
         height: auto;
         img {
             width: 100%;
@@ -23,4 +33,39 @@
             border-radius: 10px;
         }
     }
+}
+}
+@media screen and (min-width: 768px) {
+    .services-container {
+        width: 80%;
+        height: auto;
+        background-color: none;
+        @include flex-column-center($direction: row, $justify: space-between);
+        .service-box {
+            @include flex-column-center();
+            width: 30%;
+            height: auto;
+            margin: 1%;
+            padding: 0%;
+            background-color: $lightGray;
+            h3 {
+                @include standard-font();
+                font-weight: 500;
+                font-size: $font-regular;
+                background-color: $darkYellow;
+                padding: .5rem;
+                width: 50%;
+                border-radius: $radius;
+            }
+            .service-box_small-img-container {
+                width: 50%;
+                height: auto;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+   
 }

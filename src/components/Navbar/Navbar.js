@@ -26,7 +26,7 @@ export default function Navbar( { windowSize, openScheduleCallForm }) {
   return (
 <div className='nav'>
     {
-      windowSize < 600 ?
+      windowSize < 768 ?
       <div className='nav-mob'>
         <a className='menu-btn' href="/">
          <MdHomeRepairService />

@@ -2,7 +2,6 @@ import React, { useEffect, useState, lazy } from 'react';
 import { db } from '../../firebaseConfig';
 import { collection, onSnapshot } from "firebase/firestore";
 import './Testimonials.scss';
-import './Testimonials-mq.scss';
 const CommentForm  = lazy(() => import('../CommentForm/CommentForm'));
 
 export default function Testimonials() {
@@ -32,6 +31,7 @@ export default function Testimonials() {
 
   return (
     <div className='testimonials-container'>
+      <div className='posts'>
       { sixPosts ?
         sixPosts.map((el, key) => {
           if (el.status === 'approved'){
@@ -51,6 +51,8 @@ export default function Testimonials() {
         })
       : null
       }
+      </div>
+      
 
       <button 
         className="button-standard"

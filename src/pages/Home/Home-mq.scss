@@ -1,15 +1,16 @@
 @import "../../Styles/Variables.scss";
 
+
 // tablet
 @media screen and (min-width: 600px) {
     .sc-button {
         font-size: 1.3rem;
     }
     section h2 {
-        // font-size: $font-big;
+        padding: 0%;
+        padding-bottom: 5%;
         font-size: 3rem;
     }
-    //INTRO SECTION
     .home-container {
         .section-home-intro {
             height: 70vh;
@@ -27,7 +28,7 @@
 
     section.badges {
         @include flex-column-center();
-        height: 20vh;
+        height: auto;
         overflow-y: hidden;
         position: relative;
         z-index: 99;
@@ -43,11 +44,9 @@
                     height: 100%;
                 }
             }
-
         }
         h3 {
             font-size: $font-regular;
-            // margin: 0%;
         }
     }
     // HOW IT WORKS section 
@@ -83,56 +82,31 @@
         }
     }
 
-    //SERVICES
-    section.services{
-        .services-container {
-            display: flex;
-            flex-flow: row wrap;
-            justify-content: center;
-            align-items: flex-start;
-            .service-box {
-                box-sizing: border-box;
-                text-align: center;
-                width: 30vw;
-                height: auto;
-                margin-bottom: 5%;
-                .service-box_small-img-container {
-                    width: 80%;
-                }
-            }
-        }
-    }
-
     //TESTIMONIALS
     section.testimonials {
         padding-bottom: 15%;
-        div {
-            display: flex;
-            flex-flow: column nowrap;
-            justify-content: space-between;
-            align-items: space-between;
-            align-content: space-between
-        }
-        .button-standard{
-            margin-top: 10%; 
-            text-transform: uppercase
-        }
     }
 }
 
 @media screen and (min-width: 1024px) {
+    section h2 {
+        @include fancy-font();
+        font-size: $font-big;
+        margin: 0%;
+        text-align: center;
+    }
+
+
     section.howItWorks {
         @include flex-column-center;
-        height: 50vh;
-        padding: 10% 0%;
+        height: auto;
+        // padding: 5% 0%;
         width: 100%;
         background-image: url('../../Images/backgrounds/darkBG.webp');
-
         h2 {
             color: $yellow;
             margin: 0%;
-            padding: 0%;
-            padding-bottom: 3rem;
+            padding-top: 0%;
         }
         .howItWorks_content { 
             width: 100%;
@@ -140,13 +114,11 @@
                 background-color: none;
                 @include flex-column-center;
                 color: $yellow;
-                // background-color: aqua;
-                // margin: 0%;
                 padding: 0%;
                 padding-bottom: 2rem;
                 .headerHIW {
                     font-weight: 700;
-                    font-size: $font-regular;
+                    font-size: $font-mid;
                     text-transform: uppercase;
                     margin: 0%;
                     padding: 0%;
@@ -164,6 +136,7 @@
                     text-align: center;
                 }
                 .textHIW {
+                    @include standard-font();
                     width:50%;
                     font-size: $font-regular;
                     color: #fff;
@@ -177,25 +150,21 @@
     }
 
     section.section-benefits {
-        @include flex-column-center;
-        @include section($height: 60vh);
+        @include flex-column-center();
         background-color: $yellow;
         color: $darkBlue;
         
         .benefits-list {
-            @include flex-column-center($direction: row);
+            @include flex-column-center($direction: row, $align: flex-start);
             height: auto;
             padding-left: 0%;
             margin-left: 0%;
             li {
-                @include flex-column-center();
                 width: 30%;
                 height: auto;
                 padding-left: 0%;
                 margin-left: 0%;
                 .benefits-list_img-wrapper{
-                    // display: block;
-                    // height: 4rem;
                     width: auto;
                     padding: 0% 5%;
                     img {
@@ -206,9 +175,27 @@
                 .benefits-list_text {
                     padding: 0% 1%;
                     width: 90%;
-                    text-align: center;
+                    h3{
+                    @include standard-font();
+                    font-weight: 700;
+                    font-size: $font-mid;
+                    text-transform: uppercase;
+                    }
+                    p{
+                    @include standard-font();
+                    font-size: 1rem;
+                    }
                 }
             }
+        }
+    }
+
+    section.testimonials {
+        @include section();
+        background-color: $midBlue;
+        padding-bottom: 0%;
+        .button-standard{
+            margin-top: 0%; 
         }
     }
 }

@@ -213,20 +213,6 @@ section.howItWorks {
     background-image: url('../../Images/backgrounds/darkBG.webp');
     background-size: cover;
     background-position-x: 35%;
-    // .parallax {
-    //     /* The image used */
-    //     background-image: url('../../Images/backgrounds/darkBG.webp');
-      
-    //     /* Set a specific height */
-    //     min-height: 500px;
-      
-    //     /* Create the parallax scrolling effect */
-    //     background-attachment: fixed;
-    //     background-position: center;
-    //     background-repeat: no-repeat;
-    //     background-size: cover;
-    //   }
-
     h2 {
         color: $yellow;
     }
@@ -270,21 +256,15 @@ section.howItWorks {
 }
 
 section.services{
-    @include flex-column-center;
+    @include flex-column-center();
     @include section();
 }
 
 section.testimonials {
+    @include flex-column-center();
     @include section();
     background-color: $midBlue;
-    padding-bottom: 15%;
-    div {
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: space-between;
-        align-items: space-between;
-        align-content: space-between
-    }
+    padding-bottom: 10%;
     h2 {
         color: $yellow;
         font-weight: 900;
@@ -294,10 +274,12 @@ section.testimonials {
         text-transform: uppercase
     }
 }
+
 section.blog {
     @include section();
     background-color: $yellow;
 }
+
 section.brands {
     @include section();
     background-color: $lightGray;

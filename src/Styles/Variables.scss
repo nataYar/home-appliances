@@ -72,12 +72,13 @@ $radius: 1.5rem;
   height: $height;
   width: $width;
   @include for-tablet-portrait-up {
-    padding: 5%;
+    padding: 5% 5%;
   }
 }
 
 @mixin flex-column-center($direction: column, $justify: center, $align: center) {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: $direction;
     align-items: $align;
     justify-content: $justify;
@@ -189,12 +190,3 @@ $radius: 1.5rem;
     }
   }
 
-  @media screen and (min-width: 600px) {
-    .sc-button {
-        font-size: 1.3rem;
-    }
-    section h2 {
-        // font-size: $font-big;
-        font-size: 3rem;
-    }
-  }
