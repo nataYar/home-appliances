@@ -6,20 +6,60 @@
     width: 100%;
     height: auto;
     padding-bottom: 5%;
-    .filter {
-        margin-bottom: 5%;
-        margin-left: 5%;
+    background-color: $midBlue;
+
+    .breadcrumbs-container {
+        @include section();
+        @include standard-font();
+        font-size: 1.2rem;
+        padding-bottom: 0%;
+
+        .breadcrumb-not-active {
+            color: white;
+            text-decoration: none;
+        }
+    
+        .breadcrumb-active {
+          color: $darkYellow;
+        //   font-size: $font-mid;
+        }
+        
+        .breadcrumb-arrow {
+        margin-left: 10px;
+        margin-right: 10px;
+        }
     }
+    .filter-container {
+        @include section();
+        display: inline-flex;
+        .filter {
+            // width: 45%;
+            font-size: 1.2rem;
+            // margin-bottom: 5%;
+            // margin-left: 5%;
+            @include standard-font();
+            color: white;
+            select {
+                margin-left: 10px;
+                border-radius: 1rem;
+                font-size: $font-regular;
+                padding: 2%;
+            }
+        }
+    }
+    
+
     .blog-page_container {
         // padding: 0% 3%;
         margin-left: auto;
         margin-right: auto;
         width: 90%;
         @include standard-font();
-        background-color: white;
+        
         .blog-page_post {
             margin-top: 1.5rem;
             background-color: rgb(251, 251, 251);
+            // background-color: $lightBlue;
             box-shadow: .5rem .5rem hsl(47, 97%, 60%);
             padding: 2% 5%;
             border-radius: $radius;
@@ -49,8 +89,8 @@
                 }
             }
             .blog-page_img {
-                width: 5rem;
-                height: 5rem;
+                width: 100%;
+                height: 20vh;
                 margin-right: 5%;
                 img{
                     width: 100%;
@@ -62,3 +102,14 @@
         }
     }
 }
+
+
+// .modal_img {
+//     width: 100%;
+//     height: 20vh;
+//     img{
+//         width: 100%;
+//         height: 100%;
+//         object-fit: cover;
+//     }
+// }

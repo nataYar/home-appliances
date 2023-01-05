@@ -1,5 +1,9 @@
 @import "../../Styles/Variables.scss";
 
+.hide {
+    display: block;
+  }
+  
 .home-container {
     @include flex-column-center($justify: space-evenly); 
     @include standard-font();

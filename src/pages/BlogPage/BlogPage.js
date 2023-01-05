@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { db } from '../../firebaseConfig';
 import { collection, onSnapshot } from "firebase/firestore";
 import { Editor, EditorState, convertFromRaw } from 'draft-js';
+import { Navbar } from '../../components/importsComponents';
+import { Link, useLocation } from 'react-router-dom';
 import './BlogPage.scss';
 
 export default function BlogPage() {
@@ -9,7 +11,8 @@ export default function BlogPage() {
     const [filteredArticles, setFilteredArticles] = useState([]);
     const [filterType, setFilterType] = useState('all');
     const [filterBrand, setFilterBrand] = useState('all');
-
+    const location = useLocation();
+    
     useEffect(() => {
       const displayArticles = onSnapshot(
         collection(db, "blog"), 
@@ -67,39 +70,56 @@ export default function BlogPage() {
 
   return (
     <div className='blog-page'>
+      <Navbar windowSize= {location.state.windowSize.width}/>
       {/* BREADCRUMBS */}
-
-      {/* filter by APPLIANCE TYPE  */}
-      <div className='filter'>
-        <label htmlFor="applianceTypes">Filter by appliance: </label>
-        <select name="applianceTypes" id="filterByType" onChange= { (e) => defineFilter(e) }>
-            <option value="all">All</option>
-            <option value="common mistakes">Common mistakes</option>
-            <option value="refrigerator">Refrigerator</option>
-            <option value="dryer">Dryer</option>
-            <option value="cooktop">Cooktop</option>
-            <option value="oven">Oven</option>
-            <option value="freezer">Freezer</option>
-            <option value="washer">Washer</option>
-            <option value="washer">Water heater</option>
-        </select>
-       </div>
-       
-       {/* FILTER by BRAND  */}
-       <div className='filter'>
-        <label htmlFor="applianceBrand">Filter by brand: </label>
-        <select name="applianceBrand" id="filterByBrand" onChange= { (e) => defineFilter(e) }>
-            <option value="all">All</option>
-            <option value="samsung">Samsung</option>
-            <option value="aeg">AEG</option>
-            <option value="bosch">BOSCH</option>
-            {/* <option value="cooktop">Cooktop</option>
-            <option value="oven">Oven</option>
-            <option value="freezer">Freezer</option>
-            <option value="washer">Washer</option>
-            <option value="washer">Water heater</option> */}
-        </select>
+      <div className='breadcrumbs-container'>
+        <Link to="/"
+          className={location.pathname === "/" ? "breadcrumb-active" : "breadcrumb-not-active"}
+          >
+        Home
+        </Link>
+        <span className="breadcrumb-arrow">&gt;</span>
+        <Link to="/blog"
+          className={location.pathname === "/blog" ? "breadcrumb-active" : "breadcrumb-not-active"}
+          >
+        Blog
+        </Link>
       </div>
+
+      <div className='filter-container'>
+        {/* filter by APPLIANCE TYPE  */}
+        <div className='filter'>
+              <label htmlFor="applianceTypes">Filter by appliance: </label>
+              <select name="applianceTypes" id="filterByType" onChange= { (e) => defineFilter(e) }>
+                  <option value="all">All</option>
+                  <option value="common mistakes">Common mistakes</option>
+                  <option value="refrigerator">Refrigerator</option>
+                  <option value="dryer">Dryer</option>
+                  <option value="cooktop">Cooktop</option>
+                  <option value="oven">Oven</option>
+                  <option value="freezer">Freezer</option>
+                  <option value="washer">Washer</option>
+                  <option value="washer">Water heater</option>
+              </select>
+            </div>
+            
+            {/* FILTER by BRAND  */}
+            <div className='filter'>
+              <label htmlFor="applianceBrand">Filter by brand: </label>
+              <select name="applianceBrand" id="filterByBrand" onChange= { (e) => defineFilter(e) }>
+                  <option value="all">All</option>
+                  <option value="samsung">Samsung</option>
+                  <option value="aeg">AEG</option>
+                  <option value="bosch">BOSCH</option>
+                  {/* <option value="cooktop">Cooktop</option>
+                  <option value="oven">Oven</option>
+                  <option value="freezer">Freezer</option>
+                  <option value="washer">Washer</option>
+                  <option value="washer">Water heater</option> */}
+              </select>
+            </div>
+      </div>
+      
       <div className='blog-page_container'>
       {
         filteredArticles.map((el, key) => {

@@ -4,12 +4,13 @@
     @include flex-column-center($align: space-between, $justify: space-evenly); 
     @include hide-animation();
     @include section($width:100vw);
+    flex-wrap: nowrap;
     min-height: 100vh;
     height: 100%;
     box-sizing: border-box;
     z-index: 999999;
     overflow-y: scroll;
-    overflow-x:hidden;
+    overflow-x: hidden;
     position: fixed;
     background-color: $lightGray;
 

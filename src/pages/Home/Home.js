@@ -13,44 +13,41 @@ const Blog = lazy(() => import('../../components/Blog/Blog'));
 
 export default function Home() {
   const [scheduleFormVisible, setScheduleFormVisible] = useState(false);
-  const size = useWindowSize();
 
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined,
+  });
   const navigate = useNavigate();
+
+  // useEffect(() => { setSize(useWindowSize()) }, [])
 
   const openScheduleCallForm = () => {
     setScheduleFormVisible(!scheduleFormVisible)
   }
 
-
-  function useWindowSize() {
-    const [windowSize, setWindowSize] = useState({
-      width: undefined,
-      height: undefined,
-    });
-    useEffect(() => {
-      // Handler to call on window resize
-      function handleResize() {
-        // Set window width/height to state
-        setWindowSize({
-          width: window.innerWidth,
-          height: window.innerHeight,
-        });
-      }
-      // Add event listener
-      window.addEventListener("resize", handleResize);
-      // Call handler right away so state gets updated with initial window size
-      handleResize();
-      // Remove event listener on cleanup
-      return () => window.removeEventListener("resize", handleResize);
-    }, []); // Empty array ensures that effect is only run on mount
-    return windowSize;
-  }
+  useEffect(() => {
+    // Handler to call on window resize
+    function handleResize() {
+      // Set window width/height to state
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+    // Call handler right away so state gets updated with initial window size
+    handleResize();
+    // Remove event listener on cleanup
+    return () => window.removeEventListener("resize", handleResize);
+  }, []); // Empty array ensures that effect is only run on mount
 
 
 
   return (
     <div id='home' className='home-container'>
-       <Navbar windowSize={size.width} callbackCloseScheduleForm={ openScheduleCallForm } />
+       <Navbar windowSize={windowSize.width} callbackCloseScheduleForm={ openScheduleCallForm } />
       {/* INTRO_____________________________________ */}
       <section className='section-home-intro'>
        
@@ -162,9 +159,9 @@ export default function Home() {
        <section id="blog" className='blog'>
         <h2>Blog</h2> 
         <Blog numOfArticles='6' />
-        <button className='button-standard' onClick={() => navigate('/blog')}>SEE ALL ARTICLES</button>
+        <button className='button-standard' onClick={() => navigate('/blog',{state:{windowSize: windowSize}} )}>SEE ALL ARTICLES</button>
       </section>
-
+      
       {/* BRANDS___________________________________ */}
       <section id='brands' className="brands">
         <h2>Brands</h2> 

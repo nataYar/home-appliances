@@ -16,7 +16,7 @@ function App() {
       element: <TestimonialsPage/>,
     }, {
       path: '/brands',
-      element:<Brands/>,
+      element: <Brands/>,
     }, {
       path: '/refrigerator',
       element:<Refrigerator/>,

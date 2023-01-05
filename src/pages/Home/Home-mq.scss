@@ -28,14 +28,16 @@
 
     section.badges {
         @include flex-column-center();
-        height: auto;
-        overflow-y: hidden;
+        padding: 2% 5%;
+        margin: 0%;
+        height: 20vh;
         position: relative;
-        z-index: 99;
         // background-color: chartreuse;
         .badges-container {
+            // background-color: aqua;
             width: 60%;
-            padding: 2% 0%;
+            padding: 0%;
+            padding-bottom: 2%;
             div {
                 height: 2.5rem;
                 width: 2.5rem;
@@ -46,6 +48,8 @@
             }
         }
         h3 {
+            padding: 0%;
+            margin: 0%;
             font-size: $font-regular;
         }
     }
@@ -88,6 +92,12 @@
     }
 }
 
+@media screen and (min-width: 767px) {
+.hide {
+    display: none;
+  }
+}
+
 @media screen and (min-width: 1024px) {
     section h2 {
         @include fancy-font();
@@ -100,7 +110,8 @@
     section.howItWorks {
         @include flex-column-center;
         height: auto;
-        // padding: 5% 0%;
+        padding: 5% 0%;
+        padding-bottom: 2%;
         width: 100%;
         background-image: url('../../Images/backgrounds/darkBG.webp');
         h2 {
@@ -153,12 +164,13 @@
         @include flex-column-center();
         background-color: $yellow;
         color: $darkBlue;
-        
+        // padding: 2% 5%;
         .benefits-list {
             @include flex-column-center($direction: row, $align: flex-start);
             height: auto;
             padding-left: 0%;
             margin-left: 0%;
+            // pa
             li {
                 width: 30%;
                 height: auto;
@@ -166,7 +178,7 @@
                 margin-left: 0%;
                 .benefits-list_img-wrapper{
                     width: auto;
-                    padding: 0% 5%;
+                    // padding: 0% 5%;
                     img {
                         width: auto;
                         height: 100%;
@@ -178,7 +190,7 @@
                     h3{
                     @include standard-font();
                     font-weight: 700;
-                    font-size: $font-mid;
+                    font-size: $font-regular;
                     text-transform: uppercase;
                     }
                     p{
