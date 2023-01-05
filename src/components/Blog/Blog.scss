@@ -1,5 +1,20 @@
 @import "../../Styles/Variables.scss";
 
+.modal_container {
+    position: fixed;
+    width: 100vw;
+    height: auto;
+    // min-height: 100vh;
+    background-color: hsl(0, 0%, 100%);
+    z-index: 999;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    overflow: auto;
+    box-sizing: border-box;
+    padding: 5%;
+
+}
 .blog-list__container{
     width: 100%;
     height: auto;
@@ -9,6 +24,7 @@
     align-items: space-between;
     align-content: space-between;
     .blog-list__item {
+        cursor: pointer;
         display: flex;
         flex-flow: row nowrap;
         width: 90%;

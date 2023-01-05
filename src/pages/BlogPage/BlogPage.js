@@ -105,7 +105,6 @@ export default function BlogPage() {
         filteredArticles.map((el, key) => {
         const contentState = convertFromRaw(el.mainText);
         const editorState = EditorState.createWithContent(contentState);
-        // if (el.status == 'approved'){
           return(
             <div className='blog-page_post' key={key}>
               <div className='blog-page_info'>
