@@ -47,7 +47,7 @@
         cursor: pointer;
         display: flex;
         flex-flow: row nowrap;
-        width: 90%;
+        width: 95%;
         height: auto;
         padding: .5rem;
         background-color: white;
@@ -95,7 +95,7 @@
 
 @media screen and (min-width: 1024px) {
     .blog-list__container{
-        width: 80%;
+        width: 70%;
         height: auto;
         margin-left: auto;
         margin-right: auto;

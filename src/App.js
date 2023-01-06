@@ -45,7 +45,6 @@ function App() {
     <Route exact path={path} element={element} key={key} />);
   return (
     <>
-      <Navbar/>
       <div className='app'>
         <Routes>
           {routeComponents} 

@@ -1,27 +1,88 @@
 @import "../../Styles/Variables.scss";
 
+
 .brands-container {
+    padding-top: 10vh;
+    padding-bottom: 5%;
     @include flex-column-center($justify: flex-start);
     @include standard-font(); 
     color: $yellow;
     background-color: $darkBlue;
     min-height: 100vh;
     height: auto;
-    padding: 10vh 0%;
+    padding-top: 10vh;
+    padding-bottom: 5%;
     width: 100%;
     font-size: $font-regular;
+
+    .breadcrumbs-container {
+        box-sizing: border-box;
+        font-size: 1rem;
+        padding-top: 0%;
+        padding-bottom: 0%;
+        margin: 0%;
+    }
+    .brands-title{
+        padding-top: 0rem;
+        width: auto
+    }
     .brands-container_list {
+        font-size: $font-mid;
         color: $lightGray;
         text-align: left;
-        width: 90%;
-        padding-top: 5%;
+        width: 70%;
+        margin-top: 3%;
+        padding: 0%;
     }
+    .breadcrumbs-container {
+        box-sizing: border-box;
+        @include section();
+        @include standard-font();
+        font-size: 1rem;
+        padding-top: 0%;
+        padding-bottom: 0%;
+        margin: 0%;
+        .breadcrumb-not-active {
+            color: white;
+            text-decoration: none;
+        }
+        .breadcrumb-active {
+          color: $darkYellow;
+        }
+        .breadcrumb-arrow {
+        margin-left: 10px;
+        margin-right: 10px;
+        }
+    }
+
 }
 
-@media screen and (min-width: 600px) {
+
+@media screen and (min-width: 1024px) {
     .brands-container {
-        .brands-container_list {
-            font-size: $font-mid;
+        padding-top: 10vh;
+        padding-bottom: 5%;
+        @include flex-column-center($justify: flex-start);
+        @include standard-font(); 
+        color: $yellow;
+        background-color: $darkBlue;
+        min-height: 100vh;
+        height: auto;
+        padding-top: 10vh;
+        padding-bottom: 5%;
+        width: 100%;
+        font-size: $font-regular;
+    
+        .breadcrumbs-container {
+            box-sizing: border-box;
+            font-size: 1rem;
+            padding-top: 0%;
+            padding-bottom: 0%;
+            margin: 0%;
         }
+        .brands-title{
+            padding-top: 0%;
+            width: auto
+        } 
     }
 }

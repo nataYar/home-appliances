@@ -2,7 +2,7 @@ import React from 'react';
 import './BrandsSlider.scss';
 import { samsung, indesit, lg, bosch } from '../../Images/imgImports'
 
-const brands = [ indesit, samsung, lg, bosch, lg, samsung, indesit,  bosch  ];
+const brands = [ indesit, samsung, lg, bosch, lg, samsung, indesit,  bosch, lg, bosch, lg, samsung, indesit,  bosch, lg, bosch, lg, samsung, indesit,  bosch  ];
 
 export default function BrandsSlider() {
     return (
@@ -10,11 +10,14 @@ export default function BrandsSlider() {
       {
         brands.map((el , key)=> (
           <div className='brand-img-container' key={key}>
-            <img
-            alt='brand name'
-              src={el}
-              key={el}
-            />
+            <div>
+              <img
+              alt='brand name'
+                src={el}
+                key={el}
+              />
+            </div>
+           
           </div>
         ))
       }

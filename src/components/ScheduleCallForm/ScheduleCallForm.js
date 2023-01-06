@@ -23,6 +23,10 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
     const handleSubmit = e => {
         e.preventDefault()
         writeRequest();
+        closeForm()
+    }
+
+    const closeForm = () => {
         setFormData({
             name: '',
             phoneNumber: '',
@@ -30,7 +34,7 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
         })
         closeScheduleCallForm() 
     }
-
+    
     const writeRequest = () => {
         const docData = {
             name: formData.name,
@@ -41,7 +45,6 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
         setDoc(doc(db, "requests", formData.phoneNumber ), docData);
     }
 
-
     // const sendEmail = () => {   
     //     Axios
     //     .post("https://home-appliances-b8f33-default-rtdb.firebaseio.com", formData)
@@ -50,12 +53,11 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
     //     })
     // }
 
-
     return (
         <section className={scheduleFormVisible ? 'schedule-call-container' : 'schedule-call-container hiddenToRight' }>
             <div className='sc-header'>
                 <h2>Contact us</h2>
-                <button className="sc-btn" onClick={() => closeScheduleCallForm()} >
+                <button className="sc-btn" onClick={closeForm} >
                     <FaTimes />
                 </button>
                 
@@ -94,8 +96,7 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
                             required />
                         </div>
                         
-                        <textarea className="form-control form-control__message" 
-                            rows="10" 
+                        <textarea  id ='form-control__message' className="form-control" 
                             placeholder="WANT TO ADD A MESSAGE?" 
                             name="message" 
                             type="text"

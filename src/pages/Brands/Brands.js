@@ -1,10 +1,29 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Navbar } from '../../components/importsComponents';
 import './Brands.scss';
 
 export default function Brands() {
+  const location = useLocation();
   return (
-    <div className='brands-container'>
-        <h3>Brands we serve</h3>
+    <div className='brands-container' id='brands'>
+      <Navbar windowSize= {location.state.windowSize.width}/>
+      {/* BREADCRUMBS */}
+      <div className='breadcrumbs-container'>
+         <Link to="/"
+          className={location.pathname === "/" ? "breadcrumb-active" : "breadcrumb-not-active"}
+          >
+        Home
+        </Link>
+        <span className="breadcrumb-arrow">&gt;</span>
+        <Link to="/blog"
+          className={location.pathname === "/brands" ? "breadcrumb-active" : "breadcrumb-not-active"}
+          >
+        Brands
+        </Link>
+    </div>
+
+    <h3 className='brands-title'>Brands we serve</h3>
     <div className='brands-container_list'>
 
     AEG

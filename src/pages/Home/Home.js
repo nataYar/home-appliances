@@ -20,8 +20,6 @@ export default function Home() {
   });
   const navigate = useNavigate();
 
-  // useEffect(() => { setSize(useWindowSize()) }, [])
-
   const openScheduleCallForm = () => {
     setScheduleFormVisible(!scheduleFormVisible)
   }
@@ -55,10 +53,15 @@ export default function Home() {
           <h1>CITY TECH</h1>
           <h3>appliance repair</h3>
         </div>
-        <button 
-         className="sc-button hide"
-          onClick={e => openScheduleCallForm(e)} 
-        >Schedule A Call</button>
+        {
+          windowSize.width < 1024 ?
+          <button 
+          className="sc-button"
+            onClick={e => openScheduleCallForm(e)} 
+          >Schedule A Call</button>
+          : null
+        }
+        
         <ScheduleCallForm scheduleFormVisible={scheduleFormVisible} callbackCloseScheduleForm={openScheduleCallForm } />
       </section>
       {/* BADGES_____________________________________ */}
@@ -155,18 +158,18 @@ export default function Home() {
           <Testimonials />
       </section>
 
-       {/* BLOG___________________________________ */}
+       {/* BLOG___________________________________  */}
        <section id="blog" className='blog'>
         <h2>Blog</h2> 
         <Blog numOfArticles='6' />
-        <button className='button-standard' onClick={() => navigate('/blog',{state:{windowSize: windowSize}} )}>SEE ALL ARTICLES</button>
+        <button className='button-standard' onClick={() => navigate('/blog', {state:{windowSize: windowSize}} )}>SEE ALL ARTICLES</button>
       </section>
       
       {/* BRANDS___________________________________ */}
       <section id='brands' className="brands">
         <h2>Brands</h2> 
         <BrandsSlider />
-      <button className='button-standard margin-top' onClick={() => navigate('/brands')}>SEE ALL BRANDS</button>
+        <button className='button-standard margin-top' onClick={() => navigate('/brands', {state:{windowSize: windowSize}} )}>SEE ALL BRANDS</button>
       </section>
       
       {/* HOURS___________________________________ */}
@@ -193,7 +196,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PRICES___________________________________ */}
+      {/* PRICES___________________________________  */}
       <section id="prices" className="prices">
         <h2>Our fees</h2>
         <div className='prices-container'>
@@ -238,16 +241,19 @@ export default function Home() {
       {/* CONTACTS___________________________________ */}
       <section id="contacts" className='contacts'>
         <h2>Contacts</h2> 
-        <div className='contacts-address'>
-          <p>Prins Hendrikkade 48A</p>
-          <p>1012 AC Hogwarts</p>
-          <p>The Neverland</p>
+        <div className='contacts_info-container'>
+          <div className='contacts-address'>
+            <p>Prins Hendrikkade 48A</p>
+            <p>1012 AC Hogwarts</p>
+            <p>The Neverland</p>
+          </div>
+          <div className='contacts-contact'>
+            <a href="mailto:n.yarysheva@gmail.com">n.yarysheva@gmail.com</a>
+            <br></br>
+            <a href="tel:+19292977775">(929) 297-7775</a>
+          </div>
         </div>
-        <div className='contacts-contact'>
-          <a href="mailto:n.yarysheva@gmail.com">n.yarysheva@gmail.com</a>
-          <br></br>
-          <a href="tel:+19292977775">(929) 297-7775</a>
-        </div>
+        
         <button 
          className="sc-button contacts-button"
           onClick={e => openScheduleCallForm(e)} 

@@ -5,30 +5,23 @@
   .sc-header {
       display: flex;
       flex-flow: column nowrap;
-      // justify-content: space-around;
-      // align-items: baseline;
+      
       h2 {
         text-transform: uppercase;
         color:#000;
-        
+        margin-bottom: 0%;
+        padding-bottom: 0%;
       }
       .cf-btn { 
-          align-self: flex-end;
-          opacity: 1;
-          background-color: transparent;
-          border: none;
-          outline: none;
-          position: inherit;
-          height: 2rem;
-          width: 2rem;
-          color: $midBlue;
-          @include cross-btn($color: $midBlue);
-          margin-bottom: 1rem;
+        @include cross-btn($color: $midBlue);
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
       }
     }
     #filter-city_container {
       justify-content: flex-start;
-      padding: 2% 0% 2% 5%;
+      padding: 1% 0% 1% 5%;
       align-items: baseline;
       p {
         box-sizing: border-box;
@@ -41,7 +34,7 @@
         display: block;
         width: 45%;
         border-radius: 10px;
-        padding: 2%;
+        padding: 1%;
         @include standard-font-light;
         text-transform: uppercase;
         &:after {
@@ -50,6 +43,8 @@
         }
       }
     }
+
+    #cf-message{ height: fit-content; }
     .light-font {
       @include standard-font-light;
       text-align:center

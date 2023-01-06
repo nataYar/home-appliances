@@ -20,13 +20,7 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
     const handleCommentSubmit = (e) => {
         e.preventDefault();
         writeRequest();
-        setComment({
-            name: '',
-            phoneNumber: '',
-            text: '',
-            city: '',
-        })
-        callbackToggleCommentForm()
+        closeForm()
         callbackCommentAdded()
     }
 
@@ -73,12 +67,21 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
           );
         setComment({...comment, phoneNumber: output})
     } 
+    const closeForm = () => {
+        setComment({
+            name: '',
+            phoneNumber: '',
+            text: '',
+            city: '',
+        })
+        callbackToggleCommentForm()
+    }
 
     return (
     <section className={commentForm ? 'schedule-call-container' : 'schedule-call-container hiddenToRight' }>
         
         <div className="sc-header">
-            <button  className="cf-btn" onClick={() => callbackToggleCommentForm()}  >
+            <button  className="cf-btn" onClick={closeForm}  >
                 <FaTimes />
             </button>
             <h2>We appreciate your comment</h2>
@@ -101,29 +104,6 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
                     value={comment.phoneNumber || ''} 
                     required />
                     
-
-                    {/* <input className="form-control" type="text" placeholder="CITY" 
-                    name="city" 
-                    onChange={(e) => updateCommentInput(e)}
-                    value={comment.city || ''} 
-                    required />
-                     */}
-
-                    
-                    {/* <div className='filter-city_container'>
-                        <label className='light-font' htmlFor="nyNeighbourhood">Borough: </label>
-                        <div className='filter-city'>
-                            <select name="nyNeighbourhood" id="nyNeighbourhood" 
-                            defaultValue='Brooklyn'
-                            onChange= { (e) => setComment({ ...comment, city: e.target.value }) }>
-                                <option value="Bronx">Bronx</option>
-                                <option value="Brooklyn" >Brooklyn</option>
-                                <option value="Manhattan">Manhattan</option>
-                                <option value="Queens">Queens</option>
-                                <option value="Staten Island">Staten Island</option>
-                            </select>
-                        </div>
-                    </div> */}
                     <div className='form-control__phone' id ='filter-city_container'>
                         <p>BOROUGH: </p>
                         <select name="nyNeighbourhood" id="nyNeighbourhood" 
@@ -138,7 +118,7 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
                     </div>
                     
 
-                    <textarea className="form-control" rows="2" placeholder="WANT TO ADD A TEXT?" 
+                    <textarea  id='cf-message' className="form-control" placeholder="WANT TO ADD A TEXT?" 
                     name="text" 
                     type="text"
                     onChange={(e) => updateCommentInput(e)}

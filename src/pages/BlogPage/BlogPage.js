@@ -70,7 +70,7 @@ export default function BlogPage() {
 
   return (
     <div className='blog-page'>
-      <Navbar windowSize= {location.state.windowSize.width}/>
+      <Navbar windowSize= {location.state.windowSize.width} />
       {/* BREADCRUMBS */}
       <div className='breadcrumbs-container'>
         <Link to="/"

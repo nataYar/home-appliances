@@ -6,7 +6,7 @@ import { HiMenuAlt1 } from 'react-icons/hi';
 
 import './Navbar.scss';
 
-export default function Navbar( { windowSize,callbackCloseScheduleForm }) {
+export default function Navbar( { windowSize, callbackCloseScheduleForm }) {
   const [navVisible, setNavVisible] = useState(false);
   const [activeLink, setActiveLink] = useState('')
 
@@ -29,7 +29,7 @@ export default function Navbar( { windowSize,callbackCloseScheduleForm }) {
   return (
   <div className='nav'>
     {
-      windowSize < 768 ?
+      windowSize < 1024 ?
       <div className='nav-mob'>
         <a className='menu-btn' href="/">
          <MdHomeRepairService />
@@ -47,11 +47,6 @@ export default function Navbar( { windowSize,callbackCloseScheduleForm }) {
       </div>
 
       <nav className={navVisible ? 'navbar' : 'navbar hiddenToRight' }>
-        {/* <a href="/" className={"nav-link"} onClick={() => toggleNavBar()} > home </a>
-        //   <a href="/#services" className={"nav-link"} onClick={() => toggleNavBar()} > services </a>
-        //   <a href="/#blog" className={"nav-link"} onClick={() => toggleNavBar()} > blog </a>
-        //   <a href="/#prices" className={"nav-link"} onClick={() => toggleNavBar()} > prices </a>
-        //   <a href="/#contacts" className={"nav-link"} onClick={() => toggleNavBar()} > contacts </a> */}
          <HashLink
         id='servicesLink'
         to="/#services"
@@ -105,11 +100,6 @@ export default function Navbar( { windowSize,callbackCloseScheduleForm }) {
     :
     <div className='nav-desktop'>
       <nav className='horizontal-nav'>
-        {/* <a href="/" className={"nav-link"} onClick={() => toggleNavBar()} > home </a>
-        //   <a href="/#services" className={"nav-link"} onClick={() => toggleNavBar()} > services </a>
-        //   <a href="/#blog" className={"nav-link"} onClick={() => toggleNavBar()} > blog </a>
-        //   <a href="/#prices" className={"nav-link"} onClick={() => toggleNavBar()} > prices </a>
-        //   <a href="/#contacts" className={"nav-link"} onClick={() => toggleNavBar()} > contacts </a> */}
          <HashLink
         id='servicesLink'
         to="/#services"

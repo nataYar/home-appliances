@@ -89,16 +89,19 @@ $radius: 1.5rem;
     transform: translateX(0vw);
     transition: .6s ease-out;
     top: 0;
-    left: 0;
+    right: 0;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
+    @include for-desktop-up  {
+      // right: 0;
+    }
   }
 
 .margin-top {margin-top: 5%;}
 
 .hiddenToRight {
-  transform: translateX(100vw);
-  left: 100vw;
+  transform: translateX(100%);
+  right: -100%;
   transition: .6s ease-in;
 }
 // STANDARD ELEMENTS

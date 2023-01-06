@@ -4,7 +4,7 @@
 // tablet
 @media screen and (min-width: 600px) {
     .sc-button {
-        font-size: 1.3rem;
+        font-size: 1rem;
     }
     section h2 {
         padding: 0%;
@@ -28,10 +28,10 @@
 
     section.badges {
         @include flex-column-center();
+        flex-wrap:nowrap;
         padding: 2% 5%;
         margin: 0%;
         height: 20vh;
-        position: relative;
         // background-color: chartreuse;
         .badges-container {
             // background-color: aqua;
@@ -92,11 +92,6 @@
     }
 }
 
-@media screen and (min-width: 767px) {
-.hide {
-    display: none;
-  }
-}
 
 @media screen and (min-width: 1024px) {
     section h2 {
@@ -208,6 +203,82 @@
         padding-bottom: 0%;
         .button-standard{
             margin-top: 0%; 
+        }
+    }
+
+    section.timetable {
+        @include section();
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0%;
+        table {
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+            th, td {
+                text-align: center;
+                padding: 2%;
+            }
+          }
+    }
+
+    section.prices {
+        @include section();
+        margin: 0%;
+        padding-top: 5vh;
+        .prices-container {
+            @include flex-column-center;
+           .prices-container_item {
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 0%;
+            margin-top: 2px;
+           }
+        }
+    }
+
+    section.contacts {
+        @include section();
+        background-color: $midBlue;
+        color: white;
+        height: fit-content;
+        h2{
+            margin-bottom: 0%;
+            padding-bottom: 1rem;
+        }
+        .contacts_info-container {
+            width: 60%;
+            height: fit-content;
+            padding: 0%;
+            margin: 0%;
+            margin-top: 1rem;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+            justify-content: space-between;
+            .contacts-address {
+                p {
+                    margin-top: .5rem;
+                }
+            }
+            .contacts-contact {
+                // width: 50%;
+                margin: 0%;
+                a {
+                    display: block;
+                    text-decoration: none;
+                    color: white;
+                }
+            }
+        }
+        .contacts-button {
+            margin-top: 2rem;
+            left: 50%;
+            -ms-transform: translateX(-50%);
+            transform: translateX(-50%)
         }
     }
 }
