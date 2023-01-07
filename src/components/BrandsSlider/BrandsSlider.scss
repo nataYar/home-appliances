@@ -30,8 +30,9 @@
   @media screen and (min-width: 1024px) {
     .brands-wrapper {
       height: 25vh;
-      width: 70%;
+      width: 80%;
       flex-flow: row wrap;
+      justify-content: center;
     }
   }
   

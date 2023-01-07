@@ -1,8 +1,8 @@
 import React from 'react';
 import './BrandsSlider.scss';
-import { samsung, indesit, lg, bosch } from '../../Images/imgImports'
+import { gorenje, aeg, panasonic, siemens, zanussi , whirlpool, miele, samsung, indesit, lg, bosch, liebherr,  } from '../../Images/imgImports'
 
-const brands = [ indesit, samsung, lg, bosch, lg, samsung, indesit,  bosch, lg, bosch, lg, samsung, indesit,  bosch, lg, bosch, lg, samsung, indesit,  bosch  ];
+const brands = [ gorenje, aeg, panasonic, siemens, zanussi , whirlpool, miele, samsung, indesit, lg, bosch, liebherr  ];
 
 export default function BrandsSlider() {
     return (

@@ -136,8 +136,10 @@ export default function BlogPage() {
                 <img src={el.imgSrc} alt=''
                 />
               </div>
-              <Editor editorState={editorState} readOnly={true}
-              />
+              <div className='blog-page_editor'>
+                <Editor editorState={editorState} readOnly={true} />
+              </div>
+
               <p className='blog-page_date'>{el.time}</p>
             </div>
             )

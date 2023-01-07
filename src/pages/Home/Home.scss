@@ -330,9 +330,6 @@ section.prices {
         flex-flow: row nowrap;
         justify-content: space-between;
         align-items: center;
-        // div:first-child{
-             
-        // }
         .prices-container_item-price {
             @include flex-column-center();
             .prices-container_item-number{

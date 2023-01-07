@@ -49,23 +49,28 @@ export default function Blog( numOfArticles  ) {
       {
         showModal ?
         <div className='modal_container' onClick={() => setShowModal(false)} >
+             {/* <FaTimes className='modal-btn' onClick={hideModal}/> */}
             <div className='modal-top'>
-            <FaTimes className='modal-btn' onClick={hideModal}/>
-            {/* <button > close </button> */}
-            {
-              modal.brand ? <p>{modal.brand}</p> : null
-            }
-            <p>{modal.type}</p>
-            
+              {
+                modal.brand ? <p>{modal.brand}</p> : null
+              }
+              <p>{modal.type}</p>
             </div>
           
+          <div className='modal-content'>
             <h2>{modal.title}</h2>
-            <div className='modal_img'>
-              <img src={modal.imgSrc} alt=''
-              />
+            <div className='modal-content_body'>
+              <div className='modal_img'>
+                <img src={modal.imgSrc} alt=''
+                />
+              </div>
+              <div className='modal_editor'>
+                <Editor editorState={text} readOnly={true} />
+              </div>
+              
             </div>
-            <Editor editorState={text} readOnly={true} />
             <p className='blog-page_date'>{modal.time}</p>
+          </div>
         </div>
       : null
       }

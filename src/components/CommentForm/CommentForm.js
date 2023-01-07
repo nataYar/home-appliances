@@ -80,7 +80,7 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
     return (
     <section className={commentForm ? 'schedule-call-container' : 'schedule-call-container hiddenToRight' }>
         
-        <div className="sc-header">
+        <div className="sc-header" id='cf-header'>
             <button  className="cf-btn" onClick={closeForm}  >
                 <FaTimes />
             </button>

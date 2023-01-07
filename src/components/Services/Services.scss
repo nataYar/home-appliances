@@ -4,7 +4,7 @@
     height: auto;
     @include flex-column-center($direction: row);
 .service-box {
-    background-color: $darkYellow;
+    background-color: $yellow;
     border-radius: 1rem;
     @include flex-column-center();
     box-sizing: border-box;
@@ -19,7 +19,7 @@
         text-align: center;
         font-weight: 500;
         font-size: $font-mid;
-        // background-color: $darkYellow;
+        background-color: $yellow;
         padding: 0rem;
         border-radius: 1rem;
     }
@@ -53,7 +53,6 @@
                 @include standard-font();
                 font-weight: 500;
                 font-size: $font-regular;
-                background-color: $darkYellow;
                 padding: .5rem;
                 width: 50%;
                 border-radius: $radius;

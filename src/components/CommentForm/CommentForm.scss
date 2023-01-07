@@ -2,10 +2,12 @@
   *:focus {
     outline: 0;
   }
+  #cf-header {
+margin-top: 15%;
+  }
   .sc-header {
       display: flex;
       flex-flow: column nowrap;
-      
       h2 {
         text-transform: uppercase;
         color:#000;

@@ -35,9 +35,6 @@ function App() {
     }, {
       path: '/cooktop',
       element:<Cooktop/>,
-    }, {
-      path: '/admin',
-      element: <Login/>,
     }
   ];
 

@@ -13,6 +13,25 @@
     overflow: auto;
     box-sizing: border-box;
     padding: 5%;
+    .modal-content {
+        
+        .modal-content_body {
+            .modal_img {
+                
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: $radius;
+                }
+            }
+            
+            .modal_editor{
+                text-align: justify;
+                text-indent: 2em;
+            }
+        }
+        
+    }
     .modal-btn {
         @include cross-btn($color: $midBlue)
     }
@@ -100,16 +119,69 @@
         margin-left: auto;
         margin-right: auto;
         display: flex;
-        flex-flow: row nowrap;
+        flex-flow: row wrap;
         gap: 3%;
         justify-content: space-between;
         align-items: space-between;
         .blog-list__item {
+            box-sizing: border-box;
             display: flex;
             flex-flow: row nowrap;
-            width: 100%;
+            width: 48%;
             height: auto;
             padding: .5rem;
         }
+    }
+
+    .modal_container {
+        position: fixed;
+        width: 70vw;
+        margin-left: 15vw;
+        height: auto;
+        background-color: hsl(0, 0%, 100%);
+        z-index: 999;
+        height: 100%;
+        overflow: auto;
+        box-sizing: border-box;
+        padding: 2% 0%;
+        .modal-btn {
+            @include cross-btn($color: $midBlue);
+            position: absolute;
+            top: 2rem;
+            right: 4rem;
+
+        }
+        h2 {
+            background-color: $yellow;
+            border-radius: $radius;
+            padding: 2%;
+            margin-bottom: 5%;
+        }
+        .modal-top {
+            margin-left: auto;
+            margin-right: auto;
+            width: 70%;
+            text-align: right;
+            color: red;
+        }
+        .modal-content {
+            margin-left: auto;
+            margin-right: auto;
+            width: 70%;
+            .modal-content_body {
+                .modal_img {
+                    width: 13rem;
+                    height: 13rem;
+                    float: left;
+                    margin: 0 2rem 1rem 0;
+                }
+                .modal_editor{
+                    text-align: justify;
+                    text-indent: 2em;
+                }
+            }
+            
+        }
+        
     }
 }
