@@ -51,7 +51,12 @@ export default function Home() {
        
         <div className='section-home-intro-text'>
           <h1>CITY TECH</h1>
-          <h3>appliance repair</h3>
+          <h2>HVAC REPAIR & APPLIANCE</h2>
+          <div>
+            <h3>10% OFF For first Order</h3>
+            <h3>FLEXIBLE PRICING</h3>
+            <h3>6 MONTHS repair warranty</h3>
+          </div>
         </div>
         {
           windowSize.width < 1024 ?
@@ -154,7 +159,7 @@ export default function Home() {
 
       {/* TESTIMONIALS___________________________________ */}
       <section id='testimonials' className='testimonials'>
-        <h2>Testimonials</h2> 
+        <h2>Reviews</h2> 
           <Testimonials />
       </section>
 
@@ -184,12 +189,13 @@ export default function Home() {
             </thead>
             <tbody>
               <tr>
-                <td>Monday-Friday</td>
-                <td>8:00 am - 7:00 pm</td>
+                <td>Monday - Saturday</td>
+                
+                <td>8:45 AM - 6:00 PM</td>
               </tr>
               <tr>
-                <td>Saturday-Sunday</td>
-                <td>8:00 am - 6:00 pm</td>
+                <td>Sunday</td>
+                <td>Closed</td>
               </tr>
             </tbody> 
           </table>
@@ -242,16 +248,16 @@ export default function Home() {
       <section id="contacts" className='contacts'>
         <h2>Contacts</h2> 
         <div className='contacts_info-container'>
-          <div className='contacts-address'>
-            <p>Prins Hendrikkade 48A</p>
-            <p>1012 AC Hogwarts</p>
-            <p>The Neverland</p>
-          </div>
-          <div className='contacts-contact'>
-            <a href="mailto:n.yarysheva@gmail.com">n.yarysheva@gmail.com</a>
-            <br></br>
-            <a href="tel:+19292977775">(929) 297-7775</a>
-          </div>
+          {/* <div className='contacts-contact'> */}
+            <p>Brooklyn, NY</p>
+            {/* <a href="mailto:n.yarysheva@gmail.com">n.yarysheva@gmail.com</a> */}
+            {/* <br></br> */}
+            <a href="tel:+19295022525">(929) 502-2525</a>
+          {/* </div> */}
+          {/* <div className='contacts-address'>
+            <p>Brooklyn, NY</p>
+            
+          </div> */}
         </div>
         
         <button 

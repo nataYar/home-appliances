@@ -11,20 +11,6 @@
         padding-bottom: 5%;
         font-size: 3rem;
     }
-    .home-container {
-        .section-home-intro {
-            height: 70vh;
-            background-image: url("../../Images/backgrounds/bb1024_120kb.webp");
-            .section-home-intro-text{  
-                h1 {
-                   font-size: 5rem;
-                }
-                h3{
-                    font-size: 2rem;
-                }
-            }
-        }
-    }
 
     section.badges {
         @include flex-column-center();
@@ -99,6 +85,27 @@
         font-size: $font-big;
         margin: 0%;
         text-align: center;
+    }
+
+    .section-home-intro-text{  
+        @include flex-column-center($justify: space-evenly, $align: space-evenly); 
+        height: 100%;
+        color: $yellow;
+        h1 {
+           font-size: 5rem;
+        }
+        div {
+            padding-top: 25%;
+            margin: 0%;
+            @include flex-column-center();
+            h3{
+                @include standard-font-light();
+                padding-top: 5%;
+                margin: 0%;
+                text-transform: uppercase;
+            }
+        }
+        
     }
 
 
@@ -248,20 +255,21 @@
             padding-bottom: 1rem;
         }
         .contacts_info-container {
-            width: 60%;
-            height: fit-content;
-            padding: 0%;
-            margin: 0%;
-            margin-top: 1rem;
-            margin-left: auto;
-            margin-right: auto;
-            display: flex;
-            flex-direction: row;
-            align-items: baseline;
-            justify-content: space-between;
+            width: 100%;
+            // height: fit-content;
+            // background-color: aquamarine;
+            // padding: 0%;
+            // margin: 0%;
+            // margin-top: 1rem;
+            // margin-left: auto;
+            // margin-right: auto;
+            // display: flex;
+            // flex-direction: column;
+            // align-items: baseline;
+            // justify-content: space-between;
             .contacts-address {
                 p {
-                    margin-top: .5rem;
+                    // margin-top: .5rem;
                 }
             }
             .contacts-contact {

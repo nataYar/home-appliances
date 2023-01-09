@@ -66,14 +66,11 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
             <div className="sc-wrapper">
                 <div className="sc-info-container">
                     <div className='sc__address'>
-                        <p>Prins Hendrikkade 48A</p>
-                        <p>1012 NY</p>
-                        <p>NY</p>
+                        <p>Brooklyn</p>
+                        <p>New York</p>
+                        <a href="tel:+19292977775">(929)297-7775</a>
                     </div>
-                    <div className='sc__contacts'>
-                        <a href="mailto:n.yarysheva@gmail.com">n.yarysheva@gmail.com</a>
-                        <a href="tel:+19292977775">(929)297-77-75</a>
-                    </div>
+                        {/* <a href="mailto:n.yarysheva@gmail.com">n.yarysheva@gmail.com</a> */}
                 </div>
 
                 <form className="sc-form"
@@ -83,7 +80,7 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
                             name="name" 
                             onChange={(e) => updateInput(e)}
                             value={formData.name || ''} 
-                            required />
+                            />
 
                         <div className='form-control__phone'>
                             <p>+1</p>
@@ -97,7 +94,7 @@ export default function ScheduleCallForm({scheduleFormVisible, callbackCloseSche
                         </div>
                         
                         <textarea  id ='form-control__message' className="form-control" 
-                            placeholder="WANT TO ADD A MESSAGE?" 
+                            placeholder="add a message or leave it blank" 
                             name="message" 
                             type="text"
                             onChange={(e) => updateInput(e)}

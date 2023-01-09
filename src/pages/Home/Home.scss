@@ -14,12 +14,12 @@
         color: $lightGray;
         background-color: $darkBlue;
         padding-top: 6.5vh;
-        height: 60vh;
+        height: 80vh;
         width: 100%;
         // background-image: url('../../Images//backgrounds/bkkkk.svg');
         // background-image: url('../../Images/backgrounds/waves.jpg');
         background-position-x: 60%;
-        background-image: url("../../Images/backgrounds/bb640.webp");
+        background-image: url("../../Images/backgrounds/bb1024_120kb.webp");
         background-size: cover;
         // background-position: center;
         svg {
@@ -29,17 +29,22 @@
         .section-home-intro-text{  
             @include flex-column-center(); 
             color: $yellow;
+
             h1 {
-               font-size: 4rem;
+               font-size: 5rem;
                padding: 0%;
                margin: 0%;
             }
-            h3{
-                padding-top: 5%;
-                margin: 0%;
-                font-size: 2rem;
-                text-transform: uppercase;
+            div {
+                @include flex-column-center();
+                h3{
+                    @include standard-font-light();
+                    padding-top: 5%;
+                    margin: 0%;
+                    text-transform: uppercase;
+                }
             }
+            
         }
     }
 }
@@ -353,17 +358,38 @@ section.contacts {
     @include section();
     background-color: $midBlue;
     color: white;
-    .contacts-address p {
-        margin-top: 1.5rem;
-    }
-    .contacts-contact{
-        margin-top: 2.5rem;
+    // .contacts-address p {
+    //     margin-top: 1.5rem;
+    // }
+    // .contacts-contact{
+    //     margin-top: 2.5rem;
+    // }
+    // a {
+    //     display: block;
+    //     text-decoration: none;
+    //     color: white;
+    // }
+    .contacts_info-container {
+        padding: 0%;
+        margin: 0%;
+        @include flex-column-center();
+        width: 100%;
+        p {
+            // justify-content: center;
+            // margin-top: .5rem;
+        }
+        // margin-left: auto;
+        // margin-right: auto;
+        // display: flex;
+        // flex-direction: column;
+        // align-items: baseline;
+        // justify-content: space-between;
     }
     a {
-        display: block;
-        text-decoration: none;
-        color: white;
-    }
+            display: block;
+            text-decoration: none;
+            color: white;
+        }
     .contacts-button {
         margin-top: 15%;
         left: 50%;

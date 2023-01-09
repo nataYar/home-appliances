@@ -109,11 +109,11 @@ export default function CommentForm({ commentForm, callbackToggleCommentForm, ca
                         <select name="nyNeighbourhood" id="nyNeighbourhood" 
                             defaultValue='Brooklyn'
                             onChange= { (e) => setComment({ ...comment, city: e.target.value }) }>
-                            <option value="Bronx">Bronx</option>
+                            {/* <option value="Bronx">Bronx</option> */}
                             <option value="Brooklyn" >Brooklyn</option>
                             <option value="Manhattan">Manhattan</option>
-                            <option value="Queens">Queens</option>
-                            <option value="Staten Island">Staten Island</option>
+                            {/* <option value="Queens">Queens</option> */}
+                            {/* <option value="Staten Island">Staten Island</option> */}
                         </select>
                     </div>
                     
